@@ -1,0 +1,59 @@
+<div  class="hbg-box">
+    <div class="hbg-box-inner">
+        <div>
+            <%if(user.avatar.avatar.url!=null){%>
+            <img  class="avatar" src="<%=user.avatar.avatar.url%>">
+            <%}else{%>
+            <img  class="avatar" src="./resource/zlzq/images/myheader.png">
+            <%}%>
+        </div>
+        <div class="info">
+           <h2><%=user.nick_name%> &nbsp;<b></b></h2>
+            <p><%=user.cell%> </p>
+            <p style="font-size: 10px;">上海&nbsp;</p>
+        </div>
+        <i class="arrow"></i>
+    </div>
+   <img src="resource/zlzq/images/hbg.png" style="width: 100%;display: none" />
+</div>
+<div style="margin-top: 100px">
+    <ul class="opt-list">
+        <!--<li class="contract"><i class="icon contract"></i>合同管理<i class="arrow"></i></li>-->
+        <li class="tel-box"><i class="icon tel"></i>在线物业<em>021-6235001</em></li>
+    </ul>
+</div>
+
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="favorites"><i class="icon favorites"></i>我的收藏<i class="arrow"></i></li>
+        <!--<li class="comment"><i class="icon comment"></i>我的评价<i class="arrow"></i></li>
+        <li class="score"><i class="icon reward"></i>积分奖励<i class="arrow"></i></li>-->
+    </ul>
+</div>
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="order">我的订单<i class="arrow"></i></li>
+        <!--<li class="comment"><i class="icon comment"></i>我的评价<i class="arrow"></i></li>-->
+        <!--<li class="score"><i class="icon reward"></i>积分奖励<i class="arrow"></i></li>;-->
+    </ul>
+</div>
+<div class="bottom-bar">
+    <ul>
+        <li class="rent">
+            <i class="b-icon"></i>
+            <span>首页</span>
+        </li>
+        <li  class="order">
+            <i class="b-icon o-icon"></i>
+            <span>我的订单</span>
+        </li>
+       <!-- <li class="schedule">
+            <i class="b-icon c-icon"></i>
+            <span>看房日程</span>
+        </li>-->
+        <li class="mine">
+            <i class="b-icon i-icon active"></i>
+            <span>我的</span>
+        </li>
+    </ul>
+</div>

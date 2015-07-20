@@ -1,0 +1,26 @@
+<%if(list.length>0){%>
+<ul class="house-list">
+    <%_.each(list, function(v,i){ %>
+    <li data-id="<%=v.id%>">
+        <a>
+            <div class="img" style="overflow: hidden">
+                <img  id="i<%=v.id%>" style="max-width: 100%">
+            </div>
+            <div class="txt">
+                <p class="monthly"><em><%=v.price%></em>&nbsp;元&nbsp;/&nbsp;月</p>
+                <p><%=v.title%>&nbsp;&nbsp;|&nbsp;&nbsp;<%=v.area%>m<sup>2</sup></p>
+                <p class="addr">地址:<%=v.address%>&nbsp;&nbsp;</p>
+                <p class="">发布时间:<%=v.created_at.substring(0,10)%>&nbsp;&nbsp;</p>
+                <p class="">更新时间:<%=v.updated_at.substring(0,10)%>&nbsp;&nbsp;</p>
+                <p class="">房源性质:<%=v.realty_type%>&nbsp;&nbsp;</p>
+                <p class="">配套设施:<%=v.house_device_id%>&nbsp;&nbsp;</p>
+            </div>
+        </a>
+    </li>
+    <%})%>
+</ul>
+<%}else{ %>
+<div class="content" >
+    <h2>对不起未找到相关信息!</h2>
+</div>
+<%}%>

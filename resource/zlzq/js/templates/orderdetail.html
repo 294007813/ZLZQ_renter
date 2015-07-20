@@ -1,0 +1,367 @@
+<style type="text/css">
+    /*.cm-header,.cm-header .cm-header-btn{*/
+        /*background-color:transparent;*/
+    /*}*/
+    /*.cm-header .cm-header-btn:active{*/
+        /*background-color: transparent;*/
+    /*}*/
+    .top_more.right:before{
+        background-image: url(./resource/zlzq/images/icon-note.png);
+        background-size:26px 30px;
+        background-position: center;
+    }
+    #main{
+        padding-top:0;
+    }
+    .house_slider{
+        height: 300px;
+    }
+    .housing {
+        padding: 10px 15px;
+        position: relative;
+        background: #fff;
+        border-bottom:1px solid #E7E7E7;
+        overflow: hidden;
+    }
+    .house_intro{
+        float:left;
+        width:80%;
+    }
+    .house_icon{
+        float:right;
+        width: 20%;
+    }
+    .house_title{
+        font-size:18px;
+        color:#333;
+        line-height: 40px;
+    }
+    .house_highlight{
+        color:#ff6600;
+        font-size:14px;
+        line-height: 24px;;
+    }
+    .house-big{
+        font-size:18px;
+    }
+    .house_tip{
+        color:#999;
+        font-size:12px;
+        line-height: 24px;;
+    }
+    .house_collect{
+        margin-top:18px;
+        padding: 5px 0 0 20px;
+        float:right;
+        width: 50px;
+        color:#ff6600;
+        text-align:center;
+        line-height: 24px;
+        border-left:1px solid #e7e7e7;
+    }
+    .house_collect .icon_collect{
+        display: block;
+        margin:  0 auto;
+        width: 30px;
+        height: 25px;
+        background:url(./resource/zlzq/images/icon_collect_un.png) no-repeat center;
+        background-size: 30px 25px;;
+    }
+    .house_collect.on .icon_collect{
+        background:url(./resource/zlzq/images/icon_collect.png) no-repeat center;
+        background-size: 30px 25px;;
+    }
+    .housing .btn {
+        position: absolute;
+        right: 5px;
+        top: 10px;;
+        background-color: #E8BD35;
+        color: #fff;
+        border-radius: 3px;;
+        padding: 10px 10px 10px 20px;
+        box-sizing: border-box;
+        display: inline-block
+    }
+    .info_list{
+        padding:5px 15px;
+        border-top: 1px solid #E8E8E8;
+        border-bottom: 1px solid #E8E8E8;
+        margin-top: 20px; background: #fff;
+        overflow: hidden;
+    }
+
+    .info_list >li {
+        position: relative;
+        height: 44px;
+        line-height: 44px;
+        font-size: 15px;
+        border-top: 1px solid #E8E8E8;
+    }
+    .info_list >li:first-child{
+        border-top:none;
+    }
+    .house_info_list.info_list >li{
+        display: block;
+        float:left;
+        width:50%;
+        border:none;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .house_info_list.info_list .info_name{
+        margin-right:10px;
+        color:#999;
+    }
+    .info_list >li.info_labels{
+        margin-top: 10px;
+        padding-top: 10px;;
+        height:auto;
+        width: 100%;
+        border-top: 1px solid #f5f5f5;
+    }
+    .info_labels .info_label_item{
+        float:left;
+        width: 25%;;
+    }
+    .info_label_item.info_un{
+        color:#999;
+        text-decoration: line-through;
+    }
+    .info_label_item.info_un i{
+        opacity:0.5;
+    }
+    .info_labels .info_label_item i{
+        display: inline-block;
+        margin-right:5px;
+        vertical-align:middle;
+        width: 18px;
+        height:18px;
+        background-image: url(./resource/zlzq/images/icon-house.png);
+        background-repeat: no-repeat;
+        background-size:180px 18px;
+    }
+    .info_label_item .icon-web{
+        background-position: 0 0;
+    }
+    .info_label_item .icon-tv{
+        background-position: -18px 0;
+    }
+    .info_label_item .icon-sofa{
+        background-position: -36px 0;
+    }
+    .info_label_item .icon-wash{
+        background-position: -54px 0;
+    }
+    .info_label_item .icon-aircon{
+        background-position: -72px 0;
+    }
+    .info_label_item .icon-bed{
+        background-position: -90px 0;
+    }
+    .info_label_item .icon-board{
+        background-position: -108px 0;
+    }
+    .info_label_item .icon-fridge{
+        background-position: -126px 0;
+    }
+    .info_label_item .icon-shower{
+        background-position: -144px 0;
+    }
+    .info_label_item .icon-heater{
+        background-position: -162px 0;
+    }
+    .l-ct-inner.house_location{
+        position: relative;
+        top: -2px;
+        width:20px;
+        height:20px;
+        margin-right:5px;
+        vertical-align: middle;
+        background-image: url(./resource/zlzq/images/slocation_active.png);
+        -webkit-filter:brightness(0);
+        filter:brightness(0);
+        opacity: 0.3;
+    }
+    .icon-right{
+        display: block;
+        float:right;
+        width: 15px;
+        height: 25px;
+        line-height: 44px;
+    }
+    .icon-right:before{
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        vertical-align: middle;
+        border-right: 2px solid #C7C6CB;
+        border-top: 2px solid #C7C6CB;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .info_btnarea{
+        margin:20px 0;
+        padding: 15px 5px;
+        border-top: 1px solid #E8E8E8;
+        border-bottom: 1px solid #E8E8E8;
+    }
+    .info_btnarea .btn{
+        display: block;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        font-size:18px;
+        background-color: #ff6600;
+        border-radius:5px;
+    }
+    .info_btnarea .btn.grey{
+        background-color: #9A9DA4;
+    }
+    .info_list >li.info-comment{
+        padding: 20px 0;
+        height: auto;;
+    }
+    .info-comment .radiu-avatar{
+        position: absolute;
+        left: 5px;
+        top: 24px;
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+        overflow: hidden;
+    }
+    .comment-content{
+        padding-left: 50px;
+        color:#333;
+        line-height: 22px;
+    }
+    .comment-title{
+        overflow: hidden;
+    }
+    .comment_user{
+        float:left;
+    }
+    .score-block{
+        position: relative;
+        float: right;
+        height: 14px;
+        width: 90px;
+        z-index: 1;
+    }
+    .comment_score{
+        height: 14px;
+        width: 90px;
+        background:url(./resource/zlzq/images/icon_collect_un.png) repeat left;
+        background-size:18px 14px;
+        -webkit-filter:saturate(0) opacity(0.5);
+        filter:saturate(0) opacity(0.5);
+    }
+    .comment_scorein{
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        height: 14px;
+        width: 80%;
+        background:url(./resource/zlzq/images/icon_collect.png) repeat left;
+        background-size:18px 14px;
+        -webkit-filter:hue-rotate(-30deg) contrast(50) brightness(0.9);
+        filter:hue-rotate(-30deg) contrast(50) brightness(0.9);
+    }
+    .comment_tip{
+        color: #999;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .reserve .btn {
+        background-color: #E8BD35;
+        color: #fff;
+        border-radius: 3px;;
+        padding: 10px 10px 10px 20px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 14px;;
+    }
+
+</style>
+
+<div class="house_slider">
+</div>
+ <div class="housing" >
+     <div class="house_intro">
+         <p class="house_title">益田花园一期</p>
+         <p class="house_highlight"> <%if(realty.price!=null){%><span class="house-big"><%=realty.price%></span><%}%>元/月</p>
+
+         <p class="house_tip">发布时间：
+             <%if(realty.price!=null){%>
+             &nbsp;<%=realty.published_at%>
+             <%}%>
+         </p>
+
+         <p class="house_tip">联系方式：&nbsp;<a href="tel:<%=realty.owner.cell%>"><%=realty.owner.cell%></a></p>
+
+     </div>
+     <!--<div class="house_icon">-->
+         <!--<div class="house_collect on" ><i class="icon_collect"></i>已收藏</div>-->
+         <!--<div class="house_collect" ><i class="icon_collect"></i>收藏</div>-->
+     <!--</div>-->
+ </div>
+
+<ul class="info_list info_ct house_info_list">
+    <li>
+        <span class="info_name">户型</span>
+        <%if(realty.title!=null){%>
+        <span><%=realty.title%></span>
+        <%}%>
+    </li>
+    <li>
+        <span class="info_name">区域板块</span>
+        <%if(typeof(realty.location)!="undefined"){%>
+
+        <span><%=realty.location.district%>&nbsp;&nbsp;<%=realty.location.quarter%></span>
+        <%}%>
+    </li>
+    <li>
+        <span class="info_name">面积</span>
+        <%if(realty.area!=null){%>
+        <span><%=realty.area%>m<sup>2</sup></span>
+        <%}%>
+    </li>
+    <li>
+        <span class="info_name">合租情况</span>
+        <span>出租一室</span>
+    </li>
+    <li>
+        <span class="info_name">装修</span>
+        <%if(realty.fitment!=null){%>
+        <span><%=realty.fitment%></span>
+        <%}%>
+    </li>
+    <li>
+        <span class="info_name">入住时间</span>
+        <%if(realty.checkin_at!=null){%>
+        <span><%=realty.checkin_at%></span>
+        <%}%>
+    </li>
+    <li>
+        <span class="info_name">楼层</span>
+        <%if(realty.floor!=null){%>
+        <span><%=realty.floor%></span>
+        <%}%>
+    </li>
+
+ </ul>
+
+
+
+
+
+

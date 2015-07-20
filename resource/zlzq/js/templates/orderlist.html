@@ -1,0 +1,58 @@
+<style type="text/css">
+.content{ font-size: 18px;text-align: center;margin-top:10px; }
+</style>
+<div class="searchBar">
+    <div class="searchBar-inner">
+
+    </div>
+</div>
+<div class="mask"></div>
+<%if(list!=""){%>
+<ul class="house-list">
+    <%_.each(list, function(v,i){ %>
+    <li data-id="<%=v.id%>">
+        <a>
+            <div class="img">
+                <img src="<%=v.avatar.url%>">
+            </div>
+            <div class="txt">
+
+                <p class="monthly"><em><%=v.price%></em>&nbsp;元&nbsp;/&nbsp;月</p>
+                <p><%=v.title%>&nbsp;&nbsp;|&nbsp;&nbsp;<%=v.area%>m<sup>2</sup></p>
+                <p class="addr"><%=v.address%>&nbsp;&nbsp;30号楼</p>
+                <p class="btn"><em>状态:<%=v.state%></em></p>
+            </div>
+
+            <!--<div class="state">-->
+                <!--<p class="monthly"><em><%=v.state%></em></p>-->
+            <!--</div>-->
+        </a>
+    </li>
+    <%})%>
+
+</ul>
+<%}else{ %>
+<div class="content" >
+    <h2>对不起!你还没有订单信息</h2>
+</div>
+<%}%>
+<div class="bottom-bar">
+    <ul>
+        <li class="rent">
+            <i class="b-icon r-icon "></i>
+            <span>首页</span>
+        </li>
+        <li class="order">
+            <i class="b-icon o-icon active"></i>
+            <span>我的订单</span>
+        </li>
+        <!--<li class="schedule">
+            <i class="b-icon c-icon"></i>
+            <span>看房日程</span>
+        </li>-->
+        <li class="mine">
+            <i class="b-icon i-icon"></i>
+            <span>我的</span>
+        </li>
+    </ul>
+</div>

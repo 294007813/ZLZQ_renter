@@ -1,0 +1,123 @@
+<!--<script type="text/javascript">
+    $(document).bind('deviceready',function(){
+        $('#camera').bind('touchstart',function(){
+            alert("-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;");
+            navigator.camera.getPicture(function(data){
+                $('#picture').attr('src','data:image/jpeg;base64,'+data);
+
+            },function(error){
+                console.log('Error');
+            },{
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.CAMERA,
+                allowEdit:false,
+                targetWidth:135,
+                targetHeight:200
+            });
+        });
+
+        $('#choose-box').bind('touchstart',function(){
+            navigator.camera.getPicture(function(data){
+                $('#picture').attr('src','data:image/jpeg;base64,'+data);
+
+            },function(error){
+                console.log('Error');
+            },{
+                destinationType:Camera.DestinationType.DATA_URL,
+                sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
+                allowEdit:false,
+                targetWidth:135,
+                targetHeight:200,
+                mediaType:Camera.MediaType.PICTURE
+            });
+        });
+
+
+    });
+</script>-->
+<div class="personal">
+    <div class="info-box">
+     <div class="avatar-box">
+         头像
+         <div>
+             <img  class="avatar" id="picture" >
+         </div>
+         <i class="arrow"></i>
+
+     </div>
+        <div>
+            <ul class="opt-list">
+                <li class="name">名称<em><%=user.nick_name%></em><i class="arrow"></i></li>
+                <li class="tel">手机号码<em><%=user.cell%></em><i class="arrow"></i></li>
+                <li class="pwd">更改密码<i class="arrow"></i></li>
+                <!--<li class="gender">性别<em>女</em><i class="arrow"></i></li>-->
+            </ul>
+        </div>
+        <div style="margin-top: 20px;">
+            <ul class="opt-list">
+                <!--<li>学历<em>本科</em><i class="arrow"></i></li>-->
+                <li>常居地<em>上海</em><i class="arrow"></i></li>
+
+            </ul>
+        </div>
+
+        <div style="text-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="loginout">
+            退出登录
+        </div>
+        <div style="text-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="exit">
+            退出
+        </div>
+    </div>
+    <div class="name-box">
+          <input type="text" class="name" value="<%=user.nick_name%>">
+    </div>
+
+    <!--<div class="tel-box">
+        <div>
+               <input type="text" class="name" value="<%=user.cell%>">
+        </div>
+        <div>
+            <div  class="code-btn">获取验证码</div>
+            <div  class="code-box">
+                <div class="code-inner-box">
+                      <input type="text"  class="code" placeholder="请输入验证码" value=""/>
+                </div>
+            </div>
+        </div>
+    </div>-->
+   <div class="pwd_box">
+        <ul class="login_box " >
+            <li>
+                <label>原来密码</label>
+                <div class="code-input-box">
+                    <input class="li_input old-password" maxlength="20" required="" tabindex="2"  type="password" placeholder="8-20位字母、数字和符号"/>
+                </div>
+            </li>
+            <li>
+                <label>新密码</label>
+                <div class="code-input-box">
+                    <input class="li_input new-password" maxlength="20" required="" tabindex="2"  type="password" placeholder="8-20位字母、数字和符号"/>
+                </div>
+            </li>
+            <li>
+                <label>确认密码</label>
+                <div class="code-input-box">
+                    <input class="li_input confirm-password" maxlength="20" required="" tabindex="2"  type="password" placeholder="8-20位字母、数字和符号"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pic-box" style="display: none">
+        <div style="position: fixed;top: 0;bottom: 0;   background-color: rgba(0, 0, 0, 0.7);  width: 10"></div>
+        <div  class="menu" >
+            <ul>
+                <li id="camera">拍照</li>
+                <li id="choose-box">从相册中选择</li>
+                <li class="cancel">取消</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,173 @@
+<style type="text/css">
+    ．house_slider{
+        height: 190px;
+    }
+    .housing {
+        height: 80px;
+        position: relative;
+        background: #fff;
+    }
+    .housing .btn {
+        position: absolute;
+        right: 5px;
+        top: 10px;;
+        background-color: #E8BD35;
+        color: #fff;
+        border-radius: 3px;;
+        padding: 10px 10px 10px 20px;
+        box-sizing: border-box;
+        display: inline-block
+    }
+    .info_list{
+        padding:5px 20px;
+        border-top: 1px solid #E8E8E8;
+        border-bottom: 1px solid #CCC;
+        margin-top: 20px; background: #fff
+    }
+
+    .info_list >li {
+        position: relative;
+        height: 44px;
+        line-height: 44px;
+        font-size: 15px;
+        border-top: 1px solid #E8E8E8;
+    }
+    .info_list >li:first-child{
+        border-top:none;
+    }
+    .info_list .info_name{
+        color:#E8BD35;
+    }
+    .reserve .btn {
+        background-color: #E8BD35;
+        color: #fff;
+        border-radius: 3px;;
+        padding: 10px 10px 10px 20px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 14px;;
+    }
+
+</style>
+
+
+<img src="./resource/zlzq/images/house5.png" style="width: 100%;margin-top: -21px;" >
+
+<div class="house-header">
+    <div>
+        <h2>益田花园一期</h2>
+        <p>
+           <div class="price"><strong>5800</strong>元/月</div>
+           <div class="date"><span>发布时间：</span><span>3天前</span></div>
+        </p>
+    </div>
+    <div class="favorite-box">
+        <i class="favorite-icon"></i>
+        <span>收藏</span>
+    </div>
+</div>
+<div class="h-brief-box">
+  <ul class="h-brief">
+      <li>户型<span>2室2厨2卫</span></li>
+      <li>区域板块<span>徐汇&nbsp;&nbsp;&nbsp;长乐</span></li>
+      <li>面积<span>120m<sup>2</sup></span></li>
+      <li>合租情况<span>出租一室</span></li>
+      <li>装修<span>精装</span></li>
+      <li>入住时间<span>2015/05/01</span></li>
+      <li>楼层<span>03/18F</span></li>
+  </ul>
+</div>
+<div>
+    <ul class="s-list">
+        <li><span><i class="icon net"></i>宽带</span></li>
+        <li><span><i class="icon tv"></i>电视</span></li>
+        <li><span><i class="icon sofa"></i>沙发</span></li>
+        <li><span><i class="icon wash"></i>洗衣机</span></li>
+        <li><span><i class="icon air"></i>空调</span></li>
+        <li><span><i class="icon bed"></i>床</span></li>
+        <li><span><i class="icon wardrobe"></i>衣柜</span></li>
+        <li><span><i class="icon  fridge"></i>冰箱</span></li>
+        <li><span><i class="icon shower"></i>淋浴</span></li>
+        <li><span><i class="icon warm"></i>暖气</span></li>
+    </ul>
+</div>
+<div class="h-addr">
+    <i class="location-icon"></i> 静安区东安路1882路
+    <i class="r-arrow"></i>
+</div>
+<div class="comment-box" style="margin-top: 10px;">
+    <div class="c-list">租客评论(3) <i class="r-arrow"></i></div>
+    <div>
+        <div class="c-h">
+            <div class="pic"><img src="resource/zlzq/images/user.png" ></div>
+            <div class="name">千千</div>
+            <em>5分钟前</em>
+            <ul class="star-list">
+               <li class="active"></li>
+               <li  class="active"></li>
+               <li  class="active"></li>
+               <li  class="active"></li>
+               <li></li>
+           </ul>
+        </div>
+        <div class="c-b">
+            房子环境还是不错，家具有点旧了，但是房东阿姨很好！
+        </div>
+    </div>
+</div>
+<div class="foot-bar">
+    <a class="btn">我要预约</a>
+</div>
+<!--<div class="house_slider">-->
+<!--</div>-->
+ <!--<div class="housing" >-->
+     <!--<a  class="btn">我要看房</a>-->
+ <!--</div>-->
+
+ <!--<ul class="info_list info_ct">-->
+     <!--<li>-->
+         <!--<span class="info_name">区域板块：</span>-->
+         <!--<span><%=realty.location.district%>&nbsp;&nbsp;<%=realty.location.quarter%></span>-->
+     <!--</li>-->
+     <!--<li>-->
+         <!--<span class="info_name">户型：</span>-->
+         <!--<span><%=realty.title%></span>-->
+     <!--</li>-->
+     <!--<li>-->
+         <!--<span class="info_name">面积：</span>-->
+         <!--<span><%=realty.area%>m<sup>2</sup></span>-->
+     <!--</li>-->
+     <!--<li>-->
+         <!--<span class="info_name">楼层：</span>-->
+         <!--<span><%=realty.floor%></span>-->
+     <!--</li>-->
+     <!--<li>-->
+         <!--<span class="info_name">装修：</span>-->
+         <!--<span><%=realty.fitment%></span>-->
+     <!--</li>-->
+     <!--<li>-->
+         <!--<span class="info_name">发布时间：</span>-->
+         <!--<span><%=realty.published_at%></span>-->
+     <!--</li>-->
+ <!--</ul>-->
+  <!--<ul class="info_list   info_ct" style="margin-bottom: 10px">-->
+      <!--<li>-->
+          <!--<span class="info_name">可入住时间：</span>-->
+          <!--<span><%=realty.checkin_at%></span>-->
+      <!--</li>-->
+  <!--</ul>-->
+
+<!--<ul class="info_list reserve_ct" style="display: none">-->
+    <!--<li style="height: 100px;">-->
+        <!--<a style="width: 100px; display: block; border-radius: 100px; overflow: hidden;height: 100px; margin: auto"><img src="<%=realty.owner.avatar%>"  style="width: 100%"/>  </a>-->
+    <!--</li>-->
+    <!--<li style="text-align: center">-->
+        <!--<span class="info_name">房东昵称：</span>-->
+        <!--<span><%=realty.owner.nick_name%></span>-->
+    <!--</li>-->
+    <!--<li  style="text-align: center" class="reserve">-->
+        <!--<a  class="btn" href="tel:<%=realty.owner.cell%>">预约看房</a>-->
+    <!--</li>-->
+
+<!--</ul>-->

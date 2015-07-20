@@ -1,0 +1,25 @@
+CACHE MANIFEST
+
+# VERSION 1.0
+
+# 直接缓存的文件
+CACHE:
+http://m.hih5.cn/webapp/xfund/resource/fund/img/spinner.png
+http://m.hih5.cn/webapp/xfund/resource/fund/img/search-icon.png
+http://m.hih5.cn/webapp/xfund/resource/fund/img/recommend.png
+http://m.hih5.cn/webapp/xfund/resource/fund/img/un_entry.png
+http://pic.c-ctrip.com/h5/common/comm_bg.png
+http://m.hih5.cn/webapp/xfund/resource/hih5/css/pure.css
+http://m.hih5.cn/webapp/xfund/resource/hih5/css/main.css
+http://m.hih5.cn/webapp/xfund/resource/fund/css/fund.css
+http://m.hih5.cn/webapp/xfund/resource/hih5/js/lib/hih5.core.js?v=20141106002
+http://m.hih5.cn/webapp/xfund/resource/hih5/js/lib/hih5.web.js
+http://m.hih5.cn/webapp/xfund/resource/fund/js/config.js?v=20141106002
+http://m.hih5.cn/webapp/xfund/resource/fund/js/index.js?v=20141106002
+
+
+
+# 需要在时间在线的文件
+NETWORK:
+*
+
