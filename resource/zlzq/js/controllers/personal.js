@@ -356,7 +356,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self.$el.html(_.template(tplPersonal)({
                 user: {
                     nick_name: self.user.nick_name,
-                    cell: self.user.cell
+                    cell: self.user.cell,
+                    avatar: self.user.avatar.avatar.url
                 }
             }));
             if (!self.iframeContent) {
