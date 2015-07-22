@@ -13,6 +13,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             "click .filter-list li": "setFilter",
             "click .sort-list li": "setSortFilter",
             "click a.yes": "setTypeFilter",
+            "click a.reset": "reSetTypeFilter",
             "click .right-column li": "setAreaFilter",
             "click .left-column li": "setDistrictFilter",
             "click .r-bar .search-box-mask": "toGetAreaList",
@@ -41,7 +42,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             var currentBox = self.$el.find(".sort-bar-box");
             currentBox.removeClass("in");
             self.$el.find(".mask").removeClass("show");
-            document.removeEventListener('touchmove', self.preventDefault, false);
 
             var sid = target.data("sid"),
                 paras = {};
@@ -54,12 +54,19 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             if (sid == 3) {
                 paras = {order: "published_at"}
             }
+
+
             self.search(paras, function (data) {
                 self.$el.find(".house-list-box").html($(_.template(TplHList, {
                     list: data.realties
                 })));
                 self.lazyLoadImage(data.realties);
             })
+        },
+        reSetTypeFilter:function(e){
+            self.$el.find(".house-type>li div.selected").removeClass("selected");
+            self.range.reset();
+
         },
         setTypeFilter: function (e) {
 
@@ -133,6 +140,35 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
         },
 
         search: function (paras, callback) {
+
+            paras = {};
+            self.$el.find(".sort-list li").each(function () {
+                var $this = $(this);
+                if ($this.hasClass("active")) {
+                    var sid = $this.data("sid");
+                    if (sid == 1) {
+                        paras["order"] = "price_high";
+                    }
+                    if (sid == 2) {
+                        paras["order"] = "price_low";
+                    }
+                    if (sid == 3) {
+                        paras["order"] = "published_at";
+                    }
+                }
+            });
+
+            self.$el.find(".left-column li").each(function () {
+                var $this = $(this);
+                if ($this.hasClass("current")) {
+                    paras["district_id"] = $this.data("id")
+                }
+            });
+            var type=self.$el.find(".house-type>li div.selected");
+            if(type.length>0) {
+                paras["room_count"] = type.data("type");
+            }
+
             self.showLoading();
             $.ajax({
                 url: self.url + '/api/v1/realties/search',
@@ -189,7 +225,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 self.$el.find(".mask").css("left", 0).removeClass("show");
             }
             self.lastFilter = target.data("key");
-            document.addEventListener('touchmove', self.preventDefault, false);
+           document.addEventListener('touchmove', self.preventDefault, false);
 
         },
         preventDefault: function (e) {
@@ -265,7 +301,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                         list: data.realties
                     })));
                     self.lazyLoadImage(data.realties);
-                    self.range = new cRange("rangeBar");
+                    self.range = new cRange("rangeBar",5000);
                     self.$el.find(".mask").addClass("m-trans");
                     self.$el.find(".mask")[0].addEventListener("webkitTransitionEnd", function () {
                         var mask = self.$el.find(".mask");
@@ -275,8 +311,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     }, false);
                     var areaBox = this.$(".area-bar");
                     areaBox.css("height", self.$el.find(".area-bar-box").height());
-                    //this.scrollOpts = {};
-                    //this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
+                    this.scrollOpts = {};
+                    this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
                 });
             });
         },

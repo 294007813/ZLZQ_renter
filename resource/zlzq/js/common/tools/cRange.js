@@ -4,10 +4,12 @@ define('cRange', function () {
         MOVE_EV = hasTouch ? 'touchmove' : 'mousemove',
         END_EV = hasTouch ? 'touchend' : 'mouseup',
         CANCEL_EV = hasTouch ? 'touchcancel' : 'mouseup',
-        range = function (id) {
+        range = function (id,value) {
             var that = this;
             that.el = document.getElementById(id);
             that.x = 0;
+            that.x_Max=that.el.offsetWidth-15;
+            this.range=value||that.x_Max;
             that._bind(START_EV);
         }
     range.prototype = {
@@ -32,6 +34,18 @@ define('cRange', function () {
                     that._transitionEnd(e);
                     break;
             }
+        },
+        reset:function(e){
+            var that = this;
+            that.x = 0;
+            document.getElementById("icon").style.left = "0px";
+            document.getElementById("innerBar").style.width = "0px";
+            document.getElementById("rentValue").style.left = "0px";
+            document.getElementById("rentValue").innerHTML="";
+        },
+        getValue:function(e){
+
+            return  this.currentRange;
         },
         _start: function (e) {
             var that = this;
@@ -73,7 +87,18 @@ define('cRange', function () {
 
             this.x = newX;
             this.y = newY;
+            if (this.x < 0) {
+                this.x = 0;
+            }
+            if (this.x > this.x_Max) {
+                this.x = this.x_Max;
+            }
+            this.currentRange = Math.floor(this.range * (this.x / this.x_Max));
+            document.getElementById("rentValue").innerHTML = this.currentRange || "";
             document.getElementById("icon").style.left = this.x + "px";
+            var left = this.x - 10;
+            left = left > 0 ? left : 0;
+            document.getElementById("rentValue").style.left = left + "px";
             document.getElementById("innerBar").style.width = this.x + "px";
 
         },

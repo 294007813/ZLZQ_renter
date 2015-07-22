@@ -702,6 +702,16 @@ background-position: 0 -410px;
   -webkit-box-shadow: 0 -1px 1px black inset;
   z-index: 10;
 }
+
+.range-value{
+  position: absolute;
+  height: 20px;
+  color: #ff6c10;
+  background: transparent;
+  top: -28px;
+  left: 0px;
+  z-index: 10;
+}
 .start-tip{
   position: absolute;
   width: 40px;
