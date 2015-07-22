@@ -263,7 +263,7 @@ background-position: 0 -410px;
 
 }
 .searchBar.active{
-  top: 44px;
+  /*top: 44px;*/
 }
 
 .searchBar-inner{

@@ -16,7 +16,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
 
-        //点击'我关注的'
+        //点击'我的收藏'
         toMyFavourite:function(){
             var isLogin = self.isLogin();
             if (!isLogin) {
