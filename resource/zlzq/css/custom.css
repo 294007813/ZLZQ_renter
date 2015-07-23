@@ -1969,3 +1969,11 @@ background-position: 0 -410px;
   overflow: hidden;
 }
 
+.month .cui-roller .cui-roller-bd{
+  display: none;
+}
+
+.month .cui-roller .cui-roller-bd:last-child{
+  display: block;
+}
+

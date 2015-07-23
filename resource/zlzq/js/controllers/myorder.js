@@ -6,7 +6,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .timeS-mask" :"selectDate",
             "click .timeE-mask" :"selectDate",
             "click .years" :"years",
-            //"click .phone" :"getPhone",
+            "click .monthC-mask" :"selectMonth",
 
         },
 
@@ -14,6 +14,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self.dateScroller.show();
             self.currentDateBox=$(e.currentTarget).parent().find("input");
 
+        },
+        selectMonth:function(e){
+            self.monthScroller.show();
         },
         toReserve:function(e){
             self.$el.find(".info_ct").hide();
@@ -44,6 +47,24 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             }
             return d1;
         },
+        getMonth:function() {
+            var d1 = [];
+            for (var i = 0; i < 5; i++) {
+                d1.push({key: (2015 + i), name: (2015 + i), value: (2015 + i)});
+                d1[d1.length - 1].months = [];
+                var d2 = d1[d1.length - 1].months;
+                for (var j = 1; j < 13; j++) {
+                    d2.push({key: j, name: j, value: j});
+                    d2[d2.length - 1].days = [];
+                    var d3 = d2[d2.length - 1].days;
+                    for (var k = 1; k < 5; k++) {
+                        var t = (k + 1) * 6;
+                        d3.push({key: t, name: t, value: t});
+                    }
+                }
+            }
+            return d1;
+        },
         commitData:function(){
 
             var timeSdata = $.trim(this.$el.find(".timeS").val());
@@ -60,7 +81,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 this.showMyToast("开始时间应小于截止时间", 1000);
                 return;
             }
-            var yearsdata = $.trim(this.$el.find("option").not(function(){ return !this.selected }).val());
+            var yearsdata = $.trim(this.$el.find(".monthC").val());
             if(!yearsdata){
                 this.showMyToast("请选择月数", 1000);
                 return;
@@ -94,8 +115,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
         onShow: function () {
             self.setHeader();
-            self.$el.find(".phone").val(self.getCurrentUser().cell);//手机号默认值
+            //self.$el.find(".phone").val(self.getCurrentUser().cell);//手机号默认值
             var d1 = this.getDate(), initData = [d1, d1[0].months, d1[0].months[0].days], initIndex = [0, 0, 0];
+            var d2 = this.getMonth(), MInitData = [d2, d2[0].months, d2[0].months[0].days], MInitIndex = [0, 0, 0];
+
             self.dateScroller = self.dateScroller || new UIGroupSelect({
                 datamodel: {title: "选择日期", tips: ""},
                 needAnimat: !1,
@@ -122,7 +145,36 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 hide: function () {
                     this.destroy()
                 }
+            });
+            self.monthScroller = self.monthScroller || new UIGroupSelect({
+                datamodel: {title: "租赁月数", tips: ""},
+                needAnimat: !1,
+                data: MInitData,
+                indexArr: MInitIndex,
+                displayNum: 5,
+                onCreate: function () {
+                    this.$el.addClass("plugin_date")
+                },
+                changedArr: [function (t) {
+                    var e = this.scrollArr[1], i = this.scrollArr[2];
+                    e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
+                }, function (t) {
+                    var e = this.scrollArr[2];
+                    e.reload(t.days), e.setIndex(0)
+                }],
+                onOkAction: function (item) {
+                    self.$el.find(".monthC").val(item[2].key);
+                    //self.currentDateBox && self.currentDateBox.val(item[0].key+"-"+item[1].key+"-"+item[2].key);
+                    this.hide()
+                },
+                onCancelAction: function () {
+                    this.hide()
+                },
+                hide: function () {
+                    this.destroy()
+                }
             })
+            self.monthScroller.$el.addClass("month");
 
             //self.dateScroller.show();
             self.hideLoading();
