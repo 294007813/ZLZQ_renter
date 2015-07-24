@@ -115,7 +115,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
         onShow: function () {
             self.setHeader();
-            //self.$el.find(".phone").val(self.getCurrentUser().cell);//手机号默认值
+            self.$el.find(".phone").val(self.getCurrentUser().cell);//手机号默认值
             var d1 = this.getDate(), initData = [d1, d1[0].months, d1[0].months[0].days], initIndex = [0, 0, 0];
             var d2 = this.getMonth(), MInitData = [d2, d2[0].months, d2[0].months[0].days], MInitIndex = [0, 0, 0];
 
