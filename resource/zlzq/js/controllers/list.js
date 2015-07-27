@@ -32,6 +32,37 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             self.$el.find(".searchBar-inner").addClass("active");
             self.$el.find(".r-bar input").focus();
         },
+        //setSortFilter: function (e) {
+        //    var target = $(e.currentTarget);
+        //    self.$el.find(".sort-list li").each(function () {
+        //        var $this = $(this);
+        //        $this.removeClass("active");
+        //    });
+        //    target.addClass("active");
+        //    var currentBox = self.$el.find(".sort-bar-box");
+        //    currentBox.removeClass("in");
+        //    self.$el.find(".mask").removeClass("show");
+        //
+        //    var sid = target.data("sid"),
+        //        paras = {};
+        //    if (sid == 1) {
+        //        paras = {order: "price_high"}
+        //    }
+        //    if (sid == 2) {
+        //        paras = {order: "price_low"}
+        //    }
+        //    if (sid == 3) {
+        //        paras = {order: "published_at"}
+        //    }
+        //
+        //
+        //    self.search(paras, function (data) {
+        //        self.$el.find(".house-list-box").html($(_.template(TplHList, {
+        //            list: data.realties
+        //        })));
+        //        self.lazyLoadImage(data.realties);
+        //    })
+        //},
         setSortFilter: function (e) {
             var target = $(e.currentTarget);
             self.$el.find(".sort-list li").each(function () {
@@ -55,7 +86,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 paras = {order: "published_at"}
             }
 
-
+            document.removeEventListener('touchmove', self.preventDefault, false);
             self.search(paras, function (data) {
                 self.$el.find(".house-list-box").html($(_.template(TplHList, {
                     list: data.realties
@@ -196,6 +227,38 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             var target = $(e.currentTarget);
             Lizard.goTo("house.html?d=" + target.data("id"));
         },
+        //setFilter: function (e) {
+        //    var target = $(e.currentTarget);
+        //    //if (self.currentFilter == target.data("key")) {
+        //    //    return;
+        //    //}
+        //    self.$el.find(".filter-list li").each(function () {
+        //        var $this = $(this);
+        //        $this.find(".filter-icon").removeClass("selected");
+        //    });
+        //    target.find(".filter-icon").addClass("selected");
+        //
+        //    var currentBox = self.$el.find("." + target.data("key") + "-bar-box");
+        //    if (currentBox.find("." + target.data("key") + "-bar").hasClass("show")) {
+        //        return;
+        //    }
+        //
+        //    if (self.lastFilter && target.data("key") != self.lastFilter) {
+        //        var lastBox = self.$el.find("." + self.lastFilter + "-bar-box");
+        //        lastBox.removeClass("trans");
+        //        lastBox.removeClass("in");
+        //    }
+        //
+        //    currentBox.addClass("trans").toggleClass("in");
+        //    if (currentBox.hasClass("in")) {
+        //        self.$el.find(".mask").css("left", 0).addClass("show");
+        //    } else {
+        //        self.$el.find(".mask").css("left", 0).removeClass("show");
+        //    }
+        //    self.lastFilter = target.data("key");
+        //   document.addEventListener('touchmove', self.preventDefault, false);
+        //
+        //},
         setFilter: function (e) {
             var target = $(e.currentTarget);
             //if (self.currentFilter == target.data("key")) {
@@ -221,11 +284,14 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             currentBox.addClass("trans").toggleClass("in");
             if (currentBox.hasClass("in")) {
                 self.$el.find(".mask").css("left", 0).addClass("show");
+                document.addEventListener('touchmove', self.preventDefault, false);
             } else {
                 self.$el.find(".mask").css("left", 0).removeClass("show");
+                document.removeEventListener('touchmove', self.preventDefault, false);
+
             }
             self.lastFilter = target.data("key");
-           document.addEventListener('touchmove', self.preventDefault, false);
+
 
         },
         preventDefault: function (e) {
