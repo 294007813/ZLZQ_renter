@@ -10,10 +10,27 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             //"click .info_list li:first-child":"toComment",
             "click .house_icon":"toFavourite",
             //"click .info_btnarea":"toFavourite"
-            "click .info_btnarea .btn":"toMyorder"
+            "click .info_btnarea .btn":"toMyorder",
+            "click #qrcode":"toDownload"
         },
 
+        toDownload: function(){
+            var fileTransfer = new FileTransfer();
+            var uri = encodeURI("file:///android_asset/www/resource/zlzq/images/wechat.jpg");
+            var targetUrl="/storge/emulated/0/wechat.jpg";
 
+            fileTransfer.download(
+                uri,targetUrl,function(entry){
+                    var smallImage = document.getElementById('smallImage');
+                    smallImage.style.display = 'block';
+                    smallImage.src = entry.fullPath;
+                    this.showMyToast("下载成功", 1000);
+                },function(error){
+                    //console.log("下载图片出现错误");
+                    this.showMyToast("下载图片出现错误", 1000);
+                });
+
+        },
 
 
 
