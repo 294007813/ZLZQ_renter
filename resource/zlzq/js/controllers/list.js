@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll","cRange","text!TplList","text!TplHList"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,cUIScroll,cRange,TplList,TplHList) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll","cRange","text!TplList","text!TplHList","UIGroupSelect"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,cUIScroll,cRange,TplList,TplHList,UIGroupSelect) {
     var self;
     var View = BaseView.extend({
         ViewName: 'list',
@@ -74,6 +74,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             var currentBox = self.$el.find(".type-bar-box");
             currentBox.removeClass("in");
             self.$el.find(".mask").removeClass("show");
+			
             document.removeEventListener('touchmove', self.preventDefault, false);
 
             var type=self.$el.find(".house-type>li div.selected"),
@@ -133,11 +134,20 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         },
         setHouseType: function (e) {
+			var target= $(e.currentTarget);
             self.$el.find(".house-type>li div").each(function () {
                 var $this = $(this);
                 $this.removeClass("selected");
             });
-            $(e.currentTarget).addClass("selected");
+            target.addClass("selected");
+			
+			if(target.data("type")=="1"){
+				self.houseRentRangeScroller.show();
+			}else{
+			  self.houseTypeScroller.show();
+			}
+			
+			
         },
 
         search: function (paras, callback) {
@@ -248,6 +258,58 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             });
 
         },
+		 getRentRange:function(e){
+            var d1 = [];
+            for (var i = 0; i < 5; i++) {
+                d1.push({key: (2015 + i),name:(2015 + i),value:(2015 + i)});
+                d1[d1.length-1].months = [];
+                var d2 = d1[d1.length-1].months;
+                for (var j = 1; j < 2; j++) {
+                    d2.push({key: j,name:j,value:j});
+                    d2[d2.length-1].days = [];
+                    var d3 = d2[d2.length-1].days;
+					
+					 d3.push({key: 1, name: '1000以下', value: '1000以下'});
+					 d3.push({key: 2, name: '1000-2000', value: '1000-2000'});
+					 d3.push({key: 3, name: '2000-3000', value: '2000-3000'});
+					 d3.push({key: 4, name: '3000-4000', value: '3000-4000'});
+				     d3.push({key: 5, name: '4000-5000', value: '4000-5000'});
+					 d3.push({key: 6, name: '5000-6000', value: '5000-6000'});
+					 d3.push({key: 7, name: '6000-7000', value: '6000-7000'});
+				     d3.push({key: 7, name: '7000-8000', value: '7000-8000'});
+					 d3.push({key: 7, name: '8000-9000', value: '8000-9000'});
+					 d3.push({key: 7, name: '9000-10000', value: '9000-10000'});
+					 d3.push({key: 7, name: '10000以上', value: '10000以上'});
+						 
+   
+                }
+            }
+            return d1;
+        },
+		 getHouseType:function(e){
+            var d1 = [];
+            for (var i = 0; i < 5; i++) {
+                d1.push({key: (2015 + i),name:(2015 + i),value:(2015 + i)});
+                d1[d1.length-1].months = [];
+                var d2 = d1[d1.length-1].months;
+                for (var j = 1; j < 2; j++) {
+                    d2.push({key: j,name:j,value:j});
+                    d2[d2.length-1].days = [];
+                    var d3 = d2[d2.length-1].days;
+					
+					 d3.push({key: 1, name: '一房一厅', value: '一房一厅'});
+					 d3.push({key: 1, name: '二房一厅', value: '二房一厅'});
+					 d3.push({key: 1, name: '二房二厅', value: '二房二厅'});
+					 d3.push({key: 1, name: '三房一厅', value: '三房一厅'});
+				     d3.push({key: 1, name: '三房二厅', value: '三房二厅'});
+					 d3.push({key: 1, name: '四房一厅', value: '四房一厅'});
+					 d3.push({key: 1, name: '四房二厅', value: '四房二厅'});
+					
+   
+                }
+            }
+            return d1;
+        },
         ajaxException: function (msg) {
             self.hideLoading();
             self.showMyToast('网络错误，请重试', 2000);
@@ -318,7 +380,73 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     areaBox.css("height", self.$el.find(".area-bar-box").height());
                     this.scrollOpts = {};
                     this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
-                });
+              
+					   var d2 = self.getHouseType(), MInitData = [d2, d2[0].months, d2[0].months[0].days], MInitIndex = [0, 0, 0];
+					   self.houseTypeScroller = self.houseTypeScroller || new UIGroupSelect({
+						datamodel: {title: "户型选择", tips: ""},
+						needAnimat: !1,
+						data: MInitData,
+						indexArr: MInitIndex,
+						displayNum: 5,
+						onCreate: function () {
+							this.$el.addClass("plugin_date")
+						},
+						changedArr: [function (t) {
+							var e = this.scrollArr[1], i = this.scrollArr[2];
+							e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
+						}, function (t) {
+							var e = this.scrollArr[2];
+							e.reload(t.days), e.setIndex(0)
+						}],
+						onOkAction: function (item) {
+						  // self.$el.find(".monthC").val(item[2].key);
+							//self.currentDateBox && self.currentDateBox.val(item[0].key+"-"+item[1].key+"-"+item[2].key);
+							this.hide()
+						},
+						onCancelAction: function () {
+							this.hide()
+						},
+						hide: function () {
+							this.destroy()
+						}
+					})
+					self.houseTypeScroller.$el.addClass("month");
+					
+					
+					 var d3 = self.getRentRange(), RInitData = [d3, d3[0].months, d3[0].months[0].days], RInitIndex = [0, 0, 0];
+					   self.houseRentRangeScroller = self.houseRentRangeScroller || new UIGroupSelect({
+						datamodel: {title: "租金选择", tips: ""},
+						needAnimat: !1,
+						data: RInitData,
+						indexArr: RInitIndex,
+						displayNum: 5,
+						onCreate: function () {
+							this.$el.addClass("plugin_date")
+						},
+						changedArr: [function (t) {
+							var e = this.scrollArr[1], i = this.scrollArr[2];
+							e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
+						}, function (t) {
+							var e = this.scrollArr[2];
+							e.reload(t.days), e.setIndex(0)
+						}],
+						onOkAction: function (item) {
+						  // self.$el.find(".monthC").val(item[2].key);
+						  
+							//self.currentDateBox && self.currentDateBox.val(item[0].key+"-"+item[1].key+"-"+item[2].key);
+							this.hide()
+						},
+						onCancelAction: function () {
+							this.hide()
+						},
+						hide: function () {
+							this.destroy()
+						}
+					})
+					self.houseRentRangeScroller.$el.addClass("month");
+
+
+			   });
             });
         },
         setHeader: function (type) {

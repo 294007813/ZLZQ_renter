@@ -68,10 +68,9 @@
 <div class="type-bar-box ">
     <div>
         <div class="type-bar">
-            <div class="control">
+            <div class="control" style="display:none">
                 <h2>租金<em>(元/月)</em></h2>
-
-                <div style="margin-top: 35px">
+                <div style="margin-top: px">
                     <div class="range-bar disable_text_highlighting" id="rangeBar">
                         <i class="start-tip">不限</i>
 
@@ -82,9 +81,17 @@
                     </div>
                 </div>
             </div>
-            <div class="control">
-                <h2>房型</h2>
-                <ul class="house-type">
+            <div class="control" style="   margin-top: 0px; ">
+				  <ul class="house-type">
+                    <li style="width: 50%;">
+                        <div data-type="1">租金</div>
+                    </li>
+                    <li style="width: 50%;">
+                        <div  data-type="2">房型</div>
+                    </li>
+                  
+                </ul>
+                <ul class="house-type" style="display:none">
                     <li>
                         <div data-type="1">1室</div>
                     </li>
