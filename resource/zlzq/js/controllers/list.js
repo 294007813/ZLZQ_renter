@@ -66,7 +66,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
         },
         reSetTypeFilter:function(e){
             self.$el.find(".house-type>li div.selected").removeClass("selected");
-            self.range.reset();
+            //self.range.reset();
+
+            self.room_count="";
+            self.price_low = "";
+            self.price_high = "";
 
         },
         setTypeFilter: function (e) {
@@ -175,9 +179,18 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     paras["district_id"] = $this.data("id")
                 }
             });
-            var type=self.$el.find(".house-type>li div.selected");
-            if(type.length>0) {
-                paras["room_count"] = type.data("type");
+            //var type=self.$el.find(".house-type>li div.selected");
+            //if(type.length>0) {
+            //    paras["room_count"] = type.data("type");
+            //}
+            if(self.room_count){
+                paras["room_count"] = self.room_count;
+            }
+            if(self.price_high){
+                paras["price_high"] = self.price_high;
+            }
+            if(self.price_low){
+                paras["price_low"] = self.price_low;
             }
 
             self.showLoading();
@@ -276,10 +289,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 				     d3.push({key: 5, name: '4000-5000', value: '4000-5000'});
 					 d3.push({key: 6, name: '5000-6000', value: '5000-6000'});
 					 d3.push({key: 7, name: '6000-7000', value: '6000-7000'});
-				     d3.push({key: 7, name: '7000-8000', value: '7000-8000'});
-					 d3.push({key: 7, name: '8000-9000', value: '8000-9000'});
-					 d3.push({key: 7, name: '9000-10000', value: '9000-10000'});
-					 d3.push({key: 7, name: '10000以上', value: '10000以上'});
+				     d3.push({key: 8, name: '7000-8000', value: '7000-8000'});
+					 d3.push({key: 9, name: '8000-9000', value: '8000-9000'});
+					 d3.push({key: 10, name: '9000-10000', value: '9000-10000'});
+					 d3.push({key: 11, name: '10000以上', value: '10000以上'});
 						 
    
                 }
@@ -296,15 +309,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     d2.push({key: j,name:j,value:j});
                     d2[d2.length-1].days = [];
                     var d3 = d2[d2.length-1].days;
-					
-					 d3.push({key: 1, name: '一房一厅', value: '一房一厅'});
-					 d3.push({key: 1, name: '二房一厅', value: '二房一厅'});
-					 d3.push({key: 1, name: '二房二厅', value: '二房二厅'});
-					 d3.push({key: 1, name: '三房一厅', value: '三房一厅'});
-				     d3.push({key: 1, name: '三房二厅', value: '三房二厅'});
-					 d3.push({key: 1, name: '四房一厅', value: '四房一厅'});
-					 d3.push({key: 1, name: '四房二厅', value: '四房二厅'});
-					
+					 d3.push({key: 1, name: '1室', value: '1'});
+					 d3.push({key: 1, name: '2室', value: '2'});
+					 d3.push({key: 1, name: '3室', value: '3'});
+					 d3.push({key: 1, name: '4室', value: '4'});
    
                 }
             }
@@ -368,7 +376,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                         list: data.realties
                     })));
                     self.lazyLoadImage(data.realties);
-                    self.range = new cRange("rangeBar",5000);
+                    self.range = new cRange("rangeBar", 5000);
                     self.$el.find(".mask").addClass("m-trans");
                     self.$el.find(".mask")[0].addEventListener("webkitTransitionEnd", function () {
                         var mask = self.$el.find(".mask");
@@ -380,73 +388,87 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     areaBox.css("height", self.$el.find(".area-bar-box").height());
                     this.scrollOpts = {};
                     this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
-              
-					   var d2 = self.getHouseType(), MInitData = [d2, d2[0].months, d2[0].months[0].days], MInitIndex = [0, 0, 0];
-					   self.houseTypeScroller = self.houseTypeScroller || new UIGroupSelect({
-						datamodel: {title: "户型选择", tips: ""},
-						needAnimat: !1,
-						data: MInitData,
-						indexArr: MInitIndex,
-						displayNum: 5,
-						onCreate: function () {
-							this.$el.addClass("plugin_date")
-						},
-						changedArr: [function (t) {
-							var e = this.scrollArr[1], i = this.scrollArr[2];
-							e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
-						}, function (t) {
-							var e = this.scrollArr[2];
-							e.reload(t.days), e.setIndex(0)
-						}],
-						onOkAction: function (item) {
-						  // self.$el.find(".monthC").val(item[2].key);
-							//self.currentDateBox && self.currentDateBox.val(item[0].key+"-"+item[1].key+"-"+item[2].key);
-							this.hide()
-						},
-						onCancelAction: function () {
-							this.hide()
-						},
-						hide: function () {
-							this.destroy()
-						}
-					})
-					self.houseTypeScroller.$el.addClass("month");
-					
-					
-					 var d3 = self.getRentRange(), RInitData = [d3, d3[0].months, d3[0].months[0].days], RInitIndex = [0, 0, 0];
-					   self.houseRentRangeScroller = self.houseRentRangeScroller || new UIGroupSelect({
-						datamodel: {title: "租金选择", tips: ""},
-						needAnimat: !1,
-						data: RInitData,
-						indexArr: RInitIndex,
-						displayNum: 5,
-						onCreate: function () {
-							this.$el.addClass("plugin_date")
-						},
-						changedArr: [function (t) {
-							var e = this.scrollArr[1], i = this.scrollArr[2];
-							e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
-						}, function (t) {
-							var e = this.scrollArr[2];
-							e.reload(t.days), e.setIndex(0)
-						}],
-						onOkAction: function (item) {
-						  // self.$el.find(".monthC").val(item[2].key);
-						  
-							//self.currentDateBox && self.currentDateBox.val(item[0].key+"-"+item[1].key+"-"+item[2].key);
-							this.hide()
-						},
-						onCancelAction: function () {
-							this.hide()
-						},
-						hide: function () {
-							this.destroy()
-						}
-					})
-					self.houseRentRangeScroller.$el.addClass("month");
+
+                    var d2 = self.getHouseType(), MInitData = [d2, d2[0].months, d2[0].months[0].days], MInitIndex = [0, 0, 0];
+                    self.houseTypeScroller = self.houseTypeScroller || new UIGroupSelect({
+                        datamodel: {title: "户型选择", tips: ""},
+                        needAnimat: !1,
+                        data: MInitData,
+                        indexArr: MInitIndex,
+                        displayNum: 5,
+                        onCreate: function () {
+                            this.$el.addClass("plugin_date")
+                        },
+                        changedArr: [function (t) {
+                            var e = this.scrollArr[1], i = this.scrollArr[2];
+                            e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
+                        }, function (t) {
+                            var e = this.scrollArr[2];
+                            e.reload(t.days), e.setIndex(0)
+                        }],
+                        onOkAction: function (item) {
+                            self.room_count = item[2].value;
+                            console.log(self.room_count);
+                            this.hide()
+                        },
+                        onCancelAction: function () {
+                            this.hide()
+                        },
+                        hide: function () {
+                            this.destroy()
+                        }
+                    })
+                    self.houseTypeScroller.$el.addClass("month");
 
 
-			   });
+                    var d3 = self.getRentRange(), RInitData = [d3, d3[0].months, d3[0].months[0].days], RInitIndex = [0, 0, 0];
+                    self.houseRentRangeScroller = self.houseRentRangeScroller || new UIGroupSelect({
+                        datamodel: {title: "租金选择", tips: ""},
+                        needAnimat: !1,
+                        data: RInitData,
+                        indexArr: RInitIndex,
+                        displayNum: 5,
+                        onCreate: function () {
+                            this.$el.addClass("plugin_date")
+                        },
+                        changedArr: [function (t) {
+                            var e = this.scrollArr[1], i = this.scrollArr[2];
+                            e.reload(t.months), i.reload(t.months[0].days), e.setIndex(0), i.setIndex(0)
+                        }, function (t) {
+                            var e = this.scrollArr[2];
+                            e.reload(t.days), e.setIndex(0)
+                        }],
+                        onOkAction: function (item) {
+
+                            var rentRange = item[2].value.split("-");
+                            if (rentRange.length == 2) {
+                                self.price_low = rentRange[0];
+                                self.price_high = rentRange[1];
+                            } else {
+                                if (item[2].key == 1) {
+                                    self.price_low = "";
+                                    self.price_high = rentRange[0].replace("以下", "");
+                                }
+                                if (item[2].key == 11) {
+                                    self.price_low = rentRange[0].replace("以上", "");
+                                    self.price_high = "";
+                                }
+
+                            }
+
+                            this.hide()
+                        },
+                        onCancelAction: function () {
+                            this.hide()
+                        },
+                        hide: function () {
+                            this.destroy()
+                        }
+                    })
+                    self.houseRentRangeScroller.$el.addClass("month");
+
+
+                });
             });
         },
         setHeader: function (type) {
