@@ -62,7 +62,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
         //设置标题
         setHeader: function () {
             self.header.set({
-                title: '装修公司',
+                title: '装修案例',
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
