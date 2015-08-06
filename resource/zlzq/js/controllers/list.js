@@ -119,7 +119,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     var img = new Image();
                     img.src = v.avatar.url;
                     img.onload = function () {
-                        document.getElementById(iid).src = img.src
+                        var dom = document.getElementById(iid);
+                        dom && (dom.src = img.src);
                     }
                 })("i" + v.id)
             })
@@ -177,6 +178,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 var $this = $(this);
                 if ($this.hasClass("current")) {
                     paras["district_id"] = $this.data("id")
+                    if($this.data("id")=='24'){
+                        paras["district_id"] = "";
+                        delete paras.district_id;
+                    }
                 }
             });
             //var type=self.$el.find(".house-type>li div.selected");
@@ -189,8 +194,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             if(self.price_high){
                 paras["price_high"] = self.price_high;
             }
-            if(self.price_low){
-                paras["price_low"] = self.price_low;
+            if(self.price_low) {
+                paras["price_low"] = self.price_low > 0 ? self.price_low : 0;
             }
 
             self.showLoading();
@@ -446,12 +451,12 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                                 self.price_high = rentRange[1];
                             } else {
                                 if (item[2].key == 1) {
-                                    self.price_low = "";
-                                    self.price_high = rentRange[0].replace("以下", "");
+                                    self.price_low = -1;
+                                    self.price_high = 1000;
                                 }
                                 if (item[2].key == 11) {
-                                    self.price_low = rentRange[0].replace("以上", "");
-                                    self.price_high = "";
+                                    self.price_low = 10000;
+                                    self.price_high = 100000;
                                 }
 
                             }
