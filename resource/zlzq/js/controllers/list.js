@@ -169,7 +169,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                         paras["order"] = "price_low";
                     }
                     if (sid == 3) {
-                        paras["order"] = "published_at";
+                        //paras["order"] = "published_at";
+                        paras["order"] = "";
+                        delete paras.order;
                     }
                 }
             });
