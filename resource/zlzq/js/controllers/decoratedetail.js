@@ -53,6 +53,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             $("#headerview").hide();
             $("#main").css("padding","0");
 
+
             //self.hideLoading();
 
             self.getDetail(function (data) {
@@ -61,7 +62,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
 
                 self.$el.html(_.template(TplDecorateDetail, {decorate: data}));
                 //self.hideLoading();
+                var width=$(window).width();
+                self.$(".house_slider>img").css("width",width);
             });
+
 
         },
         //设置标题
