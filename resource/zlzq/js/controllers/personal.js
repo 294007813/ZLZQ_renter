@@ -32,6 +32,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 self.cancelEditing();
                 self.uploadPicture(data);
             })
+
         },
         //点击选择相册
         readFile: function (e) {
@@ -39,6 +40,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 $('#picture').attr('src','data:image/jpeg;base64,'+data);
                 self.cancelEditing();
                 self.uploadPicture(data);
+
+
             })
 
             //var self=this;
@@ -65,12 +68,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 data:{ "avatar" : 'data:image/jpeg;base64,' + data },
                 success: function (data) {
                     self.hideLoading();
-                    self.showMyToast("上传成功", 2000);
+                    self.showMyToast("上传成功", 1500);
                     self.login();
+
                 },
                 error: function (e) {
                     self.hideLoading();
                     self.showMyToast("服务器异常", 1000);
+
+
                 }
             });
 
@@ -312,7 +318,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                         data.user.pwd = self.getCurrentUser().pwd;
                         self.setLoginStatus({isLogin: true, user: data.user, token: data.token});
 
-                        Lizard.goTo("personal.html");
+                        //Lizard.goTo("personal.html");
+                        window.location.href="personal.html";
 
                     }
 
