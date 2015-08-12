@@ -95,6 +95,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 error: function (e) {
 
                     self.showMyToast("服务器异常", 1000);
+                    Lizard.goTo("list.html");
                 }
             });
         },
