@@ -59,7 +59,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
             //
@@ -132,7 +132,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                     },
                     error: function (e) {
                         self.hideLoading();
-                        self.showMyToast("服务器异常", 1000);
+                        self.showMyToast("网络错误", 1000);
                     }
                 });
 

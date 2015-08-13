@@ -60,7 +60,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
         },
@@ -94,7 +94,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 },
                 error: function (e) {
 
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                     Lizard.goTo("list.html");
                 }
             });
