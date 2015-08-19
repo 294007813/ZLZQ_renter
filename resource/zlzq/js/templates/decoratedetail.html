@@ -42,7 +42,7 @@
 
 
 </style>
-<div class="page" style="background-color: #C7C6CB;">
+<div class="page" style="background-color: #E8E8E8;">
     <div class="title_block" style="background-color:#fff;border-bottom: 1px solid #E8E8E8;">
         <div class="house_slider">
             <img style="height: 200px" src="<%=decorate.avatar.url%>">
@@ -56,87 +56,87 @@
     </div>
 
 <div class="before_block" style="background-color:#fff;border-top: 1px solid #E8E8E8;margin: 10px 0 0 0px">
-    <p style="padding: 10px;font-size:18px;">装修前情况</p>
-    <div style=" border-bottom: 1px solid #E8E8E8; border-top: 1px solid #E8E8E8;margin: 10px;padding-top: 10px;padding-bottom: 30px">
-        <p style="float:left;width:50%;color:#999;font-size:15px;">
-            <%if(decorate.room!=null&&decorate.hall!=null&&decorate.wash!=null){%>
-            户型:<span style="color: #262626"><%=decorate.room%>室<%=decorate.hall%>厅<%=decorate.wash%>卫<sup></sup></span>
-            <%}%>
-        </p>
-        <p style="float:right;width:50%;color:#999;font-size:15px;">
-            <%if(decorate.area!=null){%>
-            面积:<span style="color: #262626"><%=decorate.area%>m<sup>2</sup></span>
-            <%}%>
-        </p>
-    </div>
+    <!--<p style="padding: 10px;font-size:18px;">装修前情况</p>-->
+    <!--<div style=" border-bottom: 1px solid #E8E8E8; border-top: 1px solid #E8E8E8;margin: 10px;padding-top: 10px;padding-bottom: 30px">-->
+        <!--<p style="float:left;width:50%;color:#999;font-size:15px;">-->
+            <!--<%if(decorate.room!=null&&decorate.hall!=null&&decorate.wash!=null){%>-->
+            <!--户型:<span style="color: #262626"><%=decorate.room%>室<%=decorate.hall%>厅<%=decorate.wash%>卫<sup></sup></span>-->
+            <!--<%}%>-->
+        <!--</p>-->
+        <!--<p style="float:right;width:50%;color:#999;font-size:15px;">-->
+            <!--<%if(decorate.area!=null){%>-->
+            <!--面积:<span style="color: #262626"><%=decorate.area%>m<sup>2</sup></span>-->
+            <!--<%}%>-->
+        <!--</p>-->
+    <!--</div>-->
     <div style="margin: 10px;padding: 10px;display: block">
        <p>&nbsp;&nbsp;&nbsp;&nbsp;<%=decorate.body%></p>
     </div>
 
 
-        <div>
+        <!--<div>-->
 
 
-        </div>
-        <p>
-            <%if(decorate.before_pic1.url!=null){%>
-            <font><%=decorate.before_title1.substring(0,12)%></font>
-            <img src="<%=decorate.before_pic1.url%>">
-            <%}%>
-            <%if(decorate.before_pic2.url!=null){%>
-            <font><%=decorate.before_title2.substring(0,12)%></font>
-            <img src="<%=decorate.before_pic2.url%>">
-            <%}%>
-        </p>
-        <p>
-            <%if(decorate.before_pic3.url!=null){%>
-            <font><%=decorate.before_title3.substring(0,12)%></font>
-            <img src="<%=decorate.before_pic3.url%>">
-            <%}%>
-            <%if(decorate.before_pic4.url!=null){%>
-            <font><%=decorate.before_title4.substring(0,12)%></font>
-            <img src="<%=decorate.before_pic4.url%>">
-            <%}%>
-        </p>
-    </div>
+        <!--</div>-->
+        <!--<p>-->
+            <!--<%if(decorate.before_pic1.url!=null){%>-->
+            <!--<font><%=decorate.before_title1.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.before_pic1.url%>">-->
+            <!--<%}%>-->
+            <!--<%if(decorate.before_pic2.url!=null){%>-->
+            <!--<font><%=decorate.before_title2.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.before_pic2.url%>">-->
+            <!--<%}%>-->
+        <!--</p>-->
+        <!--<p>-->
+            <!--<%if(decorate.before_pic3.url!=null){%>-->
+            <!--<font><%=decorate.before_title3.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.before_pic3.url%>">-->
+            <!--<%}%>-->
+            <!--<%if(decorate.before_pic4.url!=null){%>-->
+            <!--<font><%=decorate.before_title4.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.before_pic4.url%>">-->
+            <!--<%}%>-->
+        <!--</p>-->
+    <!--</div>-->
 </div>
 
 
-    <div class="after_block" style="background-color:#fff;border-top: 1px solid #E8E8E8;margin: 10px 0 0 0px">
-        <p style="padding: 10px;font-size:18px;">装修后情况</p>
-        <p style="padding-top: 10px;margin: 10px;border-top: 1px solid #E8E8E8;display: block">&nbsp;&nbsp;&nbsp;&nbsp;<%=decorate.after_info%></p>
-        <p>
-            <%if(decorate.after_pic1.url!=null){%>
-            <font><%=decorate.after_title1.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic1.url%>">
-            <%}%>
-            <%if(decorate.after_pic2.url!=null){%>
-            <font><%=decorate.after_title2.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic2.url%>">
-            <%}%>
-        </p>
-        <p>
-            <%if(decorate.after_pic3.url!=null){%>
-            <font><%=decorate.after_title3.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic3.url%>">
-            <%}%>
-            <%if(decorate.after_pic4.url!=null){%>
-            <font><%=decorate.after_title4.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic4.url%>">
-            <%}%>
-        </p>
-        <p>
-            <%if(decorate.after_pic5.url!=null){%>
-            <font><%=decorate.after_title5.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic5.url%>">
-            <%}%>
-            <%if(decorate.after_pic6.url!=null){%>
-            <font><%=decorate.after_title6.substring(0,12)%></font>
-            <img src="<%=decorate.after_pic6.url%>">
-            <%}%>
-        </p>
+    <!--<div class="after_block" style="background-color:#fff;border-top: 1px solid #E8E8E8;margin: 10px 0 0 0px">-->
+        <!--<p style="padding: 10px;font-size:18px;">装修后情况</p>-->
+        <!--<p style="padding-top: 10px;margin: 10px;border-top: 1px solid #E8E8E8;display: block">&nbsp;&nbsp;&nbsp;&nbsp;<%=decorate.after_info%></p>-->
+        <!--<p>-->
+            <!--<%if(decorate.after_pic1.url!=null){%>-->
+            <!--<font><%=decorate.after_title1.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic1.url%>">-->
+            <!--<%}%>-->
+            <!--<%if(decorate.after_pic2.url!=null){%>-->
+            <!--<font><%=decorate.after_title2.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic2.url%>">-->
+            <!--<%}%>-->
+        <!--</p>-->
+        <!--<p>-->
+            <!--<%if(decorate.after_pic3.url!=null){%>-->
+            <!--<font><%=decorate.after_title3.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic3.url%>">-->
+            <!--<%}%>-->
+            <!--<%if(decorate.after_pic4.url!=null){%>-->
+            <!--<font><%=decorate.after_title4.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic4.url%>">-->
+            <!--<%}%>-->
+        <!--</p>-->
+        <!--<p>-->
+            <!--<%if(decorate.after_pic5.url!=null){%>-->
+            <!--<font><%=decorate.after_title5.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic5.url%>">-->
+            <!--<%}%>-->
+            <!--<%if(decorate.after_pic6.url!=null){%>-->
+            <!--<font><%=decorate.after_title6.substring(0,12)%></font>-->
+            <!--<img src="<%=decorate.after_pic6.url%>">-->
+            <!--<%}%>-->
+        <!--</p>-->
 
-    </div>
+    <!--</div>-->
 
 
 

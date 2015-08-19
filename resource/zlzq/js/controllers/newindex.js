@@ -12,6 +12,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             "click .info_label_item1 .favourite":"toMyFavourite",
             "click .info_label_item1 .decorate":"toDecorate",
             "click .info_label_item1 .watch":"toWatch",
+            "click .info_label_item1 .news":"toNews",
 
         },
 
@@ -25,6 +26,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 return;
             }
             Lizard.goTo("list.html?favorite=1");
+        },
+
+        toNews:function(){
+            Lizard.goTo("newslist.html");
         },
 
         //点击装修
