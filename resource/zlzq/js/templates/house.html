@@ -109,7 +109,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
-    .house_info_list.info_list .info_name{
+     .info_name{
         margin-right:10px;
         color:#999;
     }
@@ -388,15 +388,15 @@
          <%}%>
      </li>
  </ul>
- <ul class="info_list info_ct house_info_list">
-     <li>
-         <span class="info_name">配套设施</span>
-         <%if(realty.house_device_id!=null){%>
-         <span><%=realty.house_device_id%></span>
-         <%}%>
+ <ul class="info_list info_ct ">
+     <li class="devices">
+         <span class="info_name" id="device">配套设施</span>
+         <!--<%if(realty.house_device_id!=null){%>-->
+         <!--<span><%=realty.house_device_id%></span>-->
+         <!--<%}%>-->
      </li>
  </ul>
- <ul class="info_list info_ct house_info_list">
+ <ul class="info_list info_ct">
      <li>
          <span class="info_name">房源描述</span>
          <%if(realty.description!=null){%>

@@ -160,10 +160,81 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                         self.$el.find(".house_collect.on").hide();
                     }
                 }
-
+                self.device(data);
+                self.sortdevice();
             });
 
         },
+
+        device:function(data){
+            var device=self.$el.find("#device");
+            if(data.realty.house_device.house_device.bed)
+                device.after("<span>"+"床"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.tv)
+                device.after("<span>"+"电视"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.air_condition)
+                device.after("<span>"+"空调"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.washer)
+                device.after("<span>"+"洗衣机"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.refrigerator)
+                device.after("<span>"+"冰箱"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.water_heater)
+                device.after("<span>"+"热水器"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.chest)
+                device.after("<span>"+"箱子"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.hearth)
+                device.after("<span>"+"燃气灶"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.multiple)
+                device.after("<span>"+"复式"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.villa)
+                device.after("<span>"+"别墅"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.garden)
+                device.after("<span>"+"庭院"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.good_traffic)
+                device.after("<span>"+"交通方便"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.standalone)
+                device.after("<span>"+"唯一住房"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.subway)
+                device.after("<span>"+"地铁"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.lift)
+                device.after("<span>"+"电梯"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.fan)
+                device.after("<span>"+"风扇"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.pc)
+                device.after("<span>"+"电脑"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.chair)
+                device.after("<span>"+"椅子"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.teapoy)
+                device.after("<span>"+"茶几"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.sofa)
+                device.after("<span>"+"沙发"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.table)
+                device.after("<span>"+"桌子"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.tv_stand)
+                device.after("<span>"+"电视柜"+"</span>"+"&nbsp;");
+            if(data.realty.house_device.house_device.bookcase)
+                device.after("<span>"+"书柜"+"</span>"+"&nbsp;");
+
+        },
+
+        sortdevice:function(){
+            self.$el.find(".devices>span").addClass("device");
+            var device=$(".device");
+            var i= 0,j=1;
+            $.each(device,function(i,j){
+                //alert("i="+i);
+                if(i>=6){
+                    if(i%6==0){
+                        $(".devices").after("<li class='"+j+"'></li>");
+                        j++;
+                    }
+                    //$("."+j-1).append(this.html());
+                    //alert("j="+j);
+                }//else this.show();
+                i++;
+            });
+        },
+
         //设置标题
         setHeader: function (type) {
             self.header.set({
