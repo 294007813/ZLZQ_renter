@@ -56,7 +56,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             self.getList();
 
 
-
         },
 
         //设置标题

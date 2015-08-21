@@ -17,7 +17,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
         toDecorateDetail:function(e){
             var target = $(e.currentTarget);
             self.showLoading();
-            Lizard.goTo("decoratedetail.html?d=" + target.data("id"));
+            Lizard.goTo("newsdetail.html?d=" + target.data("id"));
         },
         ajaxException: function (msg) {
             self.hideLoading();
@@ -28,7 +28,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         },
         getList:function(callback){
-            var url=Lizard.host+Lizard.apiUrl+"companies",
+            var url=Lizard.host+Lizard.apiUrl+"newsitems",
                 paras={},
                 method="get";
             self.showLoading();
@@ -54,7 +54,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             self.hideLoading();
             self.setHeader();
             self.getList();
-
 
 
         },

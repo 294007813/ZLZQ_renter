@@ -13,7 +13,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                 "click .login_btn":"toLogin",
                 "click .bottom-bar .rent":"toRent",
                 "click .bottom-bar .mine":"toPersonal",
-                "click .bottom-bar .order":"toOrder",
+                "click .bottom-bar .order":"toOrderList",
                 //"click .bottom-bar .schedule":"toSchedule",
                 "click .login_box  #VerifyCode  .btn": "getCode"
             },

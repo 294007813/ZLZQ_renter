@@ -26,7 +26,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         getDetail:function(callback) {
 
 
-                var url =Lizard.host+Lizard.apiUrl+"companies/" + Lizard.P("d");
+                var url =Lizard.host+Lizard.apiUrl+"newsitems/" + Lizard.P("d");
 
             $.ajax({
                 url: url,
@@ -60,28 +60,24 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
 
                 self.setHeader();
 
-                self.$el.html(_.template(TplNewsDetail, {decorate: data}));
-                //self.hideLoading();
-
-                //根据屏幕大小切换图片
-                var width=$(window).width();
-                self.$(".house_slider>img").css("width",width+"px");
-                if(width<360&&width>=320){
-                    self.$("p>img").css("height","120px").css("width","120px");
-                    self.$("font").css("margin","105px 0 0 10px").css("width","120px");
-                    //alert(width);
-                }else if(width>=360){
-                    self.$("p>img").css("height","150px").css("width","150px");
-                    self.$("font").css("margin","135px 0 0 10px").css("width","150px");
-                }else{
-                    self.$("p>img").css("height","90px").css("width","90px");
-                    self.$("font").css("margin","75px 0 0 10px").css("width","90px");
-                }
-
+                self.$el.html(_.template(TplNewsDetail, {news: data}));
+                self.changeP();
             });
-
+            
 
         },
+
+        changeP:function(){
+            //根据屏幕大小切换图片
+            var width=$(window).width();
+            self.$(".house_slider>img").css("width",width+"px");
+            var body=self.$(".bodys img");
+            if(body.width()>(width-40)){
+                body.width(width-40+'px');
+                body.height('auto');
+            }
+        },
+
         //设置标题
         setHeader: function (type) {
             self.header.set({
@@ -93,7 +89,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 events: {
                     returnHandler: function () {
 
-                        Lizard.goTo("decoratelist.html");
+                        Lizard.goTo("newslist.html");
 
                     },
                     commitHandler: function () {
