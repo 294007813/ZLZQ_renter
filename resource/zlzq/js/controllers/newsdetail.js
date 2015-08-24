@@ -63,7 +63,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 self.$el.html(_.template(TplNewsDetail, {news: data}));
                 self.changeP();
             });
-            
+
 
         },
 

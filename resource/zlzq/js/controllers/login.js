@@ -49,7 +49,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplLogin"], functio
                     url: url,
                     dataType: "json",
                     type: "post",
-                    data: {cell: mobile},
+                    data: {cell: mobile,type:"renter"},
                     success: function (data) {
                         time1=new Date().getTime();
                         self.showMyToast("新密码已经以短信的形式发送你手机！", 3000);
