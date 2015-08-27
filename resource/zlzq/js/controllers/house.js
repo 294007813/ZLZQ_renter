@@ -10,8 +10,14 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             //"click .info_list li:first-child":"toComment",
             "click .house_icon":"toFavourite",
             //"click .info_btnarea":"toFavourite"
-            "click .info_btnarea .btn":"toMyorder"
+            "click .info_btnarea .btn":"toMyorder",
+            "click #map":"toHouseMap"
         },
+
+        toHouseMap:function(){
+            Lizard.goTo("houseplace.html");
+        },
+
         //我的订单
         toMyorder:function(){
             if(self.isLogin()){
