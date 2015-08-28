@@ -12,9 +12,10 @@
 <body>
 <div id="map_canvas" ></div>
 <script type="text/javascript">
+
     var map,
-    locations=[{location: [121.54654,31.228661],name:"浦东新区"},{location: [121.466216,31.28374],name:"闸北区"},{location: [121.490917,31.237738],name:"黄浦区"},{location:[121.387522,31.119387],name:"闵行区"},{location: [121.511614,31.272251],name:"虹口区"},{location: [121.44205,31.195676],name:"徐汇区"},{location: [121.532311,31.266078],name:"杨浦区"},{location: [121.462172,31.230513],name:"静安区"},{location: [121.429976,31.227549],name:"长宁区"}, {location:[121.403243,31.25583],name:"普陀区"},{location:[121.234736,31.027085],name:"松江区"},{location:[121.081233,31.218009],name:"青浦区"},{location:[121.273379,31.380229],name:"嘉定区"},{location:[121.481179,30.922957],name:"奉贤区"},{location:[121.348327,30.747002],name:"金山区"},{location:[121.488497,31.401586],name:"宝山区"},{location:[121.436051,31.66507],name:"崇明县"}],
-            BPoint=	new BMap.Point(121.51745,31.2084320000002),
+
+            BPoint = new BMap.Point(122.51745,31.2084320000002),
             polygon;
 
     map = new BMap.Map("map_canvas");
@@ -23,8 +24,9 @@
     // map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
     map.enableScrollWheelZoom(); //启用滚轮放大缩小
     //map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-    map.centerAndZoom(BPoint, 13);
+    map.centerAndZoom(BPoint, 11);
     map.addOverlay(polygon);
+
 
     function myFun(result){
         var cityName = result.name;
@@ -34,67 +36,69 @@
     myCity.get(myFun);
 
     window.map=map;
-    function getLocation(name) {
+    function getLocation(name,loc) {
         for (var i = 0, len = locations.length; i < len; i++) {
-            if (locations[i].name == name) {
+            if (loc.x!=null) {
                 return locations[i];
             }
         }
     }
-    function drawMap(data) {
-        for (var i = 0, len = data.district_counts.length; i < len; i++) {
-            var location = getLocation(data.district_counts[i].district);
-            var bp = new BMap.Point(location.location[0], location.location[1]),
-                    opts = {
-                        data:data.district_counts[i],
-                        position: bp,    // 指定文本标注所在的地理位置
-                        offset: new BMap.Size(30, -30)    //设置文本偏移量
-                    };
-            var labelUp = new BMap.Label(data.district_counts[i].realty_count, opts);  // 创建文本标注对象
-            labelUp.setStyle({
-                color: "#fff",
-                padding: "8px 5px 5px",
-                backgroundImage: "url(./resource/zlzq/images/label.png)",
-                backgroundColor: "transparent",
-                backgroundSize: "35px",
-                border: "none",
-                borderRadius: "3px",
-                fontSize: "10px",
-                height: "40px",
-                lineHeight: "20px",
-                backgroundPosition: "center",
-                width: "35px",
-                textAlign: "center",
-                fontFamily: "微软雅黑"
-            });
-            map.addOverlay(labelUp);
-            labelUp.B.dataset.config=JSON.stringify(data.district_counts[i]);
-            var opts = {
-                data:data.district_counts[i],
-                position: bp,    // 指定文本标注所在的地理位置
-                offset: new BMap.Size(30, 25)    //设置文本偏移量
-            }
-            var labelDown = new BMap.Label(data.district_counts[i].district, opts);  // 创建文本标注对象
-            labelDown.setStyle({
-                color: "#fff",
-                padding: "3px",
-                backgroundColor: "#e44691",
-                border: "none",
-                borderRadius: "3px",
-                fontSize: "10px",
-                height: "20px",
-                lineHeight: "20px",
-                backgroundPosition: "center",
-                width: "35px",
-                textAlign: "center",
-                fontFamily: "微软雅黑"
-            });
-            map.addOverlay(labelDown);
+    function drawMap(data,loc) {
+//        alert("1:"+loc.x);
+//        alert("1:"+loc.y);
+        var locations = [{location: [loc.x, loc.y], name: "位置"}];
+            if(loc.x!=null) {
+                var bp = new BMap.Point(loc.x, loc.y),
+                        opts = {
+                            data: data.district_counts[0],
+                            position: bp,    // 指定文本标注所在的地理位置
+                            offset: new BMap.Size(30, -30)    //设置文本偏移量
+                        };
+                var labelUp = new BMap.Label("1", opts);  // 创建文本标注对象
+                labelUp.setStyle({
+                    color: "#fff",
+                    padding: "8px 5px 5px",
+                    backgroundImage: "url(./resource/zlzq/images/label.png)",
+                    backgroundColor: "transparent",
+                    backgroundSize: "35px",
+                    border: "none",
+                    borderRadius: "3px",
+                    fontSize: "10px",
+                    height: "40px",
+                    lineHeight: "20px",
+                    backgroundPosition: "center",
+                    width: "35px",
+                    textAlign: "center",
+                    fontFamily: "微软雅黑"
+                });
+                map.addOverlay(labelUp);
+                labelUp.B.dataset.config = JSON.stringify(data.district_counts[i]);
+                var opts = {
+                    data: data.district_counts[i],
+                    position: bp,    // 指定文本标注所在的地理位置
+                    offset: new BMap.Size(30, 25)    //设置文本偏移量
+                }
+                var labelDown = new BMap.Label(data.district_counts[i].district, opts);  // 创建文本标注对象
+                labelDown.setStyle({
+                    color: "#fff",
+                    padding: "3px",
+                    backgroundColor: "#e44691",
+                    border: "none",
+                    borderRadius: "3px",
+                    fontSize: "10px",
+                    height: "20px",
+                    lineHeight: "20px",
+                    backgroundPosition: "center",
+                    width: "35px",
+                    textAlign: "center",
+                    fontFamily: "微软雅黑"
+                });
+                map.addOverlay(labelDown);
 //            labelDown.addEventListener("click", map.bridgeListener);
-            labelDown.B.dataset.config=JSON.stringify(data.district_counts[i]);
-            labelDown.addEventListener("click", search);
-            labelUp.addEventListener("click", search);
-        }
+                labelDown.B.dataset.config = JSON.stringify(data.district_counts[i]);
+                labelDown.addEventListener("click", search);
+                labelUp.addEventListener("click", search);
+            }
     }
     function search(e){
         var p = e.target,

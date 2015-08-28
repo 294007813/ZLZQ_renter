@@ -77,15 +77,23 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
                 contentType: "application/json",
                 type: "get",
                 success: function (data) {
-                   callback && callback(data);
+                    data1={
+                        "district_counts": [
+                            {
+                                "district_id": 2,
+                                "district": "位置",
+                                "realty_count": 1
+                            },]}
+                    loc={x:Lizard.P("longitude"),y:Lizard.P("latitude")};
+                   callback && callback(data1,loc);
                 }
             });
         },
         afterIframeLoad:function() {
             var iDoc = self.iframeContent.contentDocument || iframe.document;
-            self.getRealties(function(data){
+            self.getRealties(function(data,loc){
                 self.hideLoading();
-                self.iframeContent.contentWindow.drawMap(data);
+                self.iframeContent.contentWindow.drawMap(data,loc);
             });
 
         },
@@ -93,6 +101,9 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
             self.cancel();
             var noCheck = Lizard.P("noCheck");
             self.setHeader();
+            //alert("longitude:"+Lizard.P("longitude"));
+            //alert("latitude:"+Lizard.P("latitude"));
+
          //   self.showLoading();
             //self.hideLoading();
             //$("#headerview").hide();
@@ -100,7 +111,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
             if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");
                 iframe.width = "100%";
-                iframe.height =( this.calcPageHeight(document)-44)+"px";
+                iframe.height =( this.calcPageHeight(document)-40)+"px";
                 iframe.src = "./housemap.html";
                 iframe.frameBorder = "0";
                 iframe.frameBorder = "no";
@@ -109,6 +120,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
                 if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
                     iframe.onreadystatechange = function() {
                         if (iframe.readyState == "complete") {
+
                             self.afterIframeLoad();
                         }
                     };
@@ -133,11 +145,6 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
-                //btn: {
-                //    title: '<i class="top_more right"></i>',
-                //    id: 'confirm-btn',
-                //    classname: 'right_btn'
-                //},
                 events: {
                     returnHandler: function () {
                         Lizard.goTo("house.html?d="+Lizard.P("realtyid"));

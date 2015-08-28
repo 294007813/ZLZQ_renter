@@ -15,7 +15,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
         toHouseMap:function(){
-            Lizard.goTo("houseplace.html?realtyid="+Lizard.P("d"));
+            window.location.href="houseplace.html?realtyid="+Lizard.P("d")+"&longitude="+self.houseData.realty.longitude+"&latitude="+self.houseData.realty.latitude;
         },
 
         //我的订单
@@ -187,7 +187,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             if(data.realty.house_device.house_device.water_heater)
                 device.after("<span>"+"热水器"+"</span>"+"&nbsp;");
             if(data.realty.house_device.house_device.chest)
-                device.after("<span>"+"箱子"+"</span>"+"&nbsp;");
+                device.after("<span>"+"衣柜"+"</span>"+"&nbsp;");
             if(data.realty.house_device.house_device.hearth)
                 device.after("<span>"+"燃气灶"+"</span>"+"&nbsp;");
             if(data.realty.house_device.house_device.multiple)
