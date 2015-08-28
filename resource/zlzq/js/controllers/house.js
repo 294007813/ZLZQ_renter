@@ -15,7 +15,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
         toHouseMap:function(){
-            Lizard.goTo("houseplace.html");
+            Lizard.goTo("houseplace.html?realtyid="+Lizard.P("d"));
         },
 
         //我的订单

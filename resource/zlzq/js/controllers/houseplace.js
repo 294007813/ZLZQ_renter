@@ -92,10 +92,10 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
         onShow: function () {
             self.cancel();
             var noCheck = Lizard.P("noCheck");
-          //  self.setHeader();
+            self.setHeader();
          //   self.showLoading();
             //self.hideLoading();
-            $("#headerview").hide();
+            //$("#headerview").hide();
 
             if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");
@@ -130,20 +130,20 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
         setHeader: function (type) {
             self.header.set({
                 title: '地图位置',
-                back: !0,
-                backtext: '<i class="top_more left"></i> ',
+                back: true,
+                backtext: '<i class="icon-back "></i> ',
                 view: this,
-                btn: {
-                    title: '<i class="top_more right"></i>',
-                    id: 'confirm-btn',
-                    classname: 'right_btn'
-                },
+                //btn: {
+                //    title: '<i class="top_more right"></i>',
+                //    id: 'confirm-btn',
+                //    classname: 'right_btn'
+                //},
                 events: {
                     returnHandler: function () {
-                      self.toggleSideBar();
+                        Lizard.goTo("house.html?d="+Lizard.P("realtyid"));
                     },
                     commitHandler: function () {
-                        self.$('.searchBar').toggleClass('active');
+
                     }
                 }
             });
