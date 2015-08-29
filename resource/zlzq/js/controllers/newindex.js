@@ -38,7 +38,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
         myHouse:function(e){
-            window.location.href="index.html";
+            //window.location.href="index.html";
+            Lizard.goTo("index.html");
         },
 
         onCreate: function () {

@@ -219,7 +219,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         },
         toIndex: function (e) {
-            window.location.href="index.html";
+            //window.location.href="index.html";
+            Lizard.goTo("index.html");
         },
 
 
