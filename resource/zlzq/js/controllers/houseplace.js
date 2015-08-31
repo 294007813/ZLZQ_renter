@@ -147,7 +147,8 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
                 view: this,
                 events: {
                     returnHandler: function () {
-                        Lizard.goTo("house.html?d="+Lizard.P("realtyid"));
+                        //Lizard.goTo("house.html?d="+Lizard.P("realtyid"));
+                        window.location.href="house.html?d="+Lizard.P("realtyid");
                     },
                     commitHandler: function () {
 

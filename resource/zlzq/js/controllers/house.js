@@ -259,6 +259,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                             self.$('.js_user_center').addClass('hide');
                         }
                         Lizard.goTo("list.html");
+                        //window.location.href="list.html"
 
                     },
                     commitHandler: function () {
