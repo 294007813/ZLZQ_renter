@@ -15,19 +15,19 @@
 <div id="map_canvas" ></div>
 <script type="text/javascript">
 
-    var map,
-
-            BPoint = new BMap.Point(122.51745,31.2084320000002),
-            polygon;
-
-    map = new BMap.Map("map_canvas");
-    // map.addControl(new BMap.NavigationControl()); // 添加平移缩放控件
-    // map.addControl(new BMap.ScaleControl()); // 添加比例尺控件
-    // map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
-    map.enableScrollWheelZoom(); //启用滚轮放大缩小
-    //map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-    map.centerAndZoom(BPoint, 11);
-    map.addOverlay(polygon);
+//    var map,
+//
+//            BPoint = new BMap.Point(122.51745,31.2084320000002),
+//            polygon;
+//
+//    map = new BMap.Map("map_canvas");
+//    // map.addControl(new BMap.NavigationControl()); // 添加平移缩放控件
+//    // map.addControl(new BMap.ScaleControl()); // 添加比例尺控件
+//    // map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
+//    map.enableScrollWheelZoom(); //启用滚轮放大缩小
+//    //map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+//    map.centerAndZoom(BPoint, 11);
+//    map.addOverlay(polygon);
 
 
     function myFun(result){
@@ -47,6 +47,20 @@
     }
     function drawMap(data,loc) {
 //        alert("1:"+loc.x);
+        var map,
+
+                BPoint = new BMap.Point(loc.x,loc.y),
+                polygon;
+
+        map = new BMap.Map("map_canvas");
+        // map.addControl(new BMap.NavigationControl()); // 添加平移缩放控件
+        // map.addControl(new BMap.ScaleControl()); // 添加比例尺控件
+        // map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
+        map.enableScrollWheelZoom(); //启用滚轮放大缩小
+        //map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+        map.centerAndZoom(BPoint, 18);
+        map.addOverlay(polygon);
+
 //        alert("1:"+loc.y);
         var locations = [{location: [loc.x, loc.y], name: "位置"}];
             if(loc.x!=null) {
@@ -56,7 +70,7 @@
                             position: bp,    // 指定文本标注所在的地理位置
                             offset: new BMap.Size(30, -30)    //设置文本偏移量
                         };
-                var labelUp = new BMap.Label("1", opts);  // 创建文本标注对象
+                var labelUp = new BMap.Label("", opts);  // 创建文本标注对象
                 labelUp.setStyle({
                     color: "#fff",
                     padding: "8px 5px 5px",
