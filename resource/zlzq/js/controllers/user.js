@@ -1,5 +1,6 @@
 define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupSelect","text!TplUser","UIAlert"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,tplUser,cUIAlert) {
     var self;
+
     var View = BaseView.extend({
         ViewName: 'user',
         events: {
@@ -15,6 +16,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .bottom-bar .rent":"toRent",
             "click .bottom-bar .mine":"toMine",
             "click .bottom-bar .order":"toOrderList",
+            "click .opt-list .invite":"togetreward",
+            "click .opt-list .to_apply":"toApply",
+            "click .opt-list .to_send":"toSend"
+
             //"click .bottom-bar .schedule":"toSchedule"
         },
         //toMyFavorites:function(e){
@@ -23,7 +28,57 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         //toOrder:function(e){
         //    Lizard.goTo("order.html");
         //},
+        toSend: function(e) {
+            Lizard.goTo("sendinvitecode.html");
 
+        },
+        toApply: function (e) {
+
+
+
+
+            this.showLoading();
+            var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/apply_deduction?auth_token="+self.getCurrentUser().token;
+
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "get",
+
+                success: function (data) {
+                    self.hideLoading();
+                    if (data.error) {
+
+
+                        self.showMyToast(data.error.message, 1000);
+
+                        return
+
+                    }
+                  else{
+                        self.showMyToast("申请已受理，等待后台客服人员进行审核！", 1000);
+
+                        return
+                    }
+
+
+
+
+
+                },
+                error: function (e) {
+                    self.hideLoading();
+                    self.showMyToast("网络错误", 1000);
+                }
+            });
+
+        },
+
+        togetreward:
+            function(e) {
+                Lizard.goTo("getinvitereward.html");
+
+            },
         toOrderList:function(){
             Lizard.goTo("orderlist.html");
         },

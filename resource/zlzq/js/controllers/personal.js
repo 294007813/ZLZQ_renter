@@ -357,6 +357,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self = this;
             self.$el.html(tplPersonal);
         },
+
+
         onShow: function () {
             self.setHeader();
             self.user=self.getCurrentUser();
@@ -364,7 +366,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 user: {
                     nick_name: self.user.nick_name,
                     cell: self.user.cell,
-                    avatar: self.user.avatar.avatar.url
+                    avatar: self.user.avatar.avatar.url,
+                    invited:self.user.incode,
+                    balance:self.user.pbalabce
                 }
             }));
             if (!self.iframeContent) {

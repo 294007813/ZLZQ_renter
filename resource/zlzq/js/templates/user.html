@@ -1,4 +1,4 @@
-<div  class="hbg-box">
+<div class="hbg-box" xmlns="http://www.w3.org/1999/html">
     <div class="hbg-box-inner">
         <div>
             <%if(user.avatar.avatar.url!=null){%>
@@ -35,7 +35,24 @@
         <li class="order">我的订单<i class="arrow"></i></li>
     </ul>
 </div>
-<!--<div style="text-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="exit">-->
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="invite">邀请奖励<i class="arrow"></i></li>
+    </ul>
+</div>
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="to_send">发送邀请码<i class="arrow"></i></li>
+    </ul>
+</div>
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="to_apply">申请抵扣<em class="applybtn" style="color: #ff0000"><%=user.state%></em></li>
+    </ul>
+</div>
+
+<!--<div style="tex
+t-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="exit">-->
 <!--退出程序-->
 <!--</div>-->
 <div class="bottom-bar">

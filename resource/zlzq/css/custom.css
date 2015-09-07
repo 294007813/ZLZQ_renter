@@ -1351,7 +1351,10 @@ background-position: 0 -410px;
 .opt-list >li .icon.favorites {
   background-position: 0 -130px;
 }
-
+ .applybtn{
+    float: right;
+    margin-right: 10px;
+}
 .opt-list >li .icon.comment {
   background-position: 0 -186px;
 }

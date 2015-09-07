@@ -37,6 +37,8 @@
 			'TplWeChat':baseUrl + 'templates/wechat.html',
 			'TplNewsList':baseUrl + 'templates/newslist.html',
 			'TplNewsDetail':baseUrl + 'templates/newsdetail.html',
+            'TplGetreward': baseUrl + 'templates/getinvitereward.html',
+            'TplSendinvite': baseUrl + 'templates/sendinvitecode.html'
 	    }
 	};
 	config.urlArgs = "v=1";
