@@ -50,7 +50,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
 
         },
         onShow: function () {
-
+            //self.hideLoading();
             $("#headerview").hide();
             $("#main").css("padding","0");
 
@@ -64,7 +64,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 //self.hideLoading();
 
                 self.changeP();
-
+                self.addA();
+                //self.lookA();
             });
 
 
@@ -79,6 +80,17 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 body.width(width-40+'px');
                 body.height('auto');
             }
+        },
+
+        //添加a标签
+        addA:function(){
+            $(".bodys img").each(function(){
+                $(this).wrap("<a></a>");
+                $(this).parent("a").attr("href",$(this).attr("src"));
+                //alert($(this).parent("a").attr("href"));
+                //alert($(this).attr("src"));
+                //alert("1");
+            })
         },
 
         //设置标题
