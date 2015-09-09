@@ -10,6 +10,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click #confirm-btn": "ensureName",
             /*"click .personal .opt-list .gender":"toUpdateGender",*/
             "click .personal .opt-list .pwd": "toUpdatePwd",
+            "click .personal .opt-list .my-invitecode": "toApply",
             //"click .personal .opt-list .tel":"toUpdateTel",
             "click .gender-box div": "selectGender",
             "click .loginout": "loginout",
@@ -70,6 +71,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     self.hideLoading();
                     self.showMyToast("上传成功", 1500);
                     self.login();
+
 
                 },
                 error: function (e) {
@@ -290,6 +292,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     self.showMyToast("修改成功！", 1000);
 
                     self.login();
+
                 },
                 error: function (e) {
                     self.hideLoading();
@@ -312,6 +315,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                         return
                     }
                     if (data.user) {
+
+
                         data.user.token = data.token;
                         data.user.nick_name = data.nick_name;
                         data.user.avatar = data.avatar;
@@ -330,6 +335,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 }
             });
         },
+
 
         selectDate: function (e) {
             self.dateScroller.show();
@@ -354,22 +360,56 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
 
         onCreate: function () {
+
             self = this;
             self.$el.html(tplPersonal);
+
+        },
+        GetData: function (e) {
+            this.showLoading();
+            var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"?auth_token="+self.getCurrentUser().token;
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "get",
+                success: function (data) {
+                    self.hideLoading();
+                    if (data.error) {
+
+                        return
+                    }
+                    if(data){
+                        data.user.balance=data.balance;
+                        data.user.invited_code=data.invited_code;
+
+
+                    }
+                },
+                error: function (e) {
+                    self.hideLoading();
+                    self.showMyToast("网络错误", 1000);
+                }
+            });
+
         },
 
 
         onShow: function () {
+           self.GetData();
+
             self.setHeader();
             self.user=self.getCurrentUser();
             self.$el.html(_.template(tplPersonal)({
+
+
                 user: {
                     nick_name: self.user.nick_name,
                     cell: self.user.cell,
                     avatar: self.user.avatar.avatar.url,
-                    invited:self.user.incode,
-                    balance:self.user.pbalabce
+                    balance:self.user.balance,
+                    invite_code:self.user.invite_code
                 }
+
             }));
             if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");
