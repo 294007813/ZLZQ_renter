@@ -33,31 +33,21 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
         },
         toApply: function (e) {
-
-
-
-
             this.showLoading();
             var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/apply_deduction?auth_token="+self.getCurrentUser().token;
-
             $.ajax({
                 url: url,
                 dataType: "json",
                 type: "get",
-
                 success: function (data) {
                     self.hideLoading();
                     if (data.error) {
-
-
                         self.showMyToast(data.error.message, 1000);
-
                         return
-
                     }
                   else{
+                        data.user.balance=data.user.balance
                         self.showMyToast("申请已受理，等待后台客服人员进行审核！", 1000);
-
                         return
                     }
 
