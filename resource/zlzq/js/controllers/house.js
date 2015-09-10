@@ -15,7 +15,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
         toHouseMap:function(){
-            window.location.href="houseplace.html?realtyid="+Lizard.P("d")+"&longitude="+self.houseData.realty.longitude+"&latitude="+self.houseData.realty.latitude;
+            if(self.datas.longitude){
+                window.location.href="houseplace.html?realtyid="+Lizard.P("d")+"&longitude="+self.datas.longitude+"&latitude="+self.datas.latitude;
+                }else self.showMyToast("找不到此地址", 1000);
         },
 
         //我的订单
@@ -126,6 +128,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 self.hideLoading();
                 self.$el.html(_.template(TplHouse, {realty: data.realty}));
 
+                self.datas=data.realty;
                 //var data = [
                 //    {id: 1, src: './resource/lzk/images/house1.png', href: './res/img/1.jpg'},
                 //    {id: 2, src: './resource/lzk/images/house1.png', href: './res/img/2.jpg'},
