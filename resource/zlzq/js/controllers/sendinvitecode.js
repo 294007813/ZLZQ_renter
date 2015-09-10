@@ -44,7 +44,28 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     this.showMyToast("手机号码不正确", 1000);
                     return;
                 }
+
                 this.showLoading();
+                 var url = Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/send_invite_code?";
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "get",
+                    data: {cells: mobile},
+                    success: function (data) {
+                        self.hideLoading();
+                        if(data){
+                        self.showMyToast("邀请码已由短信的形式发送至对方手机！", 1000);}
+
+                    },
+                    error: function (e) {
+                        self.hideLoading();
+                        self.showMyToast("网络错误", 1000);
+                    }
+                });
+                //
+
+
 
 
             },
