@@ -28,7 +28,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                 });
             },
         getCode:function(e){
-            var mobile = $.trim(this.$el.find(".username").val());
+            var mobile = (this.$el.find(".username").val());
             if (!mobile) {
                 this.showMyToast("请输入手机号", 1000);
                 return;
@@ -75,7 +75,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
             //},
             toReg: function (e) {
 
-                var mobile = $.trim(this.$el.find(".username").val());
+                var mobile = (this.$el.find(".username").val());
                 if (!mobile) {
                     this.showMyToast("请输入手机号", 1000);
                     return;
@@ -85,7 +85,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                     this.showMyToast("手机号码不正确", 1000);
                     return;
                 }
-                var password = $.trim(this.$el.find(".password").val());
+                var password = (this.$el.find(".password").val());
                 if (!password) {
                     this.showMyToast("请输入密码", 1000);
                     return;
@@ -94,7 +94,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                     this.showMyToast("密码至少8位", 1000);
                     return;
                 }
-                var confirmPassword = $.trim(this.$el.find(".confirm-password").val());
+                var confirmPassword = (this.$el.find(".confirm-password").val());
                 if (!confirmPassword) {
                     this.showMyToast("请输入确认密码", 1000);
                     return;
@@ -104,13 +104,15 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                     this.showMyToast("密码和确认密码不一致", 1000);
                     return;
                 }
-                var code= $.trim(self.$el.find("#inputVerifyCode").val());
+                var code= (this.$el.find("#inputVerifyCode").val());
                 if (!code) {
                     this.showMyToast("请输入验证码", 1000);
                     return;
 
                 }
-				var invitecode= $.trim(this.$el.find(".inputinvicode").val());
+				var invitecode= (this.$el.find(".inputinvicode").val());
+                invitecode=invitecode?invitecode:'';
+                //alert(invitecode);
 
                 this.showLoading();
                 var url = Lizard.host+Lizard.apiUrl+"users";
