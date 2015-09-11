@@ -82,7 +82,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     view: this,
                     events: {
                         returnHandler: function () {
-                            Lizard.goTo("newindex.html");
+                            Lizard.goTo("user.html");
                         },
                         commitHandler: function () {
 

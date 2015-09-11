@@ -83,7 +83,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             Lizard.goTo("user.html");
         },
         toPersonal: function (e) {
-            window.location.href="personal.html";
+            //window.location.href="personal.html";
+            self.login();
         },
         selectDate:function(e){
             self.dateScroller.show();
@@ -114,6 +115,42 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self.hideLoading();
 
         },
+
+        login: function () {
+            var url = Lizard.host + Lizard.apiUrl + "users/login";
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "post",
+                data: {cell: self.getCurrentUser().cell, password: self.getCurrentUser().pwd},
+                success: function (data) {
+                    self.hideLoading();
+                    if (data.error) {
+
+                        return
+                    }
+                    if (data.user) {
+
+
+                        data.user.token = data.token;
+                        data.user.nick_name = data.nick_name;
+                        data.user.avatar = data.avatar;
+                        data.user.pwd = self.getCurrentUser().pwd;
+                        self.setLoginStatus({isLogin: true, user: data.user, token: data.token});
+
+                        //Lizard.goTo("personal.html");
+                        window.location.href="personal.html";
+
+                    }
+
+                },
+                error: function (e) {
+                    self.hideLoading();
+                    self.showMyToast("网络错误", 1000);
+                }
+            });
+        },
+
         //设置标题
         setHeader: function () {
             self.header.set({
