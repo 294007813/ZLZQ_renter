@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplNewsDetail"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplNewsDetail) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplNewsDetail","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplNewsDetail,cImageZoom) {
     var self,
         listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
@@ -76,6 +76,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 body.width(width-40+'px');
                 body.height('auto');
             }
+            $('img').fancyzoom();
         },
 
         //设置标题

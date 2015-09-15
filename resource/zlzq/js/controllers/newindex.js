@@ -52,10 +52,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             self.setHeader();
             self.$el.html(TplNewIndex);
              pic = [
-                {id: 1, src: './resource/zlzq/images/newindex1.png', href: './res/img/1.jpg'},
-                {id: 2, src: './resource/zlzq/images/newindex1.png', href: './res/img/2.jpg'},
-                {id: 3, src: './resource/zlzq/images/newindex1.png', href: './res/img/3.jpg'},
-                {id: 4, src: './resource/zlzq/images/newindex1.png', href: './res/img/4.jpg'}
+                //{id: 1, src: './resource/zlzq/images/newindex1.png', href: './res/img/1.jpg'},
+                {id: 2, src: './resource/zlzq/images/renterindex1.jpg', href: './res/img/2.jpg'},
+                {id: 3, src: './resource/zlzq/images/renterindex2.jpg', href: './res/img/3.jpg'},
+                {id: 4, src: './resource/zlzq/images/renterindex3.jpg', href: './res/img/4.jpg'}
             ];
 
             //var  pic=[];
@@ -71,16 +71,18 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                         return '<img data-src="' + item.src + '" src="' + item.src + '" >';
                     }
                 },
+                autoPlay: true,
                 displayNum: 1,
                 wrapper: this.$('.house_slider1')
             });
             self.houseSlider.show();
 
+            self.$(".house_slider1 img").css("height","220px");
+
         },
 
         toWatch:function(){
-            //window.open('http://mp.weixin.qq.com/s?__biz=MzA3OTYxMTI3NQ==&mid=206959655&idx=1&sn=cedf50c168a7bb3c0e595fc6a84283e2#rd');
-           /* location.href = "http://mp.weixin.qq.com/s?__biz=MzA3OTYxMTI3NQ==&mid=206959655&idx=1&sn=cedf50c168a7bb3c0e595fc6a84283e2#rd";*/
+
             Lizard.goTo("wechat.html");
         },
 
