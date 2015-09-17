@@ -1301,6 +1301,7 @@ background-position: 0 -410px;
   background-size: cover;
   height: 120px;
   width: 100%;
+  z-index:9999;
 }
 .hbg-box-inner{
   position: relative;

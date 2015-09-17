@@ -18,16 +18,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .bottom-bar .order":"toOrderList",
             "click .opt-list .invite":"togetreward",
             "click .opt-list .to_apply":"toApply",
-            "click .opt-list .to_send":"toSend"
+            "click .opt-list .to_send":"toSend",
+            "click .ver":"toUpdate",
 
             //"click .bottom-bar .schedule":"toSchedule"
         },
-        //toMyFavorites:function(e){
-        //    Lizard.goTo("list.html?favorite=1");
-        //},
-        //toOrder:function(e){
-        //    Lizard.goTo("order.html");
-        //},
+        toUpdate: function(){
+
+        },
+
         toSend: function(e) {
             Lizard.goTo("sendinvitecode.html");
 
@@ -110,7 +109,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         onShow: function () {
 
             $("#headerview").hide();
-            self.$el.html(_.template(tplUser)({user: this.getCurrentUser()}));
+            self.$el.html(_.template(tplUser)({user: this.getCurrentUser(),ver:Lizard.version}));
 
             self.hideLoading();
 
