@@ -22,19 +22,49 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .ver":"toAsk",
             "click .cd-popup":"toCancel",
             "click .cd-no":"toCancel",
+            "click .cd-yes":"toUpdate",
         },
         toCancel: function(){
             self.$el.find(".cd-popup").removeClass("is-visible");
         },
 
         toAsk: function(){
-            self.$el.find(".cd-popup").addClass("is-visible");
+            if(self.$el.find(".ver").hasClass("new")){
+                self.$el.find(".cd-popup").addClass("is-visible");
+            }else self.showMyToast("已是最新版", 1000);
+
         },
 
         toSend: function(e) {
             Lizard.goTo("sendinvitecode.html");
 
         },
+        toUpdate:function(){
+            self.showMyToast("正在下载更新程序", 1000);
+            
+        },
+        checkUpdate:function(){
+            var url=Lizard.host+Lizard.apiUrl+"versions/lastest?version_type=renter_android";
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "get",
+                success: function (data) {
+                    if (data.error) {
+                        self.showMyToast(data.error.message, 1000);
+                        return
+                    }
+                    else{
+                        self.getver=data.number;
+                        self.appurl=data.url;
+                    }
+                },
+                error: function (e) {
+                    self.showMyToast("网络错误", 1000);
+                }
+            });
+        },
+
         toApply: function (e) {
             this.showLoading();
             var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/apply_deduction?auth_token="+self.getCurrentUser().token;
@@ -114,7 +144,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
             $("#headerview").hide();
             self.$el.html(_.template(tplUser)({user: this.getCurrentUser(),ver:Lizard.version}));
-
+            self.checkUpdate();
+            if(self.getver!=Lizard.version){
+                self.$el.find("#ver").append("<em style='color: #ff0000'>(有更新)</em>");
+                self.$el.find(".ver").addClass("new");
+            }
             self.hideLoading();
 
         },
