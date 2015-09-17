@@ -19,12 +19,16 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .opt-list .invite":"togetreward",
             "click .opt-list .to_apply":"toApply",
             "click .opt-list .to_send":"toSend",
-            "click .ver":"toUpdate",
-
-            //"click .bottom-bar .schedule":"toSchedule"
+            "click .ver":"toAsk",
+            "click .cd-popup":"toCancel",
+            "click .cd-no":"toCancel",
         },
-        toUpdate: function(){
+        toCancel: function(){
+            self.$el.find(".cd-popup").removeClass("is-visible");
+        },
 
+        toAsk: function(){
+            self.$el.find(".cd-popup").addClass("is-visible");
         },
 
         toSend: function(e) {
