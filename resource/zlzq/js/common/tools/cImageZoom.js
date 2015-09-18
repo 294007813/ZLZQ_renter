@@ -76,7 +76,7 @@
                 })
             }
             var oImgDisplay = $('img:first-child', oImgZoomBox).css({
-                'width': '150%',
+                'width': '300%',
                 'height': 'auto'
             });
             if (o.Speed > 0) {

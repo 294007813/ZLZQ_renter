@@ -78,13 +78,13 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             self.houseSlider.show();
 
 
-            var height=$(window).height();
-            //alert(height);
-            if(height<615){
-                self.$(".house_slider1 img").css("height","170px");
-            }else{
-                self.$(".house_slider1 img").css("height","220px");
-            }
+            //var height=$(window).height();
+            ////alert(height);
+            //if(height<615){
+            //    self.$(".house_slider1 img").css("height","170px");
+            //}else{
+            //    self.$(".house_slider1 img").css("height","220px");
+            //}
         },
 
         toWatch:function(){

@@ -43,6 +43,38 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
         toUpdate:function(){
             self.showMyToast("正在下载更新程序", 1000);
+            if (!self.iframeContent) {
+                var iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height ="0";
+                iframe.src = "./downloadfile.html";
+                iframe.frameBorder = "0";
+                iframe.frameBorder = "no";
+                iframe.scrolling = "no";
+                iframe.border = "0";
+                if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
+                    iframe.onreadystatechange = function() {
+                        if (iframe.readyState == "complete") {
+                            self.afterIframeLoad();
+                        }
+                    };
+                } else {
+                    iframe.onload = function() {
+                        self.afterIframeLoad();
+                    };
+                }
+                self.$el.append(iframe);
+                self.iframeContent = iframe;
+            }else{
+                self.hideLoading();
+            }
+        },
+
+        afterIframeLoad:function() {
+            var iDoc = self.iframeContent.contentDocument || self.iframeContent.document;
+
+            self.hideLoading();
+
 
         },
 
