@@ -41,7 +41,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
         toUpdate:function(){
             self.showMyToast("正在下载更新程序", 1000);
-            
+
         },
         checkUpdate:function(){
             var url=Lizard.host+Lizard.apiUrl+"versions/lastest?version_type=renter_android";

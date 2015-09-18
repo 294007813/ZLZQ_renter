@@ -23,7 +23,7 @@
     // map.addControl(new BMap.OverviewMapControl()); //添加缩略地图控件
     map.enableScrollWheelZoom(); //启用滚轮放大缩小
     //map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-    map.centerAndZoom(BPoint, 12);
+    map.centerAndZoom(BPoint, 13);
     map.addOverlay(polygon);
 
     function myFun(result){
@@ -68,7 +68,7 @@
                 fontFamily: "微软雅黑"
             });
             map.addOverlay(labelUp);
-//            labelUp.B.dataset.config=JSON.stringify(data.district_counts[i]);
+            labelUp.B.dataset.config=JSON.stringify(data.district_counts[i]);
             var opts = {
                 data:data.district_counts[i],
                 position: bp,    // 指定文本标注所在的地理位置
@@ -91,9 +91,9 @@
             });
             map.addOverlay(labelDown);
 //            labelDown.addEventListener("click", map.bridgeListener);
-//            labelDown.B.dataset.config=JSON.stringify(data.district_counts[i]);
-//            labelDown.addEventListener("click", search);
-//            labelUp.addEventListener("click", search);
+            labelDown.B.dataset.config=JSON.stringify(data.district_counts[i]);
+            labelDown.addEventListener("click", search);
+            labelUp.addEventListener("click", search);
         }
     }
     function search(e){

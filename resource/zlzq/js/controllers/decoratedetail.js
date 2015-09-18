@@ -85,7 +85,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         //设置标题
         setHeader: function (type) {
             self.header.set({
-                title: '装修案例详情',
+                title: '装修效果参考',
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
