@@ -18,11 +18,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click  .pic-box .cancel": "cancelEditing",
             "click #choose-box": "readFile",//选择相册
             "click #camera": "camera",//拍照
-            "click .exit": "exit"
+
         },
-        exit: function () {
-            navigator.app.exitApp();
-        },
+
         toUpdateTel: function () {
             self.$el.find(".personal").addClass("tel-active");
             self.setTelHeader();

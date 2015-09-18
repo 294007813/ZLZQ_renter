@@ -19,18 +19,20 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .opt-list .invite":"togetreward",
             "click .opt-list .to_apply":"toApply",
             "click .opt-list .to_send":"toSend",
-            "click .ver":"toAsk",
+            "click .ver":"askUpdte",
             "click .cd-popup":"toCancel",
             "click .cd-no":"toCancel",
-            "click .cd-yes":"toUpdate",
+            "click #yes-update":"toUpdate",
+            "click .exit": "askExit",
+            "click #yes-exit":"Exit"
         },
         toCancel: function(){
             self.$el.find(".cd-popup").removeClass("is-visible");
         },
 
-        toAsk: function(){
+        askUpdte: function(){
             if(self.$el.find(".ver").hasClass("new")){
-                self.$el.find(".cd-popup").addClass("is-visible");
+                self.$el.find("#ask-update").addClass("is-visible");
             }else self.showMyToast("已是最新版", 1000);
 
         },
@@ -43,6 +45,39 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self.showMyToast("正在下载更新程序", 1000);
 
         },
+
+        askExit:function(){
+            self.$el.find("#ask-exit").addClass("is-visible");
+        },
+
+        Exit: function () {
+            if (!self.iframeContent) {
+                var iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height ="0";
+                iframe.src = "./exit.html";
+                iframe.frameBorder = "0";
+                iframe.frameBorder = "no";
+                iframe.scrolling = "no";
+                iframe.border = "0";
+                if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
+                    iframe.onreadystatechange = function() {
+                        if (iframe.readyState == "complete") {
+                            self.afterIframeLoad();
+                        }
+                    };
+                } else {
+                    iframe.onload = function() {
+                        self.afterIframeLoad();
+                    };
+                }
+                self.$el.append(iframe);
+                self.iframeContent = iframe;
+            }else{
+                self.hideLoading();
+            }
+        },
+
         checkUpdate:function(){
             var url=Lizard.host+Lizard.apiUrl+"versions/lastest?version_type=renter_android";
             $.ajax({

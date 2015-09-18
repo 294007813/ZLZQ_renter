@@ -59,15 +59,21 @@
     </ul>
 </div>
 
-<!--<div style="tex
-t-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="exit">-->
-<!--退出程序-->
-<!--</div>-->
-<div class="cd-popup" role="alert">
+<div style="text-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="exit">
+退出程序
+</div>
+
+<div  style="margin-top: 60px">
+    <ul class="opt-list">
+        <li ></li>
+    </ul>
+</div>
+
+<div class="cd-popup" id="ask-update" role="alert">
 <div class="cd-popup-container">
     <p style="">发现新版本,需要升级吗?</p>
     <ul class="cd-buttons">
-        <li class="cd-yes">
+        <li id="yes-update">
             <a href="#0">升级</a>
         </li>
         <li class="cd-no">
@@ -75,6 +81,20 @@ t-align: center;margin-top: 20px; background: #fff;line-height: 40px;" class="ex
         </li>
     </ul>
 </div>
+</div>
+
+<div class="cd-popup" id="ask-exit" role="alert">
+    <div class="cd-popup-container">
+        <p style="">确定退出?</p>
+        <ul class="cd-buttons">
+            <li id="yes-exit">
+                <a href="#0">退出</a>
+            </li>
+            <li class="cd-no">
+                <a href="#0">取消</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 
