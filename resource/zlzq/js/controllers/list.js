@@ -380,8 +380,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     self.$el.find(".house-list-box").html($(_.template(TplHList, {
                         list: data.realties
                     })));
-                    self.lazyLoadImage(data.realties);
-                    self.range = new cRange("rangeBar", 5000);
+                    self.lazyLoadImage(data.realties); 
                     self.$el.find(".mask").addClass("m-trans");
                     self.$el.find(".mask")[0].addEventListener("webkitTransitionEnd", function () {
                         var mask = self.$el.find(".mask");

@@ -1977,3 +1977,8 @@ background-position: 0 -410px;
   display: block;
 }
 
+#main{
+  width: 100%;
+  overflow-x: hidden;
+}
+
