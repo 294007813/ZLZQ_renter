@@ -12,6 +12,7 @@
 	        'cUIImageSlider': baseUrl + 'common/tools/cUIImageSlider', //
 			'cRange': baseUrl + 'common/tools/cRange', //
 			'UITab':baseUrl + 'common/utils/ui.tab',
+			'cImageZoom':baseUrl + 'common/tools/cImageZoom',
 			//模版
 			'TplSchedule': baseUrl + 'templates/schedule.html',
 			'TplHouse': baseUrl + 'templates/house.html',
@@ -35,6 +36,10 @@
 			'TplDecorateDetail':baseUrl + 'templates/decoratedetail.html',
 			'TplDecorateList':baseUrl + 'templates/decoratelist.html',
 			'TplWeChat':baseUrl + 'templates/wechat.html',
+			'TplNewsList':baseUrl + 'templates/newslist.html',
+			'TplNewsDetail':baseUrl + 'templates/newsdetail.html',
+            'TplGetreward': baseUrl + 'templates/getinvitereward.html',
+            'TplSendinvite': baseUrl + 'templates/sendinvitecode.html'
 	    }
 	};
 	config.urlArgs = "v=1";

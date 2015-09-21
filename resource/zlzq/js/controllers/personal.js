@@ -10,6 +10,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click #confirm-btn": "ensureName",
             /*"click .personal .opt-list .gender":"toUpdateGender",*/
             "click .personal .opt-list .pwd": "toUpdatePwd",
+            "click .personal .opt-list .my-invitecode": "toApply",
             //"click .personal .opt-list .tel":"toUpdateTel",
             "click .gender-box div": "selectGender",
             "click .loginout": "loginout",
@@ -17,11 +18,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click  .pic-box .cancel": "cancelEditing",
             "click #choose-box": "readFile",//选择相册
             "click #camera": "camera",//拍照
-            "click .exit": "exit"
+
         },
-        exit: function () {
-            navigator.app.exitApp();
-        },
+
         toUpdateTel: function () {
             self.$el.find(".personal").addClass("tel-active");
             self.setTelHeader();
@@ -32,6 +31,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 self.cancelEditing();
                 self.uploadPicture(data);
             })
+
         },
         //点击选择相册
         readFile: function (e) {
@@ -39,6 +39,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 $('#picture').attr('src','data:image/jpeg;base64,'+data);
                 self.cancelEditing();
                 self.uploadPicture(data);
+
+
             })
 
             //var self=this;
@@ -65,12 +67,16 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 data:{ "avatar" : 'data:image/jpeg;base64,' + data },
                 success: function (data) {
                     self.hideLoading();
-                    self.showMyToast("上传成功", 2000);
+                    self.showMyToast("上传成功", 1500);
                     self.login();
+
+
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
+
+
                 }
             });
 
@@ -97,7 +103,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
         },
@@ -144,7 +150,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
 
@@ -284,10 +290,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     self.showMyToast("修改成功！", 1000);
 
                     self.login();
+
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
         },
@@ -306,23 +313,27 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                         return
                     }
                     if (data.user) {
+
+
                         data.user.token = data.token;
                         data.user.nick_name = data.nick_name;
                         data.user.avatar = data.avatar;
                         data.user.pwd = self.getCurrentUser().pwd;
                         self.setLoginStatus({isLogin: true, user: data.user, token: data.token});
 
-                        Lizard.goTo("personal.html");
+                        //Lizard.goTo("personal.html");
+                        window.location.href="personal.html";
 
                     }
 
                 },
                 error: function (e) {
                     self.hideLoading();
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                 }
             });
         },
+
 
         selectDate: function (e) {
             self.dateScroller.show();
@@ -347,18 +358,56 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         },
 
         onCreate: function () {
+
             self = this;
             self.$el.html(tplPersonal);
+
         },
+        GetData: function (e) {
+            this.showLoading();
+            var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"?auth_token="+self.getCurrentUser().token;
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "get",
+                success: function (data) {
+                    self.hideLoading();
+                    if (data.error) {
+
+                        return
+                    }
+                    if(data){
+                        data.user.balance=data.balance;
+                        data.user.invited_code=data.invited_code;
+
+
+                    }
+                },
+                error: function (e) {
+                    self.hideLoading();
+                    self.showMyToast("网络错误", 1000);
+                }
+            });
+
+        },
+
+
         onShow: function () {
+           self.GetData();
+
             self.setHeader();
             self.user=self.getCurrentUser();
             self.$el.html(_.template(tplPersonal)({
+
+
                 user: {
                     nick_name: self.user.nick_name,
                     cell: self.user.cell,
-                    avatar: self.user.avatar.avatar.url
+                    avatar: self.user.avatar.avatar.url,
+                    balance:self.user.balance,
+                    invite_code:self.user.invite_code
                 }
+
             }));
             if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");

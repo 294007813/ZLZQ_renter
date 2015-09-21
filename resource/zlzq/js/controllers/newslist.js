@@ -1,22 +1,23 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll","cRange","text!TplOrderList"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,cUIScroll,cRange,TplOrderList) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll","cRange","text!TplNewsList"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,cUIScroll,cRange,TplNewsList) {
     var self,
-         listModel=Model.ListModel.getInstance();
+        listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
-        ViewName: 'orderlist',
+        ViewName: 'newslist',
         hasTouch :'ontouchstart' in window,
         events: {
 
-            "click .house-list li": "toOrderDetail",
+            "click .house-list li": "toDecorateDetail",
             "click .bottom-bar .rent":"toRent",
             "click .bottom-bar .mine":"toPersonal",
-            //"click .bottom-bar .order":"toOrder",
+            "click .bottom-bar .order":"toOrderList",
             "click .bottom-bar .schedule":"toSchedule",
             "click .search-icon":"toSearch"
         },
 
-        toOrderDetail:function(e){
+        toDecorateDetail:function(e){
             var target = $(e.currentTarget);
-            Lizard.goTo("orderdetail.html?d=" + target.data("id"));
+            self.showLoading();
+            Lizard.goTo("newsdetail.html?d=" + target.data("id"));
         },
         ajaxException: function (msg) {
             self.hideLoading();
@@ -27,10 +28,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         },
         getList:function(callback){
-            var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/my_orders?auth_token="+self.getCurrentUser().token,
+            var url=Lizard.host+Lizard.apiUrl+"newsitems",
                 paras={},
                 method="get";
-            var orderDate=new Array(2);
+            self.showLoading();
             $.ajax({
                 url: url,
                 dataType: "json",
@@ -39,10 +40,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 success: function (data) {
                     self.hideLoading();
 
-                    for(var i=0;i<data.realties.length;i++){
-                       data.realties[i].state=data.orders[i].state;
-                    }
-                    self.$el.html(_.template(TplOrderList, {list: data.realties}));
+                    self.$el.html(_.template(TplNewsList, {list: data}));
 
                 },
                 error: function (e) {
@@ -58,16 +56,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             self.getList();
 
 
-
         },
 
-        setHeader: function (type) {
+        //设置标题
+        setHeader: function () {
             self.header.set({
-                title: '我的订单',
+                title: '新闻动态',
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
-
                 events: {
                     returnHandler: function () {
                         Lizard.goTo("newindex.html");
@@ -82,7 +79,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         }
     });
-
     return View;
 });
 

@@ -117,7 +117,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             _.each(realties, function (v, i) {
                 (function (iid) {
                     var img = new Image();
-                    img.src = v.avatar.url;
+                    img.src = v.avatar;
                     img.onload = function () {
                         var dom = document.getElementById(iid);
                         dom && (dom.src = img.src);
@@ -169,7 +169,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                         paras["order"] = "price_low";
                     }
                     if (sid == 3) {
-                        paras["order"] = "published_at";
+                        //paras["order"] = "published_at";
+                        paras["order"] = "";
+                        delete paras.order;
                     }
                 }
             });
@@ -209,7 +211,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     callback && callback(data);
                 },
                 error: function (e) {
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                     self.hideLoading();
                 }
             });
@@ -217,6 +219,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         },
         toIndex: function (e) {
+            //window.location.href="index.html";
             Lizard.goTo("index.html");
         },
 
@@ -365,7 +368,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
                 },
                 error: function (e) {
-                    self.showMyToast("服务器异常", 1000);
+                    self.showMyToast("网络错误", 1000);
                     self.hideLoading();
                 }
             });

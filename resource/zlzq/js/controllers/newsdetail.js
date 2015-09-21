@@ -1,8 +1,8 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplDecorateDetail","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplDecorateDetail,cImageZoom) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplNewsDetail","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplNewsDetail,cImageZoom) {
     var self,
         listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
-        ViewName: 'decoratedetail',
+        ViewName: 'newsdetail',
         events: {
             "click .housing .btn":"toReserve",
             "click .location_icon" :"toLocation",
@@ -26,7 +26,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         getDetail:function(callback) {
 
 
-                var url =Lizard.host+Lizard.apiUrl+"companies/" + Lizard.P("d");
+                var url =Lizard.host+Lizard.apiUrl+"newsitems/" + Lizard.P("d");
 
             $.ajax({
                 url: url,
@@ -35,8 +35,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 type: "get",
                 success: function (data) {
                     callback(data);
-                    //self.houseData = data;
-
+                    self.houseData = data;
                     self.hideLoading();
                 },
                 error: function (e) {
@@ -58,13 +57,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             //self.hideLoading();
 
             self.getDetail(function (data) {
+
                 self.setHeader();
-                self.$el.html(_.template(TplDecorateDetail, {decorate: data}));
 
-                //self.hideLoading();
-
+                self.$el.html(_.template(TplNewsDetail, {news: data}));
                 self.changeP();
-
             });
 
 
@@ -85,7 +82,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         //设置标题
         setHeader: function (type) {
             self.header.set({
-                title: '装修效果参考',
+                title: '新闻详情',
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
@@ -93,7 +90,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 events: {
                     returnHandler: function () {
 
-                        Lizard.goTo("decoratelist.html");
+                        Lizard.goTo("newslist.html");
 
                     },
                     commitHandler: function () {

@@ -12,6 +12,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             "click .info_label_item1 .favourite":"toMyFavourite",
             "click .info_label_item1 .decorate":"toDecorate",
             "click .info_label_item1 .watch":"toWatch",
+            "click .info_label_item1 .news":"toNews",
 
         },
 
@@ -27,12 +28,17 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             Lizard.goTo("list.html?favorite=1");
         },
 
+        toNews:function(){
+            Lizard.goTo("newslist.html");
+        },
+
         //点击装修
         toDecorate:function(){
             Lizard.goTo("decoratelist.html");
         },
 
         myHouse:function(e){
+            //window.location.href="index.html";
             Lizard.goTo("index.html");
         },
 
@@ -46,10 +52,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             self.setHeader();
             self.$el.html(TplNewIndex);
              pic = [
-                {id: 1, src: './resource/zlzq/images/newindex1.png', href: './res/img/1.jpg'},
-                {id: 2, src: './resource/zlzq/images/newindex1.png', href: './res/img/2.jpg'},
-                {id: 3, src: './resource/zlzq/images/newindex1.png', href: './res/img/3.jpg'},
-                {id: 4, src: './resource/zlzq/images/newindex1.png', href: './res/img/4.jpg'}
+                //{id: 1, src: './resource/zlzq/images/newindex1.png', href: './res/img/1.jpg'},
+                {id: 2, src: './resource/zlzq/images/renterindex1.jpg', href: './res/img/2.jpg'},
+                {id: 3, src: './resource/zlzq/images/renterindex2.jpg', href: './res/img/3.jpg'},
+                {id: 4, src: './resource/zlzq/images/renterindex3.jpg', href: './res/img/4.jpg'}
             ];
 
             //var  pic=[];
@@ -65,16 +71,24 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                         return '<img data-src="' + item.src + '" src="' + item.src + '" >';
                     }
                 },
+                autoPlay: true,
                 displayNum: 1,
                 wrapper: this.$('.house_slider1')
             });
             self.houseSlider.show();
 
+
+            //var height=$(window).height();
+            ////alert(height);
+            //if(height<615){
+            //    self.$(".house_slider1 img").css("height","170px");
+            //}else{
+            //    self.$(".house_slider1 img").css("height","220px");
+            //}
         },
 
         toWatch:function(){
-            //window.open('http://mp.weixin.qq.com/s?__biz=MzA3OTYxMTI3NQ==&mid=206959655&idx=1&sn=cedf50c168a7bb3c0e595fc6a84283e2#rd');
-           /* location.href = "http://mp.weixin.qq.com/s?__biz=MzA3OTYxMTI3NQ==&mid=206959655&idx=1&sn=cedf50c168a7bb3c0e595fc6a84283e2#rd";*/
+
             Lizard.goTo("wechat.html");
         },
 

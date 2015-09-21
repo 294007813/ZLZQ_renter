@@ -1,12 +1,15 @@
-define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert'], function (cPageView, cGuider, cUtility,Store,Model, UIAlert) {
+define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert',], function (cPageView, cGuider, cUtility,Store,Model, UIAlert) {
     var isInApp = cUtility.isInApp;
     var Guider = cGuider;
 	var loginStore=Store.loginStore.getInstance();
 	var detailStore = Store.detailStore.getInstance();
 
+
+
 	var bankStore = Store.bankStore.getInstance();
 	Lizard.host="http://zlzq.easybird.cn/";
 	Lizard.apiUrl="api/v1/";
+	Lizard.version="2.12";
 	var viewBaseUrl="";
 	Lizard.timeout=20000;
     var BaseView = cPageView.extend({
@@ -23,6 +26,7 @@ define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert'], function
 				hideSec: time
 			});
 		},
+
 		toRent:function(e){
 			Lizard.goTo("newindex.html");
 		},

@@ -109,7 +109,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
     }
-    .house_info_list.info_list .info_name{
+     .info_name{
         margin-right:10px;
         color:#999;
     }
@@ -319,6 +319,16 @@
      </div>
  </div>
 
+<ul class="info_list info_ct ">
+    <li>
+        <span class="info_name">地址</span>
+        <%if(realty.address!=null){%>
+        <span><%=realty.address%></span>
+        <%}%>
+        <span id="map" style="float:right;width: 20%;color:#ff6600">地图</span>
+    </li>
+</ul>
+
  <ul class="info_list info_ct house_info_list">
      <li>
          <span class="info_name">户型</span>
@@ -346,7 +356,7 @@
          <%}%>
      </li>
      <li>
-         <span class="info_name">合租情况</span>
+         <span class="info_name">朝向</span>
          <%if(realty.direction!=null){%>
          <span><%=realty.direction%></span>
          <%}%>
@@ -388,15 +398,16 @@
          <%}%>
      </li>
  </ul>
- <ul class="info_list info_ct house_info_list">
-     <li>
-         <span class="info_name">配套设施</span>
-         <%if(realty.house_device_id!=null){%>
-         <span><%=realty.house_device_id%></span>
-         <%}%>
+
+ <ul class="info_list info_ct ">
+     <li class="devices">
+         <span class="info_name" id="device">配套设施</span>
+         <!--<%if(realty.house_device_id!=null){%>-->
+         <!--<span><%=realty.house_device_id%></span>-->
+         <!--<%}%>-->
      </li>
  </ul>
- <ul class="info_list info_ct house_info_list">
+ <ul class="info_list info_ct">
      <li>
          <span class="info_name">房源描述</span>
          <%if(realty.description!=null){%>
