@@ -10,12 +10,7 @@
                 <p class="monthly"><em><%=v.price%></em>&nbsp;元&nbsp;/&nbsp;月</p>
                 <p><%=v.title%>&nbsp;&nbsp;|&nbsp;&nbsp;<%=v.area%>m<sup>2</sup></p>
                 <p class="addr">地址:<%=v.address%>&nbsp;&nbsp;</p>
-<<<<<<< HEAD
-                <p class="">发布时间:<%=v.published_at && v.published_at.substring(0,10)%>&nbsp;&nbsp;</p>
-                <p class="">更新时间:<%=v.updated_at && v.updated_at.substring(0,10)%>&nbsp;&nbsp;</p>
-=======
-                <p class="">更新时间:<%if(v.updated_at!=null){%><%=v.updated_at.substring(0,10)%><%}%>&nbsp;&nbsp;</p>
->>>>>>> 58eb8641f87d39c66c2d15c3c804431a148b287e
+                <p class="">更新时间:<%=v.updated_at.substring(0,10)%>&nbsp;&nbsp;</p>
                 <p class="">房源性质:<%=v.realty_type%>&nbsp;&nbsp;</p>
                 <!--<p class="">配套设施:<%=v.house_device_id%>&nbsp;&nbsp;</p>-->
             </div>

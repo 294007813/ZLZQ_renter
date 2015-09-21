@@ -1982,11 +1982,6 @@ background-position: 0 -410px;
   display: block;
 }
 
-#main{
-  width: 100%;
-  overflow-x: hidden;
-}
-
 /*以下是弹出确认框*/
 .cd-popup {
   position: fixed;
