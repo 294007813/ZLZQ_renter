@@ -37,26 +37,26 @@
              console.log('创建文件夹失败');
          });
     }
-    alert(util.fullPath);
-    downFile("http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fversion%2Furl%2F1%2FZLZQ_renter.apk");
-//    downFile: function (url) {
-     function downFile(url) {
-         var me = this,
-                     //正则表达式，用于获取文件名称
-         reg = /[^\\\/]*[\\\/]+/g,
-                 //获取下载地址，me.fullPath在main控制层中获取，这是一个全局变量
-         filePath = me.fullPath + "/" + url.replace(reg, ''),
-                 //下载地址
-         url = encodeURI(url),
-                 fileTransfer = new FileTransfer();
-          console.log('正在下载中，请等待...');
-         fileTransfer.download(url, filePath,
-                 function (entry) {
-                  console.log('下载成功！请在' + entry.fullPath + '目录中查看');
-             },
-         function (error) {
-                  console.log('下载失败！' + error.source);
-             });
+//    alert(util.fullPath);
+//    downFile("http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fversion%2Furl%2F1%2FZLZQ_renter.apk");
+////    downFile: function (url) {
+//     function downFile(url) {
+//         var me = this,
+//                     //正则表达式，用于获取文件名称
+//         reg = /[^\\\/]*[\\\/]+/g,
+//                 //获取下载地址，me.fullPath在main控制层中获取，这是一个全局变量
+//         filePath = me.fullPath + "/" + url.replace(reg, ''),
+//                 //下载地址
+//         url = encodeURI(url),
+//                 fileTransfer = new FileTransfer();
+//          console.log('正在下载中，请等待...');
+//         fileTransfer.download(url, filePath,
+//                 function (entry) {
+//                  console.log('下载成功！请在' + entry.fullPath + '目录中查看');
+//             },
+//         function (error) {
+//                  console.log('下载失败！' + error.source);
+//             });
      }
 </script>
 </body>
