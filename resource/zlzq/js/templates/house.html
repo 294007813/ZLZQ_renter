@@ -323,7 +323,7 @@
     <li>
         <span class="info_name">地址</span>
         <%if(realty.address!=null){%>
-        <span><%=realty.address%></span>
+        <span class="addr"><%=realty.address%></span>
         <%}%>
         <span id="map" style="float:right;width: 20%;color:#ff6600">地图</span>
     </li>
@@ -407,67 +407,19 @@
          <!--<%}%>-->
      </li>
  </ul>
- <ul class="info_list info_ct">
-     <li>
-         <span class="info_name">房源描述</span>
-         <%if(realty.description!=null){%>
-         <span><%=realty.description%></span>
-         <%}%>
-     </li>
- </ul>
-     <!--<li class="info_labels">
-         <div class="info_label_item"><i class="icon icon-web"></i>宽带</div>
-         <div class="info_label_item"><i class="icon icon-tv"></i>电视</div>
-         <div class="info_label_item"><i class="icon icon-sofa"></i>沙发</div>
-         <div class="info_label_item"><i class="icon icon-wash"></i>洗衣机</div>
-         <div class="info_label_item"><i class="icon icon-aircon"></i>空调</div>
-         <div class="info_label_item"><i class="icon icon-bed"></i>床</div>
-         <div class="info_label_item info_un"><i class="icon icon-board"></i>衣柜</div>
-         <div class="info_label_item"><i class="icon icon-fridge"></i>冰箱</div>
-         <div class="info_label_item"><i class="icon icon-shower"></i>淋浴</div>
-         <div class="info_label_item"><i class="icon icon-heater"></i>暖气</div>
-     </li>-->
 
-
-<!--<ul class="info_list info_ct">
-    <li>租客评论（3）<i class="icon-right"></i></li>
-    <li class="info-comment">
-        <img class="radiu-avatar" src="./resource/zlzq/images/default_photos.png" />
-        <div class="comment-content">
-            <div class="comment-title">
-                <p class="comment_user">千千</p>
-                <div class="score-block">
-                    <div class="comment_score"></div>
-                    <i class="comment_scorein" width="80%"></i>
-                </div>
-            </div>
-            <p class="comment_tip">5分钟前</p>
-            <p class="comment_text">房子环境还是不错的，家具有点旧了，但房东阿姨很好！</p>
-        </div>
-    </li>
-</ul>-->
-
-<!--<ul class="info_list info_ct">-->
-
-<!--<ul class="info_list reserve_ct" style="display: none">
-    <li style="height: 100px;">
-        <a style="width: 100px; display: block; border-radius: 100px; overflow: hidden;height: 100px; margin: auto"><img src="<%=realty.owner.avatar%>"  style="width: 100%"/>  </a>
-    </li>
-    <li style="text-align: center">
-        <span class="info_name">房东昵称：</span>
-        <span><%=realty.owner.nick_name%></span>
-    </li>
-    <li  style="text-align: center" class="reserve">
-        <a  class="btn" href="tel:<%=realty.owner.cell%>">预约看房</a>
-    </li>
-</ul>-->
+ <!--<ul class="info_list info_ct">-->
+     <!--<li>-->
+         <!--<span class="info_name">房源描述</span>-->
+         <!--<%if(realty.description!=null){%>-->
+         <!--<span><%=realty.description%></span>-->
+         <!--<%}%>-->
+     <!--</li>-->
+ <!--</ul>-->
 
 <div class="info_btnarea">
     <a  class="btn" >我要下单</a>
 </div>
-<!--<div class="info_btnarea">
-    <a  class="btn grey" href="tel:<%=realty.owner.cell%>">已加入看房清单</a>
-</div>-->
 
 
 

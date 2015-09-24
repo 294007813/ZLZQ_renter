@@ -373,6 +373,27 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 }
             });
         },
+
+        //隐藏具体地址
+        addressHide:function(){
+            self.$el.find(".addr").each(function(){
+                var address=$.trim($(this).text());
+                var finadd=address;
+                var tes=/\d/
+                //alert(address);
+                if(address.charAt(address.length-1)=="室"){
+                    for(i=2;i<(address.length);i++){
+                        if(!tes.test(address.charAt(address.length-i))){
+                            finadd=address.substr(0,address.length-i+1);
+                            break;
+                        }
+                    }
+                }
+                $(this).text(finadd+"***");
+            })
+
+        },
+
         onShow: function () {
             $("#headerview").hide();
             self.getDistricts(function (districts) {
@@ -383,6 +404,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     self.$el.find(".house-list-box").html($(_.template(TplHList, {
                         list: data.realties
                     })));
+                    self.addressHide()
                     self.lazyLoadImage(data.realties); 
                     self.$el.find(".mask").addClass("m-trans");
                     self.$el.find(".mask")[0].addEventListener("webkitTransitionEnd", function () {
@@ -477,6 +499,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
                 });
             });
+
         },
         setHeader: function (type) {
             self.header.set({
