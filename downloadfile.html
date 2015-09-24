@@ -2,6 +2,9 @@
 <html>
 <title>租来租去</title>
 <meta charset="utf-8">
+<allow-navigation href="http://*/*" />
+<allow-navigation href="https://*/*" />
+<allow-navigation href="data:*" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="description" content="租来租去" />
 <meta name="keywords" content="租来租去" />
@@ -9,55 +12,102 @@
 <meta name="format-detection" content="telephone=no" />
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
+
 <body style="overflow: hidden">
 <script type="text/javascript">
-//    var util;
-//    util="zlzq";
-    // 等待加载PhoneGap
-    document.addEventListener("deviceready", onDeviceReady, false);
-    // PhoneGap加载完毕
+//    $(document).bind('deviceready',function() {
+var fileURL;
+var path;
+//document.addEventListener("deviceready",onDeviceReady,false);
+//document.addEventListener("deviceready",downloadFile,false);
+document.addEventListener("deviceready",openapk,false);
+//    }
+    // device APIs are available    //
     function onDeviceReady() {
-         //查找是否有zgky这个文件夹，没有则创建，然后找到这个文件夹的绝对路径
-         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
-                 //util.appRootDirName 全局变量，这里是zgky
-                 fileSystem.root.getDirectory(util, {
-                         create: true,
-                             exclusive: false
-                 }, function (entry) {
-                     //网上流传的资料中都是使用fullPath，在这里我获取到的是相对目录，在下载时使用会报错，所以换做了toURL()
-                     //这是一个全局全局变量，用以保存路径
-                     util.fullPath = entry.toURL();
-//                     alert("创建文件夹成功")
-                     //console.log('创建文件夹成功');
-                     //console.log(util.fullPath);
-                 }, function () {
-                     console.log('创建文件夹失败');
-                 });
-         }, function () {
-             console.log('创建文件夹失败');
-         });
+        alert('onDeviceReady2222');
+        try {
+            /*
+             window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+             window.resolveLocalFileSystemURL = window.resolveLocalFileSystemURL                || window.ebkitResolveLocalFileSystemURL; //根据URL取得文件的读取权限
+             */
+
+            //查找是否有download这个文件夹，没有则创建，然后找到这个文件夹的绝对路径
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+                fileSystem.root.getDirectory("ZLZQdownload", {
+                    create: true,
+                    exclusive: false
+                }, function (entry) {
+                    //网上流传的资料中都是使用fullPath，在这里我获取到的是相对目录，在下载时使用会报错，所以换做了toURL()
+                    //这是一个全局全局变量，用以保存路径
+                    fullPath = entry.toURL();
+                    alert(fullPath.toString() + '创建文件夹成功');
+                    //console.log(fullPath);
+                }, function () {
+                    console.log('创建文件夹失败');
+                    alert('创建文件夹失败');
+                });
+            }, function () {
+                console.log('创建文件夹失败');
+                alert('创建文件夹失败');
+            });
+        }
+        catch (e) {
+            alert(e.name + ":" + e.message);
+        }
     }
-//    alert(util.fullPath);
-//    downFile("http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fversion%2Furl%2F1%2FZLZQ_renter.apk");
-////    downFile: function (url) {
-//     function downFile(url) {
-//         var me = this,
-//                     //正则表达式，用于获取文件名称
-//         reg = /[^\\\/]*[\\\/]+/g,
-//                 //获取下载地址，me.fullPath在main控制层中获取，这是一个全局变量
-//         filePath = me.fullPath + "/" + url.replace(reg, ''),
-//                 //下载地址
-//         url = encodeURI(url),
-//                 fileTransfer = new FileTransfer();
-//          console.log('正在下载中，请等待...');
-//         fileTransfer.download(url, filePath,
-//                 function (entry) {
-//                  console.log('下载成功！请在' + entry.fullPath + '目录中查看');
-//             },
-//         function (error) {
-//                  console.log('下载失败！' + error.source);
-//             });
-     }
+
+    function downloadFile(durl) {
+        var androidFile="http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fversion%2Furl%2F1%2FZLZQ_renter.apk"
+//        var androidFile="http://www.baidu.com"
+        alert(androidFile);
+
+        try {
+            // onDeviceReady();
+            var ft = new FileTransfer();
+//            var uri = encodeURI(androidFile);
+//            var fileURL = fullPath + "/"+androidFile.substr(androidFile.lastIndexOf('/') + 1);
+            path=fullPath
+            fileURL = fullPath + "/zlzq_renter.apk"
+            alert("准备下载"+fileURL);
+
+            ft.download(
+                    androidFile,
+                    fileURL,
+                    function(entry) {
+//                        OpenFile(entry.fullPath);
+//                        window.open(entry.fullPath, "_system");
+//                        window.open(fileURL);
+//                        window.open(entry.fullPath);
+                        console.log("download complete: " + entry.toURL());
+                    },
+                    function(error) {
+                        alert("download error source " + error.source);
+                        alert("download error target " + error.target);
+                        console.log("download error source " + error.source);
+                        console.log("download error target " + error.target);
+                        console.log("upload error code" + error.code);
+                    },
+                    false,
+                    {
+                        headers: {
+                            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+                        }
+                    }
+            );
+        }
+        catch (e) {
+            alert(e.name + ":" + e.message);
+        }
+    }
+
+    function openapk(){
+//        window.open(path,'_system');
+//        window.open("http://fir.im/zlzq",'_system');
+        navigator.app.loadUrl("http://fir.im/zlzq", {openExternal : true});
+    }
+
+
+
 </script>
 </body>
 </html>

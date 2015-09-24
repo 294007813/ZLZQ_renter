@@ -42,8 +42,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
         },
         toUpdate:function(){
-            self.showMyToast("正在下载更新程序", 1000);
-            if (!self.iframeContent) {
+            //self.showMyToast("正在下载更新程序", 1000);
+            //if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");
                 iframe.width = "100%";
                 iframe.height ="0";
@@ -65,9 +65,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 }
                 self.$el.append(iframe);
                 self.iframeContent = iframe;
-            }else{
-                self.hideLoading();
-            }
+            //}else{
+            //    self.hideLoading();
+            //}
         },
 
         afterIframeLoad:function() {

@@ -40,10 +40,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
                     return;
                 }
-                if (!this.isMobile(mobile)) {
-                    this.showMyToast("手机号码不正确", 1000);
-                    return;
-                }
+                //if (!this.isMobile(mobile)) {
+                //    this.showMyToast("手机号码不正确", 1000);
+                //    return;
+                //}
 
                 this.showLoading();
                  var url = Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/send_invite_code?";
