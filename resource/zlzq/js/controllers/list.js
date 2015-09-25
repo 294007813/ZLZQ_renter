@@ -404,7 +404,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     self.$el.find(".house-list-box").html($(_.template(TplHList, {
                         list: data.realties
                     })));
-                    self.addressHide()
+                    //self.addressHide();
                     self.lazyLoadImage(data.realties); 
                     self.$el.find(".mask").addClass("m-trans");
                     self.$el.find(".mask")[0].addEventListener("webkitTransitionEnd", function () {

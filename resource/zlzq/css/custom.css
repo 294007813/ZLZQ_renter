@@ -2077,4 +2077,279 @@ background-position: 0 -410px;
     /*margin: 200px auto;*/
   }
 }
+/*以上是弹出确认框*/
 
+/*以下是移植房东端标签*/
+.form-dl dt{
+  padding: 0 15px;
+  margin-top: -10px;
+  line-height: 35px;
+  font-size: 14px;
+  color: #737478;
+}
+.form-dl dd{
+  margin-bottom: 15px;
+  padding: 0 15px;
+  background-color: #fff;
+  border-top:1px solid #E7E7E7;
+  border-bottom:1px solid #E7E7E7;
+}
+.form-dl dd textarea,.form-dl dd div{
+  padding: 15px 0;
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  line-height: 20px;
+  border:none;
+  outline: none;
+}
+.form-dl dd textarea{
+  color: #A9AAAC;
+  resize:vertical;
+}
+.form-dl dd div{
+  height: auto;
+  min-height: 40px;
+}
+.icon-radiolist{
+  padding: 8px 0;
+  overflow: hidden;
+}
+.icon-radiolist li{
+  float: left;
+}
+.icon-radiolist li label{
+  display: block;
+  padding: 10px 0;
+  width: 90px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon-radiolist .icon-radio{
+  vertical-align: top;
+  float: left;
+  width: 18px;
+  height: 18px;
+  background: url(../img/unselect.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-radio{
+  background: url(../img/selected.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-radio.unvisi{
+  background: none;
+}
+.icon-radiolist .icon-img{
+  margin: 0 5px;
+  float: left;
+  width: 18px;
+  height: 18px;
+}
+.icon-radiolist .icon-chair{
+  background: url(../img/chair.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-teapoy{
+  background: url(../img/teapoy.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-sofa{
+  background: url(../img/sofa.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-bed{
+  background: url(../img/bed.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-wardboard{
+  background: url(../img/wardboard.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-table{
+  background: url(../img/table.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-tvbench{
+  background: url(../img/tvbench.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-bookcase{
+  background: url(../img/bookcase.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-tv{
+  background: url(../img/tv.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-heater{
+  background: url(../img/heater.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-refriger{
+  background: url(../img/refriger.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-aircon{
+  background: url(../img/aircon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-microwave{
+  background: url(../img/microwave.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-washer{
+  background: url(../img/washer.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-fan{
+  background: url(../img/fan.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist .icon-computer{
+  background: url(../img/computer.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-chair,
+.icon-radiolist .on .icon-chair{
+  background: url(../img/chairon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-teapoy,
+.icon-radiolist .on .icon-teapoy{
+  background: url(../img/teapoyon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-sofa,
+.icon-radiolist .on .icon-sofa{
+  background: url(../img/sofaon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-bed,
+.icon-radiolist .on .icon-bed{
+  background: url(../img/bedon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-wardboard,
+.icon-radiolist .on .icon-wardboard{
+  background: url(../img/wardboardon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-table,
+.icon-radiolist .on .icon-table{
+  background: url(../img/tableon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-tvbench,
+.icon-radiolist .on .icon-tvbench{
+  background: url(../img/tvbenchon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-bookcase,
+.icon-radiolist .on .icon-bookcase{
+  background: url(../img/bookcaseon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-tv,
+.icon-radiolist .on .icon-tv{
+  background: url(../img/tvon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-heater,
+.icon-radiolist .on .icon-heater{
+  background: url(../img/heateron.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-refriger,
+.icon-radiolist .on .icon-refriger{
+  background: url(../img/refrigeron.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-aircon,
+.icon-radiolist .on .icon-aircon{
+  background: url(../img/airconon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-microwave,
+.icon-radiolist .on .icon-microwave{
+  background: url(../img/microwaveon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-washer,
+.icon-radiolist .on .icon-washer{
+  background: url(../img/washeron.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-fan,
+.icon-radiolist .on .icon-fan{
+  background: url(../img/fanon.png) no-repeat center;
+  background-size: 18px 18px;
+}
+.icon-radiolist input[type="checkbox"]:checked + label .icon-computer,
+.icon-radiolist .on .icon-computer{
+  background: url(../img/computeron.png) no-repeat center;
+  background-size: 18px 18px;
+}
+
+.icon-radiolist li label span{
+  vertical-align: top;
+  display: inline-block;
+  height: 18px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #242834;
+}
+.icon-radiolist input[type="checkbox"]:checked + label span,
+.icon-radiolist .on span{
+  color: #FF7300;
+}
+dd.pic-input{
+  padding: 15px;
+}
+.pic-input p{
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #737478;
+}
+.form-dl dd .pic-block{
+  padding: 0;
+  overflow: hidden;
+}
+.pic-label{
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  background: url(../img/imgbg.png) no-repeat center;
+  background-size: 100px 100px;
+}
+.pic-label img{
+  width: 100px;
+  height: 100px;
+  border: none;
+}
+.label-list{
+  padding: 8px 0;
+  overflow: hidden;
+}
+.label-list li{
+  float: left;
+}
+.label-list li label{
+  display: block;
+  margin: 6px 12px 6px 0;
+  padding: 6px 0;
+  width: 80px;
+  color: #737478;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #A6A9AE;
+  border-radius: 3px;
+}
+.label-list input[type="checkbox"]:checked + label,
+.label-list label.on{
+  color: #FF7300;
+  border: 1px solid #FF7300;
+}

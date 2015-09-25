@@ -9,7 +9,21 @@
             <div class="txt">
                 <p class="monthly"><em><%=v.price%></em>&nbsp;元&nbsp;/&nbsp;月</p>
                 <p><%=v.title%>&nbsp;&nbsp;|&nbsp;&nbsp;<%=v.area%>m<sup>2</sup></p>
-                <p class="addr">地址:<%=v.address%>&nbsp;&nbsp;</p>
+
+                <%var address=$.trim(v.address);%>
+                <%var finadd=address;%>
+                <%var tes=/\d/%>
+
+                <%if(address.charAt(address.length-1)=="室"){%>
+                <%    for(u=2;u<(address.length);u++){%>
+                <%        if(!tes.test(address.charAt(address.length-u))){%>
+                <%            finadd=address.substr(0,address.length-u+1);%>
+                <%            break;%>
+                <%        }%>
+                <%    }%>
+                <%}%>
+
+                <p class="addr">地址:<%=finadd%>***&nbsp;&nbsp;</p>
                 <p class="">更新时间:<%=v.updated_at.substring(0,10)%>&nbsp;&nbsp;</p>
                 <p class="">房源性质:<%=v.realty_type%>&nbsp;&nbsp;</p>
                 <!--<p class="">配套设施:<%=v.house_device_id%>&nbsp;&nbsp;</p>-->

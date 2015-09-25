@@ -399,14 +399,14 @@
      </li>
  </ul>
 
- <ul class="info_list info_ct ">
-     <li class="devices">
-         <span class="info_name" id="device">配套设施</span>
-         <!--<%if(realty.house_device_id!=null){%>-->
-         <!--<span><%=realty.house_device_id%></span>-->
-         <!--<%}%>-->
-     </li>
- </ul>
+ <!--<ul class="info_list info_ct ">-->
+     <!--<li class="devices">-->
+         <!--<span class="info_name" id="device">配套设施</span>-->
+         <!--&lt;!&ndash;<%if(realty.house_device_id!=null){%>&ndash;&gt;-->
+         <!--&lt;!&ndash;<span><%=realty.house_device_id%></span>&ndash;&gt;-->
+         <!--&lt;!&ndash;<%}%>&ndash;&gt;-->
+     <!--</li>-->
+ <!--</ul>-->
 
  <!--<ul class="info_list info_ct">-->
      <!--<li>-->
@@ -416,6 +416,162 @@
          <!--<%}%>-->
      <!--</li>-->
  <!--</ul>-->
+
+<% var device=realty.house_device.house_device  %>
+<dl class="form-dl" style="margin-top: 10px"></dl>
+<dl class="form-dl">
+    <dt>家具</dt>
+    <dd>
+        <ul class="icon-radiolist">
+            <li>
+                <label class="<%=device.chair ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-chair"></i>
+                    <span>椅子</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.teapoy ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-teapoy"></i>
+                    <span>茶几</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.sofa ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-sofa"></i>
+                    <span>沙发</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.bed ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-bed"></i>
+                    <span>床</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.chest ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-wardboard"></i>
+                    <span>衣柜</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.table ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-table"></i>
+                    <span>餐桌</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.tv_stand ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-tvbench"></i>
+                    <span>电视柜</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.bookcase ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-bookcase"></i>
+                    <span>书柜</span>
+                </label>
+            </li>
+        </ul>
+    </dd>
+</dl>
+<dl class="form-dl">
+    <dt>家电</dt>
+    <dd>
+        <ul class="icon-radiolist">
+            <li>
+                <label class="<%=device.tv ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-tv"></i>
+                    <span>电视</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.water_heater ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-heater"></i>
+                    <span>热水器</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.refrigerator ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-refriger"></i>
+                    <span>冰箱</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.air_condition ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-aircon"></i>
+                    <span>空调</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.hearth ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-microwave"></i>
+                    <span>微波炉</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.washer ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-washer"></i>
+                    <span>洗衣机</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.fan ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-fan"></i>
+                    <span>电风扇</span>
+                </label>
+            </li>
+            <li>
+                <label class="<%=device.pc ?'on':''%>">
+                    <i class="icon icon-radio unvisi"></i>
+                    <i class="icon icon-img icon-computer"></i>
+                    <span>电脑</span>
+                </label>
+            </li>
+        </ul>
+    </dd>
+</dl>
+
+<dl class="form-dl">
+    <dt>标签</dt>
+    <dd>
+        <ul class="label-list">
+            <li>
+                <label class="<%=device.good_traffic ?'on':''%>">交通方便</label>
+            </li>
+            <li>
+                <label class="<%=device.garden ?'on':''%>">带花园</label>
+            </li>
+            <li>
+                <label class="<%=device.subway ?'on':''%>">地铁</label>
+            </li>
+            <li>
+                <label class="<%=device.lift ?'on':''%>">电梯</label>
+            </li>
+            <li>
+                <label class="<%=device.villa ?'on':''%>">别墅</label>
+            </li>
+            <li>
+                <label class="<%=device.standalone ?'on':''%>">复式</label>
+            </li>
+        </ul>
+    </dd>
+</dl>
+
 
 <div class="info_btnarea">
     <a  class="btn" >我要下单</a>
