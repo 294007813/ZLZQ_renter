@@ -100,16 +100,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 backtext: '<i class="top_more left"></i> ',
                 view: this,
 
-                view: this,
 
-                //events: {
-                //    returnHandler: function () {
-                //        Lizard.goTo("user.html");
-                //    },
-                //    commitHandler: function () {
-                //
-                //    }
-                //}
+                events: {
+                    returnHandler: function () {
+
+                    },
+                    commitHandler: function () {
+
+                    }
+                }
             });
         },
         onHide: function () {

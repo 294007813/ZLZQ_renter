@@ -15,21 +15,27 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         },
 
         toDownload: function(){
-            var fileTransfer = new FileTransfer();
-            var uri = encodeURI("file:///android_asset/www/resource/zlzq/images/wechat.jpg");
-            var targetUrl="/storge/emulated/0/wechat.jpg";
-
-            fileTransfer.download(
-                uri,targetUrl,function(entry){
-                    var smallImage = document.getElementById('smallImage');
-                    smallImage.style.display = 'block';
-                    smallImage.src = entry.fullPath;
-                    this.showMyToast("下载成功", 1000);
-                },function(error){
-                    //console.log("下载图片出现错误");
-                    this.showMyToast("下载图片出现错误", 1000);
-                });
-
+            var iframe = document.createElement("iframe");
+            iframe.width = "100%";
+            iframe.height ="0";
+            iframe.src = "./downloadwechat.html";
+            iframe.frameBorder = "0";
+            iframe.frameBorder = "no";
+            iframe.scrolling = "no";
+            iframe.border = "0";
+            if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
+                iframe.onreadystatechange = function() {
+                    if (iframe.readyState == "complete") {
+                        self.afterIframeLoad();
+                    }
+                };
+            } else {
+                iframe.onload = function() {
+                    self.afterIframeLoad();
+                };
+            }
+            self.$el.append(iframe);
+            self.iframeContent = iframe;
         },
 
 
