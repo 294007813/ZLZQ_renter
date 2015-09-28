@@ -618,6 +618,7 @@ background-position: 0 -410px;
   transform:translate(0,-100%);
   -webkit-transform: translate(0,-100%);
   top: 75px;
+  display: none;
 }
 .area-bar-box{
   bottom: 0;

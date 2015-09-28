@@ -104,6 +104,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             var currentBox = self.$el.find(".area-bar-box ");
             currentBox.removeClass("in");
             self.$el.find(".mask").removeClass("show");
+            self.$el.find(".area-bar-box").hide();
             document.removeEventListener('touchmove', self.preventDefault, false);
 
             self.search({district_id: target.data("id")}, function (data) {
@@ -253,12 +254,13 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
             currentBox.addClass("trans").toggleClass("in");
             if (currentBox.hasClass("in")) {
+                currentBox.show();
                 self.$el.find(".mask").css("left", 0).addClass("show");
                 document.addEventListener('touchmove', self.preventDefault, false);
             } else {
                 self.$el.find(".mask").css("left", 0).removeClass("show");
                 document.removeEventListener('touchmove', self.preventDefault, false);
-
+                currentBox.hide();
             }
             self.lastFilter = target.data("key");
 
@@ -415,6 +417,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     }, false);
                     var areaBox = this.$(".area-bar");
                     areaBox.css("height", self.$el.find(".area-bar-box").height());
+                    self.$el.find(".area-bar-box").hide();
                     this.scrollOpts = {};
                     this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
 
