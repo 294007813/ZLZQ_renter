@@ -1,8 +1,8 @@
  define('cImageZoom',function(){
   $.fn.fancyzoom = function(userOptions) {
         var oOverlay = $('<div>').css({
-            height: '500%',
-            width: '500%',
+            height: '100%',
+            width: '100%',
             position: 'fixed',
             zIndex: 100,
             left: 0,
@@ -18,8 +18,8 @@
                 if ($.browser.msie && $.browser.version < 7) {
                     oOverlay.css({
                         position: 'absolute',
-                        height: $(document).height()*5,
-                        width: $(document).width()*5
+                        height: $(document).height(),
+                        width: $(document).width()
                     })
                 }
             }
@@ -28,8 +28,8 @@
             o = $.extend(o, {
                 imgSrc: imgSrc,
                 dimOri: {
-                    width: imgSrc.width()*5,
-                    height: imgSrc.height()*5,
+                    width: imgSrc.width(),
+                    height: imgSrc.height(),
                     left: pos.left,
                     top: pos.top,
                     'opacity': 1
@@ -76,7 +76,7 @@
                 })
             }
             var oImgDisplay = $('img:first-child', oImgZoomBox).css({
-                'width': '300%',
+                'width': '100%',
                 'height': 'auto'
             });
             if (o.Speed > 0) {
