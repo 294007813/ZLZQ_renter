@@ -75,10 +75,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             var width=$(window).width();
             self.$(".house_slider>img").css("width",width+"px");
             var body=self.$(".bodys img");
-            if(body.width()>(width-40)){
                 body.width(width-40+'px');
                 body.height('auto');
-            }
             $('img').fancyzoom();
         },
 
