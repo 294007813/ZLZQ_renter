@@ -12,8 +12,18 @@
         function openZoomBox(imgSrc, o) {
             if (o.showoverlay) {
                 oOverlay.appendTo('body').click(function() {
-                    closeZoomBox(o)
-                }
+                        var panzoom = $("#panzoom");
+
+                        if (!panzoom.length) {
+                            closeZoomBox(o)
+                            return
+                        }
+                        ;
+                        panzoom[0].parentNode.removeChild(panzoom[0]);
+
+                        imgSrc.show();
+                        closeZoomBox(o)
+                    }
                 );
                 if ($.browser.msie && $.browser.version < 7) {
                     oOverlay.css({
@@ -67,6 +77,33 @@
                     o.oImgClose.show();
                     $('div', oImgZoomBox).show()
                 }
+
+                    var iframe = document.createElement("iframe");
+
+                    iframe.id="panzoom";
+                    iframe.width = "100%";
+                    iframe.height ="100%";
+                    iframe.src = "./panzoom.html";
+                    iframe.frameBorder = "0";
+                    iframe.frameBorder = "no";
+                    iframe.scrolling = "no";
+                    iframe.border = "0";
+                    iframe.style.position="absolute";
+                    iframe.style.top="0px";
+                    iframe.style.zIndex="100";
+                    $("#headerview").css("zIndex","101");
+
+                    $("body").append(iframe);
+
+                    iframe.onload = function() {
+
+                        imgSrc.hide();
+                        iframe.contentWindow.panzoom(oOverlay,oImgZoomBox);
+
+                    };
+
+
+
             }
             ;
             $('div', oImgZoomBox).hide();
@@ -339,9 +376,8 @@
             )
         }
         )
-    }
-    ;
-    $.fn.fancyzoom.defaultsOptions = {
+    };
+  $.fn.fancyzoom.defaultsOptions = {
         overlayColor: '#000',
         overlay: 1,
         imagezindex: 100,

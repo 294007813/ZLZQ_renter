@@ -77,7 +77,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             var body=self.$(".bodys img");
                 body.width(width-40+'px');
                 body.height('auto');
-            $('img').fancyzoom();
+            $('.house_slider img').fancyzoom();
+
         },
 
         //设置标题

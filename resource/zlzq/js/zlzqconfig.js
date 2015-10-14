@@ -13,6 +13,9 @@
 			'cRange': baseUrl + 'common/tools/cRange', //
 			'UITab':baseUrl + 'common/utils/ui.tab',
 			'cImageZoom':baseUrl + 'common/tools/cImageZoom',
+
+
+
 			//模版
 			'TplSchedule': baseUrl + 'templates/schedule.html',
 			'TplHouse': baseUrl + 'templates/house.html',
