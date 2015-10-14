@@ -12,15 +12,6 @@
         function openZoomBox(imgSrc, o) {
             if (o.showoverlay) {
                 oOverlay.appendTo('body').click(function() {
-                        var panzoom = $("#panzoom");
-
-                        if (!panzoom.length) {
-                            closeZoomBox(o)
-                            return
-                        }
-                        ;
-                        panzoom[0].parentNode.removeChild(panzoom[0]);
-
                         imgSrc.show();
                         closeZoomBox(o)
                     }
@@ -98,11 +89,19 @@
                     iframe.onload = function() {
 
                         imgSrc.hide();
-                        iframe.contentWindow.panzoom(oOverlay,oImgZoomBox);
+                        iframe.contentWindow.panzoom(oOverlay,oImgZoomBox,imgSrc[0].src,function(){
+                            var panzoom = $("#panzoom");
+                            if (!panzoom.length) {
+                                closeZoomBox(o)
+                                return
+                            };
+                            panzoom[0].parentNode.removeChild(panzoom[0]);
+                            closeZoomBox(o);
+                            imgSrc.show();
+
+                        });
 
                     };
-
-
 
             }
             ;
