@@ -8,9 +8,12 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             "click .location_icon" :"toLocation",
             "click .search-btn":"toSearch",
             "click .info_list li:first-child":"toComment",
+            "click .back":"toBack",
 
         },
-
+        toBack:function(e){
+            Lizard.goTo("decoratelist.html");
+        },
 
         toReserve:function(e){
             self.$el.find(".info_ct").hide();
@@ -58,7 +61,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             //self.hideLoading();
 
             self.getDetail(function (data) {
-                self.setHeader();
+                //self.setHeader();
                 self.$el.html(_.template(TplDecorateDetail, {decorate: data}));
 
                 //self.hideLoading();
@@ -77,7 +80,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             var body=self.$(".bodys img");
                 body.width(width-40+'px');
                 body.height('auto');
-            $('.house_slider img').fancyzoom();
+            $('img').fancyzoom();
 
         },
 

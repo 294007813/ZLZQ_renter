@@ -73,7 +73,7 @@
 
                     iframe.id="panzoom";
                     iframe.width = "100%";
-                    iframe.height ="100%";
+                    iframe.height ="1000%";
                     iframe.src = "./panzoom.html";
                     iframe.frameBorder = "0";
                     iframe.frameBorder = "no";

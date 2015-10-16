@@ -95,7 +95,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         //设置标题
         setHeader: function (type) {
             self.header.set({
-                title: '租来租去',
+                title: '租来租去租客版',
                 back: !0,
                 backtext: '<i class="top_more left"></i> ',
                 view: this,
