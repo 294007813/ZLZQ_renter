@@ -2355,6 +2355,7 @@ dd.pic-input{
   border: 1px solid #FF7300;
 }
 
+<<<<<<< HEAD
 .nav{
   position: fixed;
   top: 0px;
@@ -2406,4 +2407,19 @@ dd.pic-input{
   white-space: nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
+=======
+.panzoom{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  -webkit-animation: fadeIn 300ms ease-in-out;
+  display: none;
+}
+
+.panzoom .zoom-area {
+  height: 100%;
+  width: 100%;
+>>>>>>> 2b805957b8aa63532a8aae2d7042ac922de6aab0
 }
