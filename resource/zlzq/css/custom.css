@@ -140,7 +140,7 @@
 }
 
 .top_more.right::before {
-   background-image: url(../images/header01.png);
+   /*background-image: url(../images/header01.png);*/
    background-size: 300px auto;
    background-position: -269px;
    width: 32px;
@@ -155,7 +155,7 @@
 }
 
 .top_more.left::before {
-background-image: url(../images/header01.png);
+/*background-image: url(../images/header01.png);*/
 background-size: 300px auto;
 background-position: 5px;
 width: 32px;
@@ -2355,7 +2355,7 @@ dd.pic-input{
   border: 1px solid #FF7300;
 }
 
-<<<<<<< HEAD
+
 .nav{
   position: fixed;
   top: 0px;
@@ -2396,8 +2396,8 @@ dd.pic-input{
   text-align: center;
   /*border-right: 1px solid #fff;*/
 }
-.nav h1{
-  padding:0 62px;
+.nav h1 {
+  padding: 0 62px;
   line-height: 40px;
   height: 40px;
   color: #fff;
@@ -2406,8 +2406,9 @@ dd.pic-input{
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow:ellipsis;
-=======
+  text-overflow: ellipsis;
+}
+
 .panzoom{
   position: fixed;
   top: 0;
@@ -2421,5 +2422,4 @@ dd.pic-input{
 .panzoom .zoom-area {
   height: 100%;
   width: 100%;
->>>>>>> 2b805957b8aa63532a8aae2d7042ac922de6aab0
 }

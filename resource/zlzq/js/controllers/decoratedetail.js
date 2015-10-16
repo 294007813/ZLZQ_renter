@@ -80,15 +80,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             var body=self.$(".bodys img");
                 body.width(width-40+'px');
                 body.height('auto');
-<<<<<<< HEAD
+
             $('img').fancyzoom();
-=======
+
 
                 $('img').panzoom();
 
 
             //$('.house_slider').panzoom();
->>>>>>> 2b805957b8aa63532a8aae2d7042ac922de6aab0
+
 
         },
 
