@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplDecorateDetail","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplDecorateDetail,cImageZoom) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplDecorateDetail","cImageZoom","cPanZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplDecorateDetail,cImageZoom,cPanZoom) {
     var self,
         listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
@@ -77,7 +77,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             var body=self.$(".bodys img");
                 body.width(width-40+'px');
                 body.height('auto');
-            $('.house_slider img').fancyzoom();
+
+                $('img').panzoom();
+
+
+            //$('.house_slider').panzoom();
 
         },
 
