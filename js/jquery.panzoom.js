@@ -1152,11 +1152,11 @@
                     });
 
                     // Set pan
-                    self.pan(
-                        +matrix[4] + middle.clientX - startMiddle.clientX,
-                        +matrix[5] + middle.clientY - startMiddle.clientY,
-                        panOptions
-                    );
+                    //self.pan(
+                    //    +matrix[4] + middle.clientX - startMiddle.clientX,
+                    //    +matrix[5] + middle.clientY - startMiddle.clientY,
+                    //    panOptions
+                    //);
                     startMiddle = middle;
                 };
             } else {

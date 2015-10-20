@@ -73,21 +73,20 @@
 
                     iframe.id="panzoom";
                     iframe.width = "100%";
-                    iframe.height ="1000%";
+                    iframe.height ="100%";
                     iframe.src = "./panzoom.html";
                     iframe.frameBorder = "0";
                     iframe.frameBorder = "no";
                     iframe.scrolling = "no";
                     iframe.border = "0";
-                    iframe.style.position="absolute";
+                    iframe.style.position="fixed";
                     iframe.style.top="0px";
-                    iframe.style.zIndex="100";
+                    iframe.style.zIndex="1022";
                     $("#headerview").css("zIndex","101");
 
                     $("body").append(iframe);
 
                     iframe.onload = function() {
-
                         imgSrc.hide();
                         iframe.contentWindow.panzoom(oOverlay,oImgZoomBox,imgSrc[0].src,function(){
                             var panzoom = $("#panzoom");

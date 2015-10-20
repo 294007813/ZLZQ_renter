@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplDecorateDetail","cImageZoom","cPanZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplDecorateDetail,cImageZoom,cPanZoom) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplDecorateDetail","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplDecorateDetail,cImageZoom) {
     var self,
         listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
@@ -75,20 +75,12 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
 
         changeP:function(){
             //根据屏幕大小切换图片
-            var width=$(window).width();
-            self.$(".house_slider>img").css("width",width+"px");
-            var body=self.$(".bodys img");
-                body.width(width-40+'px');
-                body.height('auto');
-
-            $('img').fancyzoom();
-
-
-                $('img').panzoom();
-
-
-            //$('.house_slider').panzoom();
-
+            //var width=$(window).width();
+            //self.$(".house_slider>img").css("width",width+"px");
+            //var body=self.$(".bo img");
+            //    body.width(width-40+'px');
+            //    body.height('auto');
+              $('img').fancyzoom();
 
         },
 

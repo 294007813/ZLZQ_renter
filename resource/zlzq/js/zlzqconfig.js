@@ -13,7 +13,7 @@
 			'cRange': baseUrl + 'common/tools/cRange', //
 			'UITab':baseUrl + 'common/utils/ui.tab',
 			'cImageZoom':baseUrl + 'common/tools/cImageZoom',
-			'cPanZoom':baseUrl + 'common/tools/cPanZoom',
+
 
 
 			//模版

@@ -9,7 +9,6 @@
 <meta name="format-detection" content="telephone=no" />
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.panzoom.js"></script>
-
 <style type="text/css">
     html,body {
         height: 100%;
@@ -19,19 +18,15 @@
     .parent{
         position: relative;
         width: 100%;
+        z-index: 100;
     }
     .panzoom {
         width: 100%;
         z-index: 100;
         height: 100%;
+        position: relative;
 
     }
-     .panzoom img{
-         width: 100%;
-         margin: auto;
-         position: absolute;
-
-     }
     .overLayer {
         height: 100%;
         width: 100%;
@@ -42,15 +37,27 @@
         opacity: 1;
         z-index: 99;
         background: rgb(0, 0, 0);
+
     }
 
-    #zoomImage{
-        margin: auto;
+    .close {
+        font-size: 30px;
+        color: #fff;
+        z-index: 109;
+        position: fixed;
+        right: 20px;
+        top: 10px;
+        display: inline-block;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+
     }
+
 </style>
 <body style="overflow: hidden">
-
 <div  class="overLayer"></div>
+<span class="close">×</span>
 <div class="parent" style="height: 100% ">
     <div class="panzoom">
         <img src=""  id="zoomImage"/>
@@ -58,17 +65,25 @@
 </div>
 <script type="text/javascript">
         window.panzoom=function(oOverlay,zoomBox,src,callback) {
-
             var zoomImage = $("#zoomImage"),
-                    $section = $('.parent').first();
+                    $container=$(".parent"),
+                    $section = $container.first(),
+                    ch=$container.height(),
+                    cw=$container.width(),
+                    ih,iw;
+
             zoomImage[0].src = src;
+
             zoomImage.width(zoomBox.width());
 
-            zoomImage.css("top", zoomBox.css("top"));
-            zoomImage.css("left", zoomBox.css("left"));
+            ih=zoomBox.height();
+            iw=zoomImage.width();
+
+            zoomImage.css("margin-top", (ch-ih)/2);
+            zoomImage.css("margin-left", (cw-iw)/2);
 
 
-            $section.find('img').panzoom({
+            $section.find('.panzoom').panzoom({
                 $zoomIn: $section.find(".zoom-in"),
                 $zoomOut: $section.find(".zoom-out"),
                 $zoomRange: $section.find(".zoom-range"),
@@ -78,15 +93,11 @@
             zoomBox.css("visibility", "hidden");
 
 
+            oOverlay.hide();
 
-            $(".panzoom").bind("touchend ",function(e) {
+            $(".close").bind("touchstart ",function(e) {
 
-                if (e.target.tagName != "IMG") {
-
-
-                    callback();
-
-                }
+                callback();
             })
         }
 </script>

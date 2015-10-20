@@ -14,12 +14,14 @@
         line-height: 40px;
     }
 
-    p >img{
-        padding: 10px 0 0 10px;
-        /*height: 150px;*/
-        /*width: 150px;*/
-        overflow: hidden;
-    }
+    /*p >img{*/
+        /*padding: 10px 0 0 10px;*/
+        /*/!*height: 150px;*!/*/
+        /*/!*width: 150px;*!/*/
+        /*overflow: hidden;*/
+        /**/
+        /*ma*/
+    /*}*/
 
 
     font{
@@ -38,7 +40,9 @@
     }
 
 
-
+  .bodys p img {
+      max-width: 100%;
+  }
 
 
 
@@ -53,7 +57,7 @@
 <div class="page" style="background-color: #E8E8E8;margin-top: 40px">
     <div class="title_block" style="background-color:#fff;border-bottom: 1px solid #E8E8E8;">
         <div class="house_slider">
-            <img style="height: 200px" src="<%=decorate.avatar.url%>">
+            <img style="max-width: 100%" src="<%=decorate.avatar.url%>">
         </div>
         <div class="housing" >
             <div class="house_intro" style="padding: 10px">
