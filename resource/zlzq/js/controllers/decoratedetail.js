@@ -77,7 +77,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             //根据屏幕大小切换图片
             var width=$(window).width();
             self.$(".house_slider>img").css("width",width+"px");
-            var body=self.$(".bo img");
+            var body=self.$(".bodys img");
                 body.width(width-40+'px');
                 body.height('auto');
               $('img').fancyzoom();
