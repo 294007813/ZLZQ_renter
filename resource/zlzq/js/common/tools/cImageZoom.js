@@ -203,9 +203,9 @@
                 opacity: opts.overlay,
                 background: opts.overlayColor
             });
-            if (!/\.jpg|\.jpeg|\.png|\.gif/i.test(imgTargetSrc)) {
-                return true
-            }
+            //if (!/\.jpg|\.jpeg|\.png|\.gif/i.test(imgTargetSrc)) {
+            //    return true
+            //}
             $this.click(function() {
                 var zoomOpened = $('div.jqfancyzoombox');
                 if (zoomOpened.length > 0) {
