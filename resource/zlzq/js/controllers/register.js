@@ -142,7 +142,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                             data.user.token=data.user.authentication_token
 
                             self.setLoginStatus({isLogin: true, user: data.user,token:data.user.authentication_token});
-                            self.showMyToast("注册成功！获得注册积分30000！", 1000);
+                            self.showMyToast("注册成功！获得注册积分30000！", 3000);
 
                             Lizard.goTo("login.html");
                         }

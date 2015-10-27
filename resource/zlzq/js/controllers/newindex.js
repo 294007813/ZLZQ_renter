@@ -8,11 +8,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             "click .bottom-bar .rent":"toRent",
             "click .bottom-bar .mine":"toPersonal",
             "click .bottom-bar .order":"toOrderList",
-            "click .info_label_item1 .myhouse":"myHouse",
-            "click .info_label_item1 .favourite":"toMyFavourite",
-            "click .info_label_item1 .decorate":"toDecorate",
-            "click .info_label_item1 .watch":"toWatch",
-            "click .info_label_item1 .news":"toNews",
+            "click  .myhouse":"myHouse",
+            "click  .favourite":"toMyFavourite",
+            "click  .decorate":"toDecorate",
+            "click  .watch":"toWatch",
+            "click  .news":"toNews",
 
         },
 
@@ -78,13 +78,15 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             self.houseSlider.show();
 
 
-            //var height=$(window).height();
+            var height=$(window).height();
             ////alert(height);
-            //if(height<615){
-            //    self.$(".house_slider1 img").css("height","170px");
-            //}else{
-            //    self.$(".house_slider1 img").css("height","220px");
-            //}
+            if(height<615){
+                self.$(".house_slider1").css("height","350px");
+                self.$(".house_slider1 img").css("height","350px");
+                //}else{
+                //    self.$(".slide-block ").css("height","415px");
+                //    self.$(".slide-block img").css("height","415px");
+            }
         },
 
         toWatch:function(){

@@ -2423,3 +2423,48 @@ dd.pic-input{
   height: 100%;
   width: 100%;
 }
+
+
+.indexButton{
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+}
+.indexButton a{
+  display: inline-block;
+  margin:0 1%;
+  width: 60px;
+}
+.indexButton a .icon{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.indexButton a .iconPad{
+  width: 50px;
+  height: 50px;
+
+}
+.indexButton a .iconHouse{
+  width: 50px;
+  height: 50px;
+}
+.indexButton a .iconBrush{
+  width: 50px;
+  height: 50px;
+}
+.indexButton a .iconNews{
+  width: 50px;
+  height: 50px;
+}
+.indexButton a span{
+  display: block;
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #232736;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
