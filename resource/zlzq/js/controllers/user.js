@@ -124,6 +124,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                     else{
                         self.getver=data.number;
                         self.appurl=data.url;
+                        if(self.getver!=Lizard.version){
+                            self.$el.find("#ver").append("<em style='color: #ff0000'>(有更新)</em>");
+                            self.$el.find(".ver").addClass("new");
+                        }
                     }
                 },
                 error: function (e) {
@@ -212,10 +216,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             $("#headerview").hide();
             self.$el.html(_.template(tplUser)({user: this.getCurrentUser(),ver:Lizard.version}));
             self.checkUpdate();
-            if(self.getver!=Lizard.version){
-                self.$el.find("#ver").append("<em style='color: #ff0000'>(有更新)</em>");
-                self.$el.find(".ver").addClass("new");
-            }
+
             self.hideLoading();
 
         },
