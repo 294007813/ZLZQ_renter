@@ -86,6 +86,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 this.showMyToast("请选择月数", 1000);
                 return;
             }
+            var looktime = $.trim(this.$el.find(".lookT").val());
+            if(!looktime){
+                this.showMyToast("请选择约看时间", 1000);
+                return;
+            }
             var phonedata = $.trim(this.$el.find(".phone").val());
             if(!/^(1[3-8][0-9])\d{8}$/.test(phonedata)){
                 this.showMyToast("请填写正确的联系方式", 1000);
@@ -183,7 +188,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         //设置标题
         setHeader: function () {
             self.header.set({
-                title: '我的订单',
+                title: '约看订单',
                 back: true,
                 backtext: '<i class="icon-back "></i> ',
                 view: this,
