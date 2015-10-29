@@ -110,7 +110,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplRegister"], func
                     return;
 
                 }
-				var invitecode= (this.$el.find(".inputinvicode").val());
+				var invitecode= (this.$el.find("#inputinvicode").val());
                 invitecode=invitecode?invitecode:'';
                 //alert(invitecode);
 

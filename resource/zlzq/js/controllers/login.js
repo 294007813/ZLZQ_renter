@@ -124,7 +124,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store", "text!TplLogin"], functio
                             data.user.avatar=data.avatar;
                             data.user.pwd=self.$el.find("#password").val();
                             self.setLoginStatus({isLogin: true,user: data.user,token:data.token});
-                            self.showMyToast("登入成功", 3000);
+                            self.showMyToast("登入成功", 1000);
                             //Lizard.goTo("index.html");
                             self.returnPage();
 
