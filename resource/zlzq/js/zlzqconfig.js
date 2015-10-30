@@ -42,7 +42,8 @@
 			'TplNewsList':baseUrl + 'templates/newslist.html',
 			'TplNewsDetail':baseUrl + 'templates/newsdetail.html',
             'TplGetreward': baseUrl + 'templates/getinvitereward.html',
-            'TplSendinvite': baseUrl + 'templates/sendinvitecode.html'
+            'TplSendinvite': baseUrl + 'templates/sendinvitecode.html',
+			'TplAppointment': baseUrl + 'templates/appointment.html',
 	    }
 	};
 	config.urlArgs = "v=1";

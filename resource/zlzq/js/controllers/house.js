@@ -20,10 +20,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 }else self.showMyToast("找不到此地址", 1000);
         },
 
-        //我的订单
+        //我要约看
         toMyorder:function(){
             if(self.isLogin()){
-                Lizard.goTo("myorder.html?realtyid="+Lizard.P("d"));
+                //Lizard.goTo("myorder.html?realtyid="+Lizard.P("d"));
+                window.location.href="appointment.html?realtyid="+Lizard.P("d");
             }else {
                 Lizard.goTo("login.html");
                 return;
