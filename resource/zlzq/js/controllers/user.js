@@ -19,6 +19,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             "click .opt-list .invite":"togetreward",
             "click .opt-list .to_apply":"toApply",
             "click .opt-list .to_send":"toSend",
+            "click .sign":"toSign",
             "click .ver":"askUpdte",
             "click .cd-popup":"toCancel",
             "click .cd-no":"toCancel",
@@ -41,6 +42,30 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             Lizard.goTo("sendinvitecode.html");
 
         },
+
+        toSign:function(){
+            var url=Lizard.host+Lizard.apiUrl+"users/"+self.getCurrentUser().id+"/checkins"
+            $.ajax({
+                url: url,
+                dataType: "json",
+                type: "post",
+                data:{auth_token:self.getCurrentUser().token},
+                success: function (data) {
+                    if (data.error) {
+                        self.showMyToast(data.error.message, 1000);
+                        return
+                    }
+                    else {
+                        self.showMyToast(data.message, 2000);
+                    }
+                },
+                error: function (e) {
+                    self.showMyToast(e.error, 1000);
+
+                }
+            })
+        },
+
         toUpdate:function(){
             //self.showMyToast("正在下载更新程序", 1000);
             //if (!self.iframeContent) {

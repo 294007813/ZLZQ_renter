@@ -1121,10 +1121,10 @@ background-position: 0 -410px;
   margin-top: 10px;
 }
 .subscribe-bar input{
-  background: #f5f5f5;
+  /*background: #f5f5f5;*/
   height: 42px;
   border:solid 1px #E6E6E6;
-  width: 100%;
+  /*width: 100%;*/
   padding: 0 15px;
   background: #fff;
 }
@@ -1975,6 +1975,10 @@ background-position: 0 -410px;
   overflow: hidden;
 }
 
+.looktime .cui-flex2{
+  display: none;
+}
+
 .month .cui-roller .cui-roller-bd{
   display: none;
 }
@@ -2467,4 +2471,44 @@ dd.pic-input{
   white-space: nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
+}
+
+.succeed-appoint {
+  margin: 30px 10px;
+}
+.succeed-appoint .mes{
+  margin: 10px 0;
+  text-align:center;
+  font-size: 25px;
+  color: #ff6c10;
+}
+.succeed-appoint .avatar{
+  width: 75px;
+  height: 75px;
+  text-align:center;
+  padding-top: 20px;
+}
+.succeed-appoint .name{
+  margin: 10px 0;
+  text-align:center;
+  font-size: 20px;
+}
+.succeed-appoint .dial a div{
+  text-align:center;
+  margin: 20px 25px;
+  padding: 10px 20px;
+  background: #ff6c10;
+  border-radius:4px;
+  font-size: 20px;
+  color: white;
+}
+.succeed-appoint .watchlist{
+  text-align:center;
+  margin: 10px 25px;
+  padding: 10px 20px;
+  /*background: #ff6c10;*/
+  border:1px solid #ff6c10;
+  border-radius:4px;
+  font-size: 20px;
+  color: #ff6c10;
 }
