@@ -21,6 +21,60 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
         },
 
+        toPut:function(){
+            var name = (this.$el.find(".monthC").val());
+            if (!name) {
+                this.showMyToast("请输入联系人称呼", 1000);
+                return;
+            }
+            var looktime = (this.$el.find(".lookT").val());
+            if (!looktime) {
+                this.showMyToast("请选择约看时间", 1000);
+                return;
+            }
+
+            var url=Lizard.host+Lizard.apiUrl+"review_forms?auth_token="+self.getCurrentUser().token;
+            $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "post",
+                    data:{
+                        "review_form[realty_id]":Lizard.P("realtyid"),
+                        "review_form[user_id]":self.getCurrentUser().id,
+                        "review_form[gender]":name+self.sex,
+                        "review_form[review_at]":looktime,
+
+                    },
+                success: function (data) {
+                    if (data.error) {
+                        self.showMyToast(data.error.message, 1000);
+                        return
+                    }
+                    else {
+                        self.succeed(data);
+
+                    }
+                },
+                error: function (e) {
+                    self.showMyToast(e.error, 1000);
+
+                }
+            })
+        },
+
+        succeed:function(data){
+            self.$el.html(_.template(TplAppointment)({data:data.review_form}));
+            self.$el.find(".subscribe-bar").hide();
+            self.$el.find(".next").hide();
+            self.$el.find(".succeed-appoint").show();
+            if(data.review_form.realty_type=="出租房"){
+                self.onwertype="房东";
+            }else{
+                self.onwertype="看房顾问";
+            }
+            self.$el.find(".ownertype").text(self.onwertype);
+        },
+
         chMale:function(){
             self.sex="先生"
             self.$el.find(".female img").attr("src","resource/zlzq/img/unselect.png");

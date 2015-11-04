@@ -2485,8 +2485,10 @@ dd.pic-input{
 .succeed-appoint .avatar{
   width: 75px;
   height: 75px;
-  text-align:center;
+  /*text-align:center;*/
   padding-top: 20px;
+  display:block;
+  margin:0 auto;
 }
 .succeed-appoint .name{
   margin: 10px 0;

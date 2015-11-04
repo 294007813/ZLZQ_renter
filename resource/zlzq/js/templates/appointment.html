@@ -36,15 +36,15 @@
 <!--<i class="icon"></i>-->
 <div class="succeed-appoint" style="display: none">
     <div class="mes">预约看房已经成功提交</div>
-    <div class="mes">将电话联系您</div>
-    <%if(user.avatar.avatar.url!=null){%>
-    <img  class="avatar" src="<%=user.avatar.avatar.url%>">
+    <div class="mes"><span class="ownertype"></span>将电话联系您</div>
+    <%if(data.owner_avatar.avatar.url!=null){%>
+    <img  class="avatar" src="<%=data.owner_avatar.avatar.url%>">
     <%}else{%>
     <img  class="avatar" src="./resource/zlzq/images/myheader.png">
     <%}%>
-    <div class="name">aaa</div>
+    <div class="name"><%=data.owner_nick_name%>(<span class="ownertype"></span>)</div>
     <div class="dial">
-        <a href="tel:<%=realty.owner.cell%>"><div>电话联系</div></a>
+        <a href="tel:<%=data.owner_cell%>"><div>电话联系<span class="ownertype"></span></div></a>
     </div>
     <div class="watchlist">查看约看清单</div>
 </div>
