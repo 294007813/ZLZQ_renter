@@ -33,7 +33,8 @@ define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert',], functio
 
 		toOrderList:function(){
 			if(this.isLogin()){
-				Lizard.goTo("orderlist.html");
+				//Lizard.goTo("visitlist.html");
+				window.location.href="visitlist.html"
 			}else {
 				Lizard.goTo("login.html");
 			}

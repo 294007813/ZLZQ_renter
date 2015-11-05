@@ -1,0 +1,54 @@
+<div class="nav">
+    <a class="back" href="#"></a>
+    <h1>约看清单</h1>
+    <a class="next" href="#">删除</a>
+</div>
+
+<%if(list.length>0){%>
+<ul class="visit-list">
+<!--<ul class="house-list">-->
+    <%_.each(list, function(v,i){ %>
+    <li data-id="<%=v.id%>">
+            <div class="user-data">
+                <%if(v.owner_avatar.avatar.url!=null){%>
+                    <img class="head" src="<%=v.owner_avatar.avatar.url%>">
+                <%}else{%>
+                    <img class="head" src="./resource/zlzq/images/myheader.png">
+                <%}%>
+                <div>
+                    <p class="name"><%=v.owner_nick_name?v.owner_nick_name:' '%><span></span></p>
+                    <p class="cell"><%=v.owner_cell%></p>
+                </div>
+
+                <a class="ce-ico" href="tel:<%=v.owner_cell%>"><img src="./resource/zlzq/images/tel.png" ></a>
+            </div>
+            <a class="house-data">
+                <img class="select click" data-id="<%=v.id%>" src="resource/zlzq/img/unselect.png">
+                <div class="img click" style="overflow: hidden">
+                    <%if(v.realty_cover_pic.avatar.url!=null){%>
+                        <img src="v.realty_cover_pic.avatar.url">
+                    <%}else{%>
+                        <img src="./resource/zlzq/images/show2.png">
+                    <%}%>
+                </div>
+                <div class="txt click">
+                    <p class="monthly"><em><%=v.realty_price%></em>&nbsp;元&nbsp;/&nbsp;月</p>
+                    <p><%=v.realty_title%>&nbsp;&nbsp;</p>
+                    <p>
+                        <%=v.realty_room?v.realty_room:'?'%>室
+                        <%=v.realty_hall?v.realty_hall:'?'%>厅
+                        <%=v.realty_wash?v.realty_wash:'?'%>卫
+                        |&nbsp;&nbsp;<%=v.realty_area%>m<sup>2</sup>
+                    </p>
+                </div>
+                <img class="goto" r-id="<%=v.realty_id%>" src="resource/zlzq/images/r_arrow.png">
+            </a>
+            <div class="looktime">看房时间:<%=v.review_at%></div>
+    </li>
+    <%})%>
+</ul>
+<%}else{ %>
+<div class="content" >
+    <h2 style="text-align:center;padding-top: 10px;color: #ff6c10;font-size: 20px">您没有约看订单</h2>
+</div>
+<%}%>

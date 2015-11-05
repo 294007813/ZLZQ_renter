@@ -2514,3 +2514,28 @@ dd.pic-input{
   font-size: 20px;
   color: #ff6c10;
 }
+
+.visit-list{ background: #fff;}
+.visit-list ul{ margin: 0 0 0 8px;}
+.visit-list li{ border-bottom: 1px solid #e4e4e4; padding: 10px 0;}
+
+.visit-list .user-data { margin-left: 30px; display: flex }
+.visit-list .head{
+  /*float: left;*/
+  width: 50px;height: 50px}
+.visit-list .user-data p {line-height: 25px; margin-left: 15px;font-size: 18px;color: #898a8b}
+/*.visit-list .ce-ico{ float: right;}*/
+.visit-list .ce-ico{margin: auto 15px auto auto;}
+.visit-list .ce-ico img{width: 30px;height: 30px}
+
+.visit-list .house-data{ display: flex; padding: 8px 0; color: #000; overflow: hidden;}
+.visit-list .select {float: left;width: 25px;height: 25px;margin: auto 1px auto 5px;padding: 20px 0 }
+.visit-list .img{ position: relative; float: left; margin-right: 8px; width: 100px; height: 75px; }
+.visit-list .img img{ width: 100%; height: 100%; border: solid 1px #E5DDC2; border-radius: 3px;}
+.visit-list .txt{overflow: hidden;width: auto ;margin: 1px;width: 50%}
+.visit-list .monthly em{ font-size: 18px;}
+.visit-list .goto{float: right;width: 20px;height: 40px;margin: auto 1px auto auto;padding: 20px 0}
+.visit-list .txt p{line-height: 20px;color: #898a8b}
+.visit-list .txt .monthly{line-height: 30px;color: #ff6c10 }
+.visit-list .looktime{margin-left: 30px;font-size: 18px;color: #898a8b }
+

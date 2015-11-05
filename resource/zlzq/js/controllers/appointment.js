@@ -1,14 +1,19 @@
 define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupSelect","text!TplAppointment"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,TplAppointment) {
     var self;
     var View = BaseView.extend({
-        ViewName: 'comment',
+        ViewName: 'appointment',
         events: {
             "click .back" :"backHouse",
             "click .lookT-mask" :"selectDate",
             "click .male" :"chMale",
             "click .female" :"chFemale",
             "click .next" :"toPut",
+            "click .watchlist" :"toVisitlist",
 
+        },
+
+        toVisitlist:function(){
+            Lizard.goTo("visitlist.html");
         },
 
         backHouse:function(){

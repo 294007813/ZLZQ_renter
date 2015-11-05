@@ -198,9 +198,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                 Lizard.goTo("getinvitereward.html");
 
             },
-        toOrderList:function(){
-            Lizard.goTo("orderlist.html");
-        },
 
         toMyScore:function(e){
             Lizard.goTo("myScore.html");

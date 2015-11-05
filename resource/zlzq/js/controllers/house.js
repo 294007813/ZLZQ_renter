@@ -24,10 +24,44 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
         toMyorder:function(){
             if(self.isLogin()){
                 //Lizard.goTo("myorder.html?realtyid="+Lizard.P("d"));
-                window.location.href="appointment.html?realtyid="+Lizard.P("d");
+                if(self.flag){
+                    window.location.href="appointment.html?realtyid="+Lizard.P("d");
+                }else{
+                    self.showMyToast("此房源已下过订单,请勿重复下单", 1000);
+                }
+
             }else {
                 Lizard.goTo("login.html");
                 return;
+            }
+        },
+
+        getVisitlist:function(){
+            if(self.isLogin()){
+                var url=Lizard.host+Lizard.apiUrl+"review_forms?auth_token="+self.getCurrentUser().token;
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "get",
+                    success: function (data) {
+                        if (data.error) {
+                            self.showMyToast(data.error.message, 1000);
+                            return
+                        }
+                        else {
+                            for(i=0;i<data.length;i++){
+                                if(data[i].realty_id==Lizard.P("d")){
+                                    self.flag=0;
+                                }
+                            }
+
+                        }
+                    },
+                    error: function (e) {
+                        self.showMyToast(e.error, 1000);
+
+                    }
+                })
             }
         },
 
@@ -189,6 +223,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                 //self.sortdevice();
                 self.addressHide();
             });
+            self.flag=1;
+            self.getVisitlist();
 
         },
 
