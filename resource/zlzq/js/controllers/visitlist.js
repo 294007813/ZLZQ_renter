@@ -49,7 +49,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                             }
                             else {
                                 self.showMyToast("删除成功", 1000);
-
+                                window.location.href="visitlist.html";
                             }
                         },
                         error: function (e) {
@@ -60,7 +60,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
 
                 })
             }
-            self.getList();
 
         },
 

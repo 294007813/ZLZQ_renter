@@ -16,7 +16,13 @@
                     <img class="head" src="./resource/zlzq/images/myheader.png">
                 <%}%>
                 <div>
-                    <p class="name"><%=v.owner_nick_name?v.owner_nick_name:' '%><span></span></p>
+                    <p class="name"><%=v.owner_nick_name?v.owner_nick_name:' '%><span>(
+                       <%if(v.realty_type=='委托房'){%>
+                        房源顾问
+                        <%}else{%>
+                        房东
+                        <%}%>
+                    )</span></p>
                     <p class="cell"><%=v.owner_cell%></p>
                 </div>
 
@@ -26,7 +32,7 @@
                 <img class="select click" data-id="<%=v.id%>" src="resource/zlzq/img/unselect.png">
                 <div class="img click" style="overflow: hidden">
                     <%if(v.realty_cover_pic.avatar.url!=null){%>
-                        <img src="v.realty_cover_pic.avatar.url">
+                        <img src="<%=v.realty_cover_pic.avatar.url%>">
                     <%}else{%>
                         <img src="./resource/zlzq/images/show2.png">
                     <%}%>

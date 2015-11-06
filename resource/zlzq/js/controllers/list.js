@@ -118,7 +118,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
             _.each(realties, function (v, i) {
                 (function (iid) {
                     var img = new Image();
-                    img.src = v.avatar;
+                    img.src = v.avatar?v.avatar:"./resource/zlzq/images/show2.png";
                     img.onload = function () {
                         var dom = document.getElementById(iid);
                         dom && (dom.src = img.src);
