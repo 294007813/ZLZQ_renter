@@ -252,7 +252,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 lastBox.removeClass("in");
             }
 
-            currentBox.addClass("trans").toggleClass("in");
+            currentBox.addClass("non-trans").toggleClass("in");
             if (currentBox.hasClass("in")) {
                 currentBox.show();
                 self.$el.find(".mask").css("left", 0).addClass("show");
@@ -417,7 +417,6 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                     }, false);
                     var areaBox = this.$(".area-bar");
                     areaBox.css("height", self.$el.find(".area-bar-box").height());
-                    self.$el.find(".area-bar-box").hide();
                     this.scrollOpts = {};
                     this.scrollOpts.wrapper = areaBox, this.scrollOpts.scroller = this.$(".left-column"), this.scroll = new cUIScroll(this.scrollOpts);
 
