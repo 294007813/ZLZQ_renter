@@ -265,8 +265,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                         data.user.pwd = self.getCurrentUser().pwd;
                         self.setLoginStatus({isLogin: true, user: data.user, token: data.token});
 
-                        //Lizard.goTo("personal.html");
-                        window.location.href="personal.html";
+                        Lizard.goTo("personal.html");
+                        //window.location.href="personal.html";
 
                     }
 

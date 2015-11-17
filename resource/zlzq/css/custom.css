@@ -2433,35 +2433,36 @@ dd.pic-input{
   margin-top: 15px;
   width: 100%;
   text-align: center;
+  z-index: 4000;
 }
-.indexButton a{
+.indexButton div{
   display: inline-block;
   margin:0 1%;
   width: 60px;
 }
-.indexButton a .icon{
+.indexButton div .icon{
   width: 50px;
   height: 50px;
   border-radius: 50px;
 }
-.indexButton a .iconPad{
+.indexButton div .iconPad{
   width: 50px;
   height: 50px;
 
 }
-.indexButton a .iconHouse{
+.indexButton div .iconHouse{
   width: 50px;
   height: 50px;
 }
-.indexButton a .iconBrush{
+.indexButton div .iconBrush{
   width: 50px;
   height: 50px;
 }
-.indexButton a .iconNews{
+.indexButton div .iconNews{
   width: 50px;
   height: 50px;
 }
-.indexButton a span{
+.indexButton div span{
   display: block;
   margin-top: 7px;
   font-size: 14px;
@@ -2472,6 +2473,7 @@ dd.pic-input{
   overflow: hidden;
   text-overflow:ellipsis;
 }
+
 
 .succeed-appoint {
   margin: 30px 10px;

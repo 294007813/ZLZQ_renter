@@ -83,6 +83,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
             if(height<615){
                 self.$(".house_slider1").css("height","350px");
                 self.$(".house_slider1 img").css("height","350px");
+                self.$(".cui-navContainer").css("top","300px");
+                self.$(".cm-slide").css("height","350px");
                 //}else{
                 //    self.$(".slide-block ").css("height","415px");
                 //    self.$(".slide-block img").css("height","415px");

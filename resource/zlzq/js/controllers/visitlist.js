@@ -165,7 +165,30 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             //
             //self.$el.html(_.template(TplVisitlist)({list:list}));
             self.getList();
+            self.setHeader();
             self.hideLoading();
+        },
+        setHeader: function () {
+            self.header.set({
+                title: '约看清单',
+                back: true,
+                backtext: '<i class="icon-back "></i> ',
+                view: this,
+                btn: {
+                    title: '删除',
+                    id: 'confirm-btn',
+                    classname: 'right_btn'
+                },
+                events: {
+                    returnHandler: function () {
+                        Lizard.goTo("newindex.html");
+                    },
+                    commitHandler: function () {
+                        self.toDel();
+
+                    }
+                }
+            });
         },
     });
     return View;

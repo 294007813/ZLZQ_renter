@@ -40,7 +40,12 @@
      <div class="avatar-box">
          头像
          <div>
+             <!--<img  class="avatar" id="picture" src="<%=user.avatar%>">-->
+             <%if(user.avatar!=null){%>
              <img  class="avatar" id="picture" src="<%=user.avatar%>">
+             <%}else{%>
+             <img  class="avatar" id="picture" src="./resource/zlzq/images/myheader.png">
+             <%}%>
          </div>
          <i class="arrow"></i>
 

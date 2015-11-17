@@ -377,8 +377,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
                         return
                     }
                     if(data){
-                        data.user.balance=data.balance;
-                        data.user.invited_code=data.invited_code;
+                        self.user.balance=data.balance;
+                        self.user.invite_code=data.invited_code;
 
 
                     }
@@ -434,7 +434,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             }else{
                 self.hideLoading();
             }
-            self.$el.find("#picture").attr("src",user.avatar.avatar.url);
+            //self.$el.find("#picture").attr("src",self.user.avatar.avatar.url);
 
         },
         //设置标题

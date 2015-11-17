@@ -9,7 +9,7 @@ define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert',], functio
 	var bankStore = Store.bankStore.getInstance();
 	Lizard.host="http://zlzq.easybird.cn/";
 	Lizard.apiUrl="api/v1/";
-	Lizard.version="2.15";
+	Lizard.version="2.16";
 	var viewBaseUrl="";
 	Lizard.timeout=20000;
     var BaseView = cPageView.extend({
@@ -33,8 +33,8 @@ define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert',], functio
 
 		toOrderList:function(){
 			if(this.isLogin()){
-				//Lizard.goTo("visitlist.html");
-				window.location.href="visitlist.html"
+				Lizard.goTo("visitlist.html");
+				//window.location.href="visitlist.html"
 			}else {
 				Lizard.goTo("login.html");
 			}
