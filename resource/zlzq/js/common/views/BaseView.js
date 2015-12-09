@@ -9,7 +9,7 @@ define(['cPageView', 'cGuider', 'cUtility','Store','Model', 'UIAlert',], functio
 	var bankStore = Store.bankStore.getInstance();
 	Lizard.host="http://zlzq.easybird.cn/";
 	Lizard.apiUrl="api/v1/";
-	Lizard.version="2.16";
+	Lizard.version="2.17";
 	var viewBaseUrl="";
 	Lizard.timeout=20000;
     var BaseView = cPageView.extend({
