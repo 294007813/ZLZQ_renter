@@ -398,6 +398,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         onShow: function () {
             $("#headerview").hide();
+            if(self.isInitialized){
+                return;
+            }
+            self.isInitialized=true;
             self.getDistricts(function (districts) {
                 self.districts = districts;
                 self.getList(function (data) {
