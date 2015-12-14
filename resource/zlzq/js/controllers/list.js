@@ -398,7 +398,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         onShow: function () {
             $("#headerview").hide();
-            if(self.isInitialized){
+            if(self.isInitialized&&(!Lizard.P("d"))){
                 return;
             }
             self.isInitialized=true;

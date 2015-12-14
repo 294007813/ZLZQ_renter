@@ -97,7 +97,9 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
             //self.hideLoading();
             $("#headerview").hide();
 
-            if (!self.iframeContent) {
+            if (self.iframeContent) {
+                $(self.$el.find(".content")).empty();
+            }
                 var iframe = document.createElement("iframe");
                 iframe.width = "100%";
                 iframe.height =( this.calcPageHeight(document)-44)+"px";
@@ -120,9 +122,9 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
 
                 $(self.$el.find(".content")).append(iframe);
                 self.iframeContent = iframe;
-            }else{
-                  self.hideLoading();
-            }
+            //}else{
+            //      self.hideLoading();
+            //}
         },
 
 
