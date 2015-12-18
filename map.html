@@ -85,7 +85,8 @@
                 fontFamily: "微软雅黑"
             });
             map.addOverlay(labelUp);
-            labelUp.B.dataset.config=JSON.stringify(data.district_counts[i]);
+//            labelUp.B.dataset.config=JSON.stringify(data.district_counts[i]);
+            labelUp.data=JSON.stringify(data.district_counts[i]);
             var opts = {
                 data:data.district_counts[i],
                 position: bp,    // 指定文本标注所在的地理位置
@@ -108,14 +109,16 @@
             });
             map.addOverlay(labelDown);
 //            labelDown.addEventListener("click", map.bridgeListener);
-            labelDown.B.dataset.config=JSON.stringify(data.district_counts[i]);
+//            labelDown.B.dataset.config=JSON.stringify(data.district_counts[i]);
+            labelDown.data=JSON.stringify(data.district_counts[i]);
             labelDown.addEventListener("click", search);
             labelUp.addEventListener("click", search);
         }
     }
     function search(e){
         var p = e.target,
-                config=JSON.parse(p.B.dataset.config);
+//                config=JSON.parse(p.B.dataset.config);
+                config=JSON.parse(p.data);
         window.parent.Lizard.goTo("list.html?d=" + config.district_id);
     }
 </script>

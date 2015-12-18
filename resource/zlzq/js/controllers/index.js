@@ -77,6 +77,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
                 contentType: "application/json",
                 type: "get",
                 success: function (data) {
+                    self.countnew=data;
                    callback && callback(data);
                 }
             });
@@ -97,34 +98,47 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
             //self.hideLoading();
             $("#headerview").hide();
 
-            if (self.iframeContent) {
-                $(self.$el.find(".content")).empty();
+            self.getRealties();
+            if(self.countnew&&self.countold){
+                self.countflag=true;
+                for(i=0;i<self.countnew.district_counts.length;i++){
+                    if(self.countnew.district_counts[i].realty_count!=self.countold.district_counts[i].realty_count){
+                        self.countflag=false;
+                        break;
+                    }
+                }
+            }else{
+                self.countflag=false;
             }
+            if(self.countflag){
+                self.hideLoading();
+            }else {
+                $(self.$el.find(".content")).empty();
                 var iframe = document.createElement("iframe");
                 iframe.width = "100%";
-                iframe.height =( this.calcPageHeight(document)-44)+"px";
+                iframe.height = ( this.calcPageHeight(document) - 44) + "px";
                 iframe.src = "./map.html";
                 iframe.frameBorder = "0";
                 iframe.frameBorder = "no";
                 iframe.scrolling = "no";
                 iframe.border = "0";
                 if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
-                    iframe.onreadystatechange = function() {
+                    iframe.onreadystatechange = function () {
                         if (iframe.readyState == "complete") {
                             self.afterIframeLoad();
                         }
                     };
                 } else {
-                    iframe.onload = function() {
+                    iframe.onload = function () {
                         self.afterIframeLoad();
                     };
                 }
 
                 $(self.$el.find(".content")).append(iframe);
                 self.iframeContent = iframe;
-            //}else{
-            //      self.hideLoading();
-            //}
+                self.countold=self.countnew;
+            }
+
         },
 
 
