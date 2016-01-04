@@ -41,7 +41,7 @@ define(['BaseView', "cUIInputClear", "Model", "Store",], function (BaseView, cUI
         },
 
         toList:function(e){
-            Lizard.goTo("list.html");
+            Lizard.goTo("list.html?index=1");
         },
 
         toFavorite:function(e){
