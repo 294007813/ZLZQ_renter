@@ -227,7 +227,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
 
         toHouse: function (e) {
             var target = $(e.currentTarget);
-            Lizard.goTo("house.html?d=" + target.data("id"));
+            Lizard.goTo("house.html?d=" + target.data("id")+(Lizard.P("favorite")?"&favorite=1":""));
         },
 
         setFilter: function (e) {
@@ -402,6 +402,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIScroll
                 return;
             }
             self.isInitialized=true;
+
             self.getDistricts(function (districts) {
                 self.districts = districts;
                 self.getList(function (data) {
