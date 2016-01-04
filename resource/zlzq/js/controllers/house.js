@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplHouse"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplHouse) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!TplHouse","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplHouse,cImageZoom) {
     var self,
         listModel=Model.ListModel.getInstance();
     var View = BaseView.extend({
@@ -141,6 +141,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                     Lizard.goTo("list.html");
                 }
             });
+
+            //测试代码
+            //callback({"realty":{"id":570,"title":"李子园","description":"","address":"李子园花园188号101","floor":1,"price":3300,"area":80,"state":"上线","published_at":"2015-12-28","checkin_at":null,"room":2,"hall":1,"wash":1,"total_height":5,"updated_at":"2015-12-28T13:48:17.000+08:00","latitude":"31.2774811616","longitude":"121.390672377","quarter_title":null,"district_id":13,"decoration_type":"简装","direction":"南","decoration_years":null,"end_at":null,"avatar":{"url":null},"house_device":{"house_device":{"realty_id":570,"id":500,"bed":null,"tv":null,"air_condition":null,"washer":null,"refrigerator":null,"water_heater":null,"chest":null,"hearth":null,"created_at":"2015-12-28T13:48:17.000+08:00","updated_at":"2015-12-28T13:48:17.000+08:00","multiple":null,"villa":null,"garden":null,"good_traffic":null,"standalone":null,"subway":null,"lift":null,"fan":null,"pc":null,"chair":null,"teapoy":null,"sofa":null,"table":null,"tv_stand":null,"bookcase":null}},"owner":{"owner_id":13,"nick_name":"代代","cell":"18321756978","avatar":null},"media":[{"medium_id":1088,"title":"","avatar":"http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fmedium%2Favatar%2F1088%2FCgEHQFZ-cs69xiP_AAEgAhPMP-U725_600-0_8-0.jpg"},{"medium_id":1089,"title":"","avatar":"http://7xiap4.com1.z0.glb.clouddn.com/uploads%2Fmedium%2Favatar%2F1089%2FCgEHXFZ-ct_yTNQPAAC5-7JYZnE782_600-0_8-0.jpg"}],"comments":[]}})
+
         },
 
         //隐藏具体地址
@@ -203,6 +207,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","text!Tpl
                     wrapper: this.$('.house_slider')
                 });
                 self.houseSlider.show();
+                $('.house_slider img').fancyzoom();
 
                 if(!self.isLogin()){
 

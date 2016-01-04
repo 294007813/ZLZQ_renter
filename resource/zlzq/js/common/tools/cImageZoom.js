@@ -4,7 +4,7 @@
             height: '100%',
             width: '100%',
             position: 'fixed',
-            zIndex: 100,
+            zIndex: 4000,
             left: 0,
             top: 0,
             cursor: "wait"
@@ -81,8 +81,8 @@
                     iframe.border = "0";
                     iframe.style.position="fixed";
                     iframe.style.top="0px";
-                    iframe.style.zIndex="1022";
-                    $("#headerview").css("zIndex","101");
+                    iframe.style.zIndex="4022";
+                    $("#headerview").css("zIndex","4001");
 
                     $("body").append(iframe);
 
@@ -378,7 +378,7 @@
   $.fn.fancyzoom.defaultsOptions = {
         overlayColor: '#000',
         overlay: 1,
-        imagezindex: 100,
+        imagezindex: 4000,
         showoverlay: true,
         Speed: 0,
         shadow: true,
